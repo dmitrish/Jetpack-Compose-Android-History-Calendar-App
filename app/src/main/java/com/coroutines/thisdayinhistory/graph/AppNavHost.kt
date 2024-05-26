@@ -1,0 +1,21 @@
+package com.coroutines.thisdayinhistory.graph
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+
+@Composable
+fun AppNavHost(
+    modifier: Modifier = Modifier,
+    navController: NavHostController,
+    isOnboarded: Boolean
+){
+    NavHost(
+        navController,
+        startDestination = if (isOnboarded) NavRoutes.MainRoute.name else NavRoutes.IntroRoute.name
+    ) {
+        introGraph(navController)
+        mainGraph(navController)
+    }
+}
