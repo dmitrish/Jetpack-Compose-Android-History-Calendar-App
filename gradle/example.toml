@@ -1,0 +1,43 @@
+
+# Keys
+# A key may be either bare, quoted, or dotted.
+# bare keys:
+key = "value" # format used in AS
+bare_key = "value"
+bare-key = "value"
+1234 = "value"
+
+# Tables
+# Tables (also known as hash tables or dictionaries) are collections of key/value pairs.
+# They are defined by headers, with square brackets on a line by themselves
+
+[table-1]
+key1 = "some string"
+key2 = 123
+
+[table-2]
+key1 = "another string"
+key2 = 456
+
+# Inline Table
+# Inline tables provide a more compact syntax for expressing tables.
+# They are especially useful for grouped data that can otherwise quickly become verbose.
+# Inline tables are fully defined within curly braces: { and }.
+# Within the braces, zero or more comma-separated key/value pairs may appear.
+# Key/value pairs take the same form as key/value pairs in standard tables.
+# All value types are allowed, including inline tables.
+
+name = { first = "Tom", last = "Preston-Werner" }
+point = { x = 1, y = 2 }
+animal = { type.name = "pug" }
+
+# version.ref
+# Not a standard TOML feature, but a Gradle-specific addition to TOML
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+# DefaultVersionCatalogBuilder.java
+private class VersionReferencingDependencyModel implements Supplier<DependencyModel> {
+private final String group;
+private final String name;
+private final String versionRef;
+private final String context;
