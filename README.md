@@ -1,4 +1,6 @@
 Open-sourcing and re-writing an app I wrote a couple of years ago. 
+<p><a href="https://play.google.com/store/apps/details?id=com.coroutines.historycat">History Calendar app on Google Play Store</a></p>
+<p></p>
 Also, creating a follow-along tutorial.
 All in early stages.
 <a href="http://coroutines.com/home/toml">Bulding this app tutorial</a>
