@@ -11,7 +11,7 @@ All in early stages.
 <table style="width:100%">
   <tr>
     <th>English, Dark Theme</th>
-    <th>French, Dark Theme</th> 
+    <th>Portuguese, Dark Theme</th> 
     <th>Arabic, Light Theme</th> 
   </tr>
   <tr>
