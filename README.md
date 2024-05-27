@@ -16,7 +16,7 @@ All in early stages.
   </tr>
   <tr>
     <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/develop/app.gif"/></td>
-    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/develop/app3.gif"/></td> 
+    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app3.gif"/></td> 
 
   </tr>
   
