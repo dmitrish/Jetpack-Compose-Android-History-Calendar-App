@@ -4,6 +4,10 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.coroutines.thisdayinhistory.ui.screens.about.AboutScreen
+import com.coroutines.thisdayinhistory.ui.screens.language.LanguageScreen
+import com.coroutines.thisdayinhistory.ui.screens.main.HistoryScreen
+import com.coroutines.thisdayinhistory.ui.screens.uitheme.ThemeScreen
 
 fun NavGraphBuilder.mainGraph(
     navController: NavController
@@ -11,7 +15,7 @@ fun NavGraphBuilder.mainGraph(
     navigation(startDestination = MainNavOption.HistoryScreen.name, route = NavRoutes.MainRoute.name) {
 
         composable(MainNavOption.HistoryScreen.name) {
-           //todo History Screen Goes here
+           HistoryScreen(navController = navController)
         }
 
         composable(
@@ -24,19 +28,19 @@ fun NavGraphBuilder.mainGraph(
         composable(
             MainNavOption.LanguagesScreen.name
         ) {
-            //todo  Language Screen goes here
+           LanguageScreen()
         }
 
         composable(
             MainNavOption.ThemeScreen.name
         ) {
-            //todo Theme Screen
+           ThemeScreen()
         }
 
         composable(
             MainNavOption.AboutScreen.name
         ) {
-            //todo About Screen
+           AboutScreen()
         }
     }
 }
