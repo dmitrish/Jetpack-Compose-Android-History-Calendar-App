@@ -9,6 +9,6 @@ fun MainContent(){
     val navController = rememberNavController()
     AppNavHost(
         navController = navController,
-        isOnboarded = false
+        isOnboarded = true
     )
 }
