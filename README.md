@@ -10,14 +10,14 @@ All in early stages.
 
 <table style="width:100%">
   <tr>
-    <th></th>
-    <th></th> 
- 
+    <th>English, Dark Theme</th>
+    <th>French, Dark Theme</th> 
+    <th>Arabic, Light Theme</th> 
   </tr>
   <tr>
     <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/develop/app.gif"/></td>
     <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app3.gif"/></td> 
-
+  <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app4.gif"/></td> 
   </tr>
   
 </table>
