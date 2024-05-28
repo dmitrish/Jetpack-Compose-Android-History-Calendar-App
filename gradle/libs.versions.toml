@@ -13,6 +13,8 @@ navigationRuntimeKtx = "2.7.7"
 navigationCompose = "2.7.7"
 appcompat = "1.6.1"
 material = "1.10.0"
+spotless = "6.19.0"
+detekt = "1.23.3"
 
 [libraries] #TOML table
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" } #TOML inline table with key/values
@@ -34,6 +36,7 @@ androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navig
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+detekt_formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -41,3 +44,6 @@ jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "k
 
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless"}
