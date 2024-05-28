@@ -35,4 +35,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "This Day In History"
 include(":app")
- 
+include(":api")
+include(":common")
+include(":models")
+include(":usecase")
+include(":data")
