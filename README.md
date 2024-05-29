@@ -5,7 +5,7 @@ Also, creating a follow-along tutorial.
 All in early stages.
 <a href="http://coroutines.com/home/toml">Bulding this app tutorial</a>
 
-<b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose. 
+<b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
 <p>
   
 </p>
@@ -23,3 +23,16 @@ All in early stages.
   </tr>
   
 </table>
+The app content will be available in the following languages:
+ <ul>
+            <li>Arabic</li>
+            <li>English</li>
+            <li>French</li>
+            <li>Italian</li>
+            <li>German</li>
+            <li>Spanish</li>
+            <li>Swedish</li>
+            <li>Russian</li>
+            <li>Portuguese</li>
+   
+</ul>
