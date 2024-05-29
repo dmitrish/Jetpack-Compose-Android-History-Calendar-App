@@ -3,7 +3,7 @@ Open-sourcing as I am re-writing (based on a better understanding of Compose) an
 <p></p>
 Also, creating a follow-along tutorial.
 All in early stages.
-<a href="http://coroutines.com/home/toml">Bulding this app tutorial</a>
+<a href="http://coroutines.com/home/toml">Building this app tutorial</a>
 
 <b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
 <p>
