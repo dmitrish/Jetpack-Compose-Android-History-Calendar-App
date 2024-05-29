@@ -23,6 +23,23 @@ All in early stages.
   </tr>
   
 </table>
+<p></p>
+<p>
+   <h2>Technology Stack</h2>
+
+<ul class="list-disc">
+  <li>Kotlin 2.0</li>
+  <li>Coroutines and Flows</li>
+  <li>Jetpack Compose</li>
+  <li>Jetpack Compose Navigation</li>
+  <li>Hilt</li>
+  <li>Retrofit2</li>
+  <li>Material3</li>
+  <li>Spotless</li>
+  <li>Detekt</li>
+</ul>
+</p>
+<p></p>
 The app content will be available in the following languages:
  <ul>
             <li>Arabic</li>
