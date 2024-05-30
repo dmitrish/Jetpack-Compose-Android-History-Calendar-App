@@ -46,7 +46,7 @@ All in early stages.
 </ul>
 </p>
 <p></p>
-The app content will be available in the following languages:
+The app supports internationalization and in-app language selection. The content will be available in the following languages:
 <p></p>
  <ul>
             <li>Arabic</li>
