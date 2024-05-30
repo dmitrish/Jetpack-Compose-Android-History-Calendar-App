@@ -47,6 +47,7 @@ All in early stages.
 </p>
 <p></p>
 The app content will be available in the following languages:
+<p></p>
  <ul>
             <li>Arabic</li>
             <li>English</li>
