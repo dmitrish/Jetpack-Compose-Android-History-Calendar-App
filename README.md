@@ -12,6 +12,7 @@ All in early stages.
 </ul>
 
 <b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
+<p></p>
 <p>
   
 </p>
@@ -30,9 +31,10 @@ All in early stages.
   
 </table>
 <p></p>
+<p></p>
 <p>
    <h2>Technology Stack</h2>
-
+<p></p>
 <ul class="list-disc">
   <li>Kotlin 2.0</li>
   <li>Coroutines and Flows</li>
@@ -45,6 +47,7 @@ All in early stages.
   <li>Detekt</li>
 </ul>
 </p>
+<p></p>
 <p></p>
 The app supports internationalization and in-app language selection. The content will be available in the following languages:
 <p></p>
