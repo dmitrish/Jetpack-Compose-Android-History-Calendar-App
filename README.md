@@ -6,6 +6,7 @@ All in early stages.
 <ul>
 <li><a href="http://coroutines.com/thisdayinhistory/introduction">Building this app tutorial - Introduction</a></li>
 <li><a href="http://coroutines.com/thisdayinhistory/toml">Setting up Version Catalog</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/setupNavigation">Setting up Navigation</a></li>
 <li>More to follow...</li>
 
 </ul>
