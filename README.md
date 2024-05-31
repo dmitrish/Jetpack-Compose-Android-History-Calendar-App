@@ -31,6 +31,19 @@ All in early stages.
   
 </table>
 <p></p>
+<table style="width:100%">
+  <tr>
+    <th>Spanish, Detail</th>
+    <th>Russian, Detail</th> 
+    <th>Spanish, Settings</th> 
+  </tr>
+  <tr>
+    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/spanishDante.jpg"/></td>
+    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/russianDetail.jpg"/></td> 
+  <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/spanishSettings.jpg"/></td> 
+  </tr>
+  
+</table>
 <p></p>
 <p>
    <h2>Technology Stack</h2>
