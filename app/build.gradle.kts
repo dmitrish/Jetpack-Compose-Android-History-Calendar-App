@@ -70,6 +70,9 @@ dependencies {
     implementation(libs.androidx.navigation.common.ktx)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(project(":common"))
+    implementation(project(":data"))
+    implementation(libs.androidx.datastore.preferences.core.jvm)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
