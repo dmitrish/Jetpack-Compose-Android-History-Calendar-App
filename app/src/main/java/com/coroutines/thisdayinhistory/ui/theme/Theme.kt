@@ -4,27 +4,43 @@ import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.shapes
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkGray,
+    onPrimary = WhiteSmoke,
+    secondary = AlabasterWhite,
+    onSecondary = WhiteSmoke,
+    tertiary = BabyPowder,
+    background = DarkGray,
+    onBackground = Color.White
+    //  surface = BabyPowder
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = DarkGray,
+    onPrimary = WhiteSmoke,
+    secondary = DarkGray,
+    onSecondary = WhiteSmoke,
+    tertiary = MetallicSilver,
+    background = BabyPowder,
+    onBackground = Color.Black
+    //   surface = BabyPowder,
+    //  onSurface = DarkGray
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -34,8 +50,37 @@ private val LightColorScheme = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+     */
 )
+
+
+@Composable
+fun isAppDarkTheme(viewModel: ISettingsViewModel): Boolean {
+    val theme by viewModel.appConfigurationState.collectAsState()
+
+    return when (theme.appTheme) {
+        ThisDayInHistoryThemeEnum.Light -> false
+        ThisDayInHistoryThemeEnum.Dark -> true
+        ThisDayInHistoryThemeEnum.Auto -> isSystemInDarkTheme()
+    }
+}
+
+@Composable
+fun ThisDayInHistoryTheme(viewModel: ISettingsViewModel, content: @Composable () -> Unit) {
+    val darkTheme = isAppDarkTheme(viewModel)
+    val colors = if (darkTheme) {
+        DarkColorScheme
+    } else {
+        LightColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colors,
+        typography = AppTypography,
+        shapes = shapes,
+        content = content
+    )
+}
 
 @Composable
 fun ThisDayInHistoryTheme(
@@ -64,7 +109,7 @@ fun ThisDayInHistoryTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = AppTypography,
         content = content
     )
 }
