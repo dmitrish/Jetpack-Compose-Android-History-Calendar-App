@@ -18,6 +18,7 @@ detekt = "1.23.3"
 androidx-datastore-preferences = "1.0.0"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
+datastorePreferencesCoreJvm = "1.1.1"
 
 [libraries] #TOML table
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" } #TOML inline table with key/values
@@ -44,6 +45,7 @@ androidx-datastore-preferences = { module = "androidx.datastore:datastore-prefer
 retrofit2 = { module = "com.squareup.retrofit2:retrofit", version.ref ="retrofit"}
 retrofit2-gson-converter = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit"}
 okhttp3 = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+androidx-datastore-preferences-core-jvm = { group = "androidx.datastore", name = "datastore-preferences-core-jvm", version.ref = "datastorePreferencesCoreJvm" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
