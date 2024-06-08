@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController,
+    settingsViewModel: ISettingsViewModel,
     isOnboarded: Boolean
 ){
     NavHost(
@@ -16,6 +18,6 @@ fun AppNavHost(
         startDestination = if (isOnboarded) NavRoutes.MainRoute.name else NavRoutes.IntroRoute.name
     ) {
         introGraph(navController)
-        mainGraph(navController)
+        mainGraph(navController, settingsViewModel)
     }
 }

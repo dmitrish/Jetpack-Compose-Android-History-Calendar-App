@@ -8,14 +8,16 @@ import com.coroutines.thisdayinhistory.ui.screens.about.AboutScreen
 import com.coroutines.thisdayinhistory.ui.screens.language.LanguageScreen
 import com.coroutines.thisdayinhistory.ui.screens.main.HistoryScreen
 import com.coroutines.thisdayinhistory.ui.screens.uitheme.ThemeScreen
+import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
 fun NavGraphBuilder.mainGraph(
-    navController: NavController
+    navController: NavController,
+    settingsViewModel : ISettingsViewModel
 ) {
     navigation(startDestination = MainNavOption.HistoryScreen.name, route = NavRoutes.MainRoute.name) {
 
         composable(MainNavOption.HistoryScreen.name) {
-           HistoryScreen(navController = navController)
+           HistoryScreen(navController = navController, settingsViewModel = settingsViewModel)
         }
 
         composable(
