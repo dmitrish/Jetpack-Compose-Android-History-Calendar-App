@@ -9,11 +9,6 @@ import androidx.compose.ui.unit.sp
 import com.coroutines.thisdayinhistory.R
 
 
-val Rubik = FontFamily(
-    Font(R.font.rubik_light, FontWeight.Light),
-    Font(R.font.rubik_regular, FontWeight.Normal),
-    Font(R.font.rubik_medium, FontWeight.Medium),
-)
 
 val Montserrat = FontFamily(
     Font(R.font.montserrat_light, FontWeight.Light),
