@@ -30,16 +30,21 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.coroutines.thisdayinhistory.ui.components.CatLogo
+import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "MagicNumber")
 @OptIn( ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavigationDrawerWithContent(
     navController: NavController,
+    settingsViewModel: ISettingsViewModel,
     content: @Composable () -> Unit
 ) {
+    val settingsViewModelState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
     val items = navDrawerItems()
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -53,8 +58,16 @@ fun AppNavigationDrawerWithContent(
                 Column (
                     Modifier
                         .fillMaxSize()
-                        .background(brush = Brush.verticalGradient(colors = mutableListOf(Color.White, Color.White) )))
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colors = mutableListOf(
+                                    Color.White,
+                                    Color.White
+                                )
+                            )
+                        ))
                 {
+                    CatLogo(settings = settingsViewModelState )
                     Spacer(
                         modifier = Modifier
                             .fillMaxWidth()

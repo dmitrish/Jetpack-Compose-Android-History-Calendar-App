@@ -57,15 +57,24 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
 import java.time.Clock
 import androidx.compose.ui.unit.sp
+import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
+import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelMock
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContent {
-            MainContent()
-        }
+        runUi()
+    }
+
+    private fun runUi() = setContent {
+
+        val settingsViewModel: ISettingsViewModel = SettingsViewModelMock()
+
+       MainContent(settingsViewModel)
+
+
     }
 
 }

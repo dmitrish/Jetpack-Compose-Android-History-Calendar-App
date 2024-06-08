@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
@@ -70,9 +71,12 @@ dependencies {
     implementation(libs.androidx.navigation.common.ktx)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.datastore.preferences.core.jvm)
+    implementation(libs.coil.kt.compose)
     implementation(project(":common"))
     implementation(project(":data"))
-    implementation(libs.androidx.datastore.preferences.core.jvm)
+    /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

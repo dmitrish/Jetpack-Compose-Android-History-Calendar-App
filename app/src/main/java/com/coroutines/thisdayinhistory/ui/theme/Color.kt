@@ -13,13 +13,6 @@ val Pink40 = Color(0xFF7D5260)
 val BabyPowder = Color(0xFFF5F5F5)
 val WhiteSmoke = Color(0xFFF5F5F5)
 val Chiffon = Color(0xFFFFFACD)
-
 val DarkGray = Color(0xFF15202B)
 val MetallicSilver = Color(0xFFA8A9AD)
-val GrayishBlack = Color(0xFF555152)
-
-
-val GhostWhite = Color(0xFFF8F8FF)
-val VistaWhite = Color (0xFFFDFCFA)
-val UnresolvedWhite = Color(0xFFF3F2ED)
 val AlabasterWhite = Color(0xFFEDEAE0)
