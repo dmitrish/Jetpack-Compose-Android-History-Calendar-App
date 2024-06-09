@@ -13,7 +13,7 @@ fun NavGraphBuilder.introGraph(navController: NavController) {
             WelcomeScreen()
         }
         composable(IntroNavOption.LanguagesScreen.name){
-            LanguageScreen()
+            LanguageScreen(navController = navController)
         }
     }
 }
