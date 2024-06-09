@@ -11,6 +11,7 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/setupNavigationdrawer">Set up Navigation Drawer</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/logo">App Logo Composable</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/aboutScreen">About Screen - Part 1</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/languagesscreen">Languages Screen - Part 1</a></li>
 <li>More to follow...</li>
 
 </ul>
