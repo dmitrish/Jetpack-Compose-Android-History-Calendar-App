@@ -2,7 +2,7 @@ Open-sourcing as I am re-writing (based on a better understanding of Compose) an
 <p><a href="https://play.google.com/store/apps/details?id=com.coroutines.historycat">History Calendar app on Google Play Store</a></p>
 <p></p>
 Also, creating a follow-along tutorial.
-All in early stage, work in progress.
+All in early stages, work in progress.
 <ul>
 <li><a href="http://coroutines.com/thisdayinhistory/introduction">Building this app - Introduction</a></li>
 <li><a href="http://coroutines.com/thisdayinhistory/toml">Set up Version Catalog</a></li>
