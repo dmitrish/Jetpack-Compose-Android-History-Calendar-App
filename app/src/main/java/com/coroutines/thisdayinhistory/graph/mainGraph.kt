@@ -30,7 +30,7 @@ fun NavGraphBuilder.mainGraph(
         composable(
             MainNavOption.LanguagesScreen.name
         ) {
-           LanguageScreen()
+           LanguageScreen(navController = navController)
         }
 
         composable(
