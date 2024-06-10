@@ -36,7 +36,7 @@ import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelMock
 @Composable
 fun AboutScreen(
     modifier: Modifier = Modifier,
-    viewModel: ISettingsViewModel = SettingsViewModelMock()
+    viewModel: ISettingsViewModel
 ) {
 
     val about = Languages.from(

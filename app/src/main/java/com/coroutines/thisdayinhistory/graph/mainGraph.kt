@@ -30,7 +30,7 @@ fun NavGraphBuilder.mainGraph(
         composable(
             MainNavOption.LanguagesScreen.name
         ) {
-           LanguageScreen(navController = navController)
+           LanguageScreen(navController = navController, viewModel =  settingsViewModel)
         }
 
         composable(
@@ -42,7 +42,7 @@ fun NavGraphBuilder.mainGraph(
         composable(
             MainNavOption.AboutScreen.name
         ) {
-           AboutScreen()
+           AboutScreen(viewModel = settingsViewModel)
         }
     }
 }
