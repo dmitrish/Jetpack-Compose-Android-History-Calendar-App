@@ -17,7 +17,7 @@ fun AppNavHost(
         navController,
         startDestination = if (isOnboarded) NavRoutes.MainRoute.name else NavRoutes.IntroRoute.name
     ) {
-        introGraph(navController)
+        introGraph(navController, settingsViewModel)
         mainGraph(navController, settingsViewModel)
     }
 }

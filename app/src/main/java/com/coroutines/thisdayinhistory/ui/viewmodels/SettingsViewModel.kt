@@ -82,7 +82,7 @@ class SettingsViewModel  constructor(
             userPreferencesRepository.setThemePreference(theme)
             viewModelState.update { state ->
                 state.copy(
-                    appTheme = state.appTheme
+                    appTheme = theme
                 )
             }
         }

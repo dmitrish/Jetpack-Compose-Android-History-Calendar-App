@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
@@ -34,6 +35,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.coroutines.thisdayinhistory.ui.components.CatLogo
+import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
+import com.coroutines.thisdayinhistory.ui.theme.MetallicSilver
+import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "MagicNumber")
@@ -49,6 +53,7 @@ fun AppNavigationDrawerWithContent(
     val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val selectedItem = remember { mutableStateOf(items[0]) }
+    val backgroundColors = gradientColors(themeViewModelState = settingsViewModelState)
     var isItemImageExpanded by remember { mutableStateOf(false) }
 
     ModalNavigationDrawer(
@@ -60,10 +65,7 @@ fun AppNavigationDrawerWithContent(
                         .fillMaxSize()
                         .background(
                             brush = Brush.verticalGradient(
-                                colors = mutableListOf(
-                                    Color.White,
-                                    Color.White
-                                )
+                                colors = backgroundColors
                             )
                         ))
                 {
@@ -120,3 +122,21 @@ fun AppNavigationDrawerWithContent(
         }
     }
 }
+
+@Composable
+private fun gradientColors(themeViewModelState: AppConfigurationState) =
+    if (themeViewModelState.appTheme == ThisDayInHistoryThemeEnum.Dark)
+        listOf(
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background
+        )
+    else
+        listOf(
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background,
+            MaterialTheme.colorScheme.background,
+            MetallicSilver
+        )
