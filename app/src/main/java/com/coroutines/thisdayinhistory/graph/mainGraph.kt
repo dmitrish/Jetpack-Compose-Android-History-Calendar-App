@@ -36,7 +36,7 @@ fun NavGraphBuilder.mainGraph(
         composable(
             MainNavOption.ThemeScreen.name
         ) {
-           ThemeScreen()
+           ThemeScreen(viewModel  = settingsViewModel)
         }
 
         composable(
