@@ -12,12 +12,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 private data class SettingsViewModelStateMock(
     val isLoading: Boolean = true,
     val isOnboarded: Boolean = false,
     val useDynamicColors: Boolean = true,
-    val appTheme: ThisDayInHistoryThemeEnum = ThisDayInHistoryThemeEnum.Dark,
+    val appTheme: ThisDayInHistoryThemeEnum = ThisDayInHistoryThemeEnum.Light,
     val appLanguage: LangEnum = LangEnum.ENGLISH,
     val deviceLanguage: String = ""
 ) {
@@ -32,23 +33,25 @@ private data class SettingsViewModelStateMock(
 }
 class SettingsViewModelMock(
     historyCatThemeEnum: ThisDayInHistoryThemeEnum = ThisDayInHistoryThemeEnum.Auto
-) : ViewModel(), ISettingsViewModel {
+) :  ISettingsViewModel, ViewModel() {
 
     private var _aboutDescription = MutableStateFlow(Languages.ENGLISH.appDescription)
     private val viewModelState = MutableStateFlow(value = SettingsViewModelStateMock())
 
     override val appConfigurationState = viewModelState
-        .map { it.asActivityState().copy(appTheme = historyCatThemeEnum) }.stateIn(
+        .map { it.asActivityState() }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
             initialValue = viewModelState.value.asActivityState()
         )
 
     override fun setAppTheme(theme: ThisDayInHistoryThemeEnum) {
-        viewModelState.update { state ->
-            state.copy(
-                appTheme = state.appTheme
-            )
+        viewModelScope.launch {
+            viewModelState.update { state ->
+                state.copy(
+                    appTheme = theme
+                )
+            }
         }
     }
 

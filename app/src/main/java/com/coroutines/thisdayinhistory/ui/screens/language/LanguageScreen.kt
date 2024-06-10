@@ -39,7 +39,7 @@ import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
 fun LanguageScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: ISettingsViewModel = SettingsViewModelMock(),
+    viewModel: ISettingsViewModel,
     languagePrompt: String = ""
 ){
     val settings by viewModel.appConfigurationState.collectAsStateWithLifecycle()
@@ -51,7 +51,7 @@ fun LanguageScreen(
     ) {
         CatLogo(settings)
         Spacer(modifier = Modifier.height(30.dp))
-        Text(languagePrompt)
+        Text(languagePrompt, color = MaterialTheme.colorScheme.onBackground)
         Spacer(modifier = Modifier.height(30.dp))
         val scope = rememberCoroutineScope()
 
