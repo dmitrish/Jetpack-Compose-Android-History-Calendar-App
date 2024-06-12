@@ -56,19 +56,26 @@ class SettingsViewModelMock(
     }
 
     override fun setAppLanguage(langEnum: LangEnum) {
-        viewModelState.update { state ->
-            state.copy(
-                appLanguage = langEnum
-            )
+        viewModelScope.launch {
+            _aboutDescription.value = Languages.from(langEnum.langId)?.appDescription ?:  Languages.ENGLISH.appDescription
+            viewModelState.update { state ->
+                state.copy(
+                    appLanguage = langEnum
+                )
+            }
         }
     }
 
     override fun setDeviceLanguage(language: String) {
-        TODO("Not yet implemented")
+        viewModelState.update { state ->
+            state.copy(
+                deviceLanguage = language
+            )
+        }
     }
 
     override fun setOnboarded() {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 
     override val aboutDescription: StateFlow<String>

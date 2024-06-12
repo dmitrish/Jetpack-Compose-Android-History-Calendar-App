@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">HistoryCat</string>
+    <string name="title">History Cat</string>
+    <string name="welcome_message">Welcome to our app! You will learn all history secrets here!</string>
+    <string name="language_prompt">Выберите язык</string>
+    <string name="drawer_home">Главная</string>
+    <string name="drawer_settings">Настройки</string>
+    <string name="drawer_about">О нас</string>
+    <string name="drawer_language">Язык</string>
+    <string name="cancel">Отмена</string>
+    <string name="error_message_prefix">Ошибка:</string>
+    <string name="appbar_calendar">Календарь</string>
+    <string name="light_mode">Светлая тема</string>
+    <string name="dark_mode">Темная тема</string>
+    <string name="auto_mode">Автоматическая тема</string>
+    <string name="home_screen_placeholder">заполнитель главного экрана</string>
+</resources>
