@@ -14,6 +14,7 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/languagesscreen">Languages Screen - Part 1</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/themescreen">Theme Screen - Part 1</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/applytheme">Apply Theme to About, Languages, Theme, and NavDrawer screens</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
 <li>More to follow...</li>
 
 </ul>
