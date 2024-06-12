@@ -90,7 +90,7 @@ class SettingsViewModel  constructor(
 
     override fun setAppLanguage(langEnum: LangEnum) {
         viewModelScope.launch {
-            _aboutDescription.value = Languages.from(langEnum.langId)!!.appDescription
+            _aboutDescription.value = Languages.from(langEnum.langId)?.appDescription ?:  Languages.ENGLISH.appDescription
             userPreferencesRepository.setLanguagePreference(langEnum)
             viewModelState.update { state ->
                 state.copy(

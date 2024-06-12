@@ -20,6 +20,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        resourceConfigurations += listOf("en", "fr", "it", "pt", "es", "de", "sv", "ar", "ru")
     }
 
     buildTypes {
@@ -75,6 +77,7 @@ dependencies {
     implementation(libs.coil.kt.compose)
     implementation(project(":common"))
     implementation(project(":data"))
+    implementation(libs.androidx.appcompat)
     /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
 
 
