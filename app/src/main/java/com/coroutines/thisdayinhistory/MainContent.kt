@@ -24,7 +24,7 @@ fun MainContent(settingsViewModel: ISettingsViewModel, appConfigState: AppConfig
             AppNavHost(
                 navController = navController,
                 settingsViewModel = settingsViewModel,
-                isOnboarded = true
+                isOnboarded = false
             )
         }
     }
