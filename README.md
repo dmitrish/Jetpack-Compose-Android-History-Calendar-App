@@ -15,7 +15,7 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/themescreen">Theme Screen - Part 1</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/applytheme">About, Languages, Theme Screens - Part 2 and NavDrawer screen - Apply Theme</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model</a><li>
+  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model and Transition to Languages Screen</a><li>
 <li>More to follow...</li>
 
 </ul>
