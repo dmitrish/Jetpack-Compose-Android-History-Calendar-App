@@ -18,7 +18,7 @@ fun NavGraphBuilder.introGraph(navController: NavController, settingsViewModel: 
     navigation(startDestination = IntroNavOption.WelcomeScreen.name, route = NavRoutes.IntroRoute.name) {
         composable(IntroNavOption.WelcomeScreen.name){
             val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
-            WelcomeScreen(navController, appConfigState, WelcomeViewModelMock())
+            WelcomeScreen(navController, appConfigState)
         }
         /*composable(IntroNavOption.LanguagesScreen.name){
             LanguageScreen(navController = navController, viewModel = settingsViewModel)
