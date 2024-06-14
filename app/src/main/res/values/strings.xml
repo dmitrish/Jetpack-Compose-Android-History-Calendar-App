@@ -6,7 +6,7 @@
     <string name="drawer_about">About</string>
     <string name="drawer_language">Languages</string>
     <string name="language_prompt">Please choose your language</string>
-    <string name="welcome_message">Welcome to our app! You will learn all history secrets here!</string>
+    <string name="welcome_message">Welcome to our app! You will learn all history secrets here</string>
     <string name="cancel">Cancel</string>
     <string name="error_message_prefix">There was an error: %s</string>
     <string name="appbar_calendar">Calendar</string>
