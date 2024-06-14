@@ -75,9 +75,13 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.datastore.preferences.core.jvm)
     implementation(libs.coil.kt.compose)
+    implementation(libs.okhttp3)
+    implementation(libs.retrofit2)
+    implementation(libs.retrofit2.gson.converter)
+    implementation(libs.androidx.appcompat)
     implementation(project(":common"))
     implementation(project(":data"))
-    implementation(libs.androidx.appcompat)
+    implementation(project(":api"))
     /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
 
 

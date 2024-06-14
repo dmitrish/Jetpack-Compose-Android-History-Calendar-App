@@ -23,9 +23,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.coroutines.api.translation.TranslationApiImpl
+import com.coroutines.api.translation.TranslationApiService
 import com.coroutines.data.models.TranslateRequestParams
 import com.coroutines.thisdayinhistory.R
-import com.coroutines.thisdayinhistory.components.ScreenPlaceholder
 import com.coroutines.thisdayinhistory.graph.IntroNavOption
 import com.coroutines.thisdayinhistory.ui.components.CatLogo
 import com.coroutines.thisdayinhistory.ui.constants.WELCOME_MESSAGE_TEXT_TAG
@@ -34,15 +35,31 @@ import com.coroutines.thisdayinhistory.ui.state.WelcomeScreenUiState
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
 import com.coroutines.thisdayinhistory.ui.viewmodels.IWelcomeViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelMock
+import com.coroutines.thisdayinhistory.ui.viewmodels.WelcomeViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.WelcomeViewModelMock
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
+
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+object RetrofitTranslationApiFactory {
+
+    val baseUrl = TranslationApiService.BASE_URL
+
+    fun getInstance(): Retrofit {
+        return Retrofit.Builder().baseUrl(baseUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+}
 
 @Composable
 fun WelcomeScreen (
     navController: NavController = rememberNavController(),
     settings: AppConfigurationState,
-    viewModel: IWelcomeViewModel
+    viewModel: IWelcomeViewModel = WelcomeViewModel(TranslationApiImpl(RetrofitTranslationApiFactory.getInstance().create(
+        TranslationApiService::class.java)))
 ) {
     Column(
         modifier = Modifier
@@ -73,7 +90,7 @@ fun WelcomeScreen (
                 when (uiScreenState.value) {
                     is WelcomeScreenUiState.Initial -> {
                         WelcomeMessage((uiScreenState.value as WelcomeScreenUiState.Initial).defaultText)
-                        val localeLang = settings.deviceLanguage
+                        val localeLang = "de"// settings.deviceLanguage
                         val translateRequestParams = TranslateRequestParams(localeLang, welcomeMessage, languagePrompt)
                         viewModel.translate(translateRequestParams)
                     }
