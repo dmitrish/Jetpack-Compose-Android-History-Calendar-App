@@ -90,7 +90,7 @@ fun WelcomeScreen (
                 when (uiScreenState.value) {
                     is WelcomeScreenUiState.Initial -> {
                         WelcomeMessage((uiScreenState.value as WelcomeScreenUiState.Initial).defaultText)
-                        val localeLang = "de"// settings.deviceLanguage
+                        val localeLang = settings.deviceLanguage
                         val translateRequestParams = TranslateRequestParams(localeLang, welcomeMessage, languagePrompt)
                         viewModel.translate(translateRequestParams)
                     }

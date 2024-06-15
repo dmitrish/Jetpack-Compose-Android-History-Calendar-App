@@ -17,7 +17,7 @@ const val langPrompt = "prompt"
 fun NavGraphBuilder.introGraph(navController: NavController, settingsViewModel: ISettingsViewModel) {
     navigation(startDestination = IntroNavOption.WelcomeScreen.name, route = NavRoutes.IntroRoute.name) {
         composable(IntroNavOption.WelcomeScreen.name){
-            val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
+            val appConfigState = settingsViewModel.appConfigurationState.collectAsStateWithLifecycle().value
             WelcomeScreen(navController, appConfigState)
         }
         /*composable(IntroNavOption.LanguagesScreen.name){

@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.datastore.preferences.core.jvm)
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.coil.kt.compose)
     implementation(libs.okhttp3)
     implementation(libs.retrofit2)
