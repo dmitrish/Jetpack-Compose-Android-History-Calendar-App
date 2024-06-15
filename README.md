@@ -17,6 +17,7 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model and Transition to Languages Screen</a><li>
   <li><a href="http://coroutines.com/thisdayinhistory/welcomescreen">Welcome Screen with real Translation API and real ViewModel</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</li>
   
 <li>More to follow...</li>
 
