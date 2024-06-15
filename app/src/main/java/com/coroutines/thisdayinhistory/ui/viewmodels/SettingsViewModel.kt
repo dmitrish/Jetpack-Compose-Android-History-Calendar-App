@@ -2,7 +2,9 @@ package com.coroutines.thisdayinhistory.ui.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.coroutines.api.translation.TranslationApi
 import com.coroutines.data.models.LangEnum
 import com.coroutines.data.models.Languages
 import com.coroutines.data.models.OnboardingStatusEnum
@@ -22,7 +24,7 @@ private data class SettingsViewModelState(
     val isLoading: Boolean = true,
     val isOnboarded: Boolean = false,
     val useDynamicColors: Boolean = true,
-    val appTheme: ThisDayInHistoryThemeEnum = ThisDayInHistoryThemeEnum.Auto,
+    val appTheme: ThisDayInHistoryThemeEnum = ThisDayInHistoryThemeEnum.Light,
     val appLanguage: LangEnum = LangEnum.ENGLISH,
     val deviceLanguage: String = ""
 ) {
@@ -35,6 +37,13 @@ private data class SettingsViewModelState(
         deviceLanguage = deviceLanguage
     )
 }
+
+class SettingsViewModelFactory(private val userPreferencesRepository: UserPreferencesRepository) : ViewModelProvider.Factory {@Suppress("UNCHECKED_CAST")
+override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return SettingsViewModel(userPreferencesRepository) as T
+    }
+}
+
 
 class SettingsViewModel  constructor(
     private val userPreferencesRepository: UserPreferencesRepository
@@ -62,7 +71,7 @@ class SettingsViewModel  constructor(
             }.collect { combinedData ->
                 viewModelState.update { state ->
                     state.copy(
-                        isLoading = false,
+                        isLoading = true,
                         isOnboarded = combinedData.third == OnboardingStatusEnum.Onboarded,
                         useDynamicColors = true,
                         appLanguage = combinedData.first,
