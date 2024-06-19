@@ -27,8 +27,9 @@ private val DarkColorScheme = darkColorScheme(
     onSecondary = WhiteSmoke,
     tertiary = BabyPowder,
     background = DarkGray,
-    onBackground = Color.White
-    //  surface = BabyPowder
+    onBackground = Color.White,
+    surface = DarkGray,
+    onSurface = WhiteSmoke
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -38,9 +39,9 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = WhiteSmoke,
     tertiary = MetallicSilver,
     background = BabyPowder,
-    onBackground = Color.Black
-    //   surface = BabyPowder,
-    //  onSurface = DarkGray
+    onBackground = Color.Black,
+    surface = BabyPowder,
+    onSurface = DarkGray
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
