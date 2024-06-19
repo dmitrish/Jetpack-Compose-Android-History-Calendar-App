@@ -39,7 +39,7 @@ class SettingsViewModelMock(
     private val viewModelState = MutableStateFlow(value = SettingsViewModelStateMock())
 
     override val appConfigurationState = viewModelState
-        .map { it.asActivityState() }.stateIn(
+        .map { it.asActivityState().copy(appTheme = historyCatThemeEnum) }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
             initialValue = viewModelState.value.asActivityState()
