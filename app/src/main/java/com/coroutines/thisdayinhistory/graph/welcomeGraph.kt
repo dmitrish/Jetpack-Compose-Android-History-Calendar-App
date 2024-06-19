@@ -1,5 +1,7 @@
 package com.coroutines.thisdayinhistory.graph
 
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
@@ -10,6 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.coroutines.thisdayinhistory.ui.screens.language.LanguageScreen
 import com.coroutines.thisdayinhistory.ui.screens.welcome.WelcomeScreen
+import com.coroutines.thisdayinhistory.ui.transitions.enterHorizontallyTransition
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.WelcomeViewModelMock
 
@@ -25,7 +28,9 @@ fun NavGraphBuilder.introGraph(navController: NavController, settingsViewModel: 
         }*/
 
         composable(IntroNavOption.LanguagesScreen.name + "/{$langPrompt}",
-            arguments = listOf(navArgument(langPrompt) { type = NavType.StringType })){ backStackEntry ->
+            arguments = listOf(navArgument(langPrompt) { type = NavType.StringType }),
+            enterTransition = { enterHorizontallyTransition() },
+        ){ backStackEntry ->
             val prompt = backStackEntry.arguments?.getString(langPrompt) ?: "Please choose your language"
             LanguageScreen(
                 navController= navController,
