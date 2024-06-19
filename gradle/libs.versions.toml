@@ -16,6 +16,7 @@ material = "1.12.0"
 spotless = "6.19.0"
 detekt = "1.23.3"
 androidx-datastore-preferences = "1.1.1"
+androidx-core-splash = "1.0.1"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 datastorePreferencesCoreJvm = "1.1.1"
@@ -32,6 +33,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-core-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splash"}
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }

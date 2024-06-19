@@ -10,6 +10,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
 import java.util.Locale
 import android.os.LocaleList
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.font.FontVariation
 import androidx.core.os.LocaleListCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
@@ -42,6 +44,14 @@ class MainActivity : AppCompatActivity() {
     private var isStatePendingRestore = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //https://www.youtube.com/watch?v=mlL6H-s0nF0
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                return@setKeepOnScreenCondition isStatePendingRestore
+            }
+        }
+
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         runUi()
@@ -69,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 { }//load animation
             false -> {
                 if (deviceLanguage != appConfigState.appLanguage.langId) {
-                   // setPerAppLanguage(appConfigState)
+                    setPerAppLanguage(appConfigState)
                 }
 
                 isStatePendingRestore = false

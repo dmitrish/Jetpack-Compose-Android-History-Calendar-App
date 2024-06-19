@@ -9,17 +9,17 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_catapplogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_catapplogo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:theme="@style/Theme.App.Starting"
         android:localeConfig="@xml/locales_config"
         tools:targetApi="tiramisu">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
