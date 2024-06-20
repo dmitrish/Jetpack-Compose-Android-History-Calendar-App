@@ -84,6 +84,7 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":api"))
+   // implementation(libs.androidx.material3.window.size.class. android)
     /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
 
 
@@ -92,6 +93,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.navigation.testing)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
