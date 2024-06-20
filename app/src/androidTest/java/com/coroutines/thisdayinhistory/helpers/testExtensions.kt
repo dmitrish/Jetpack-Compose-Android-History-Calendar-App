@@ -8,6 +8,8 @@ import androidx.compose.ui.test.assert as composeAssert
 import androidx.compose.ui.semantics.getOrNull
 import androidx.compose.ui.test.SemanticsNodeInteractionCollection
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.navigation.NavController
+import org.junit.Assert
 
 fun SemanticsNodeInteraction.assertTextColor(
     color: Color
@@ -33,4 +35,8 @@ fun SemanticsNodeInteractionCollection.assertAreDisplayed(): SemanticsNodeIntera
         get(index).assertIsDisplayed()
     }
     return this
+}
+
+fun NavController.assertCurrentRouteName(expectedRouteName: String) {
+    Assert.assertEquals(expectedRouteName, currentBackStackEntry?.destination?.route)
 }
