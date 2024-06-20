@@ -4,28 +4,7 @@ Open-sourcing as I am re-writing (based on a better understanding of Compose) an
 Also, creating a follow-along documentation. Mostly for myself, as I realized that I don't remember why I had made certain decisions in the original version of the app. But if it helps someone too, great :)
 All in early stages, work in progress.
 <p></p>
-<ul>
-<li><a href="http://coroutines.com/thisdayinhistory/introduction">Building this app - Introduction</a></li>
-<li><a href="http://coroutines.com/thisdayinhistory/toml">Set up Version Catalog</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/setupNavigation">Set up Navigation</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/setupNavigationdrawer">Set up Navigation Drawer</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/logo">App Logo Composable</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/aboutScreen">About Screen - Part 1</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/languagesscreen">Languages Screen - Part 1</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/themescreen">Theme Screen - Part 1</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/applytheme">About, Languages, Theme Screens - Part 2 and NavDrawer screen - Apply Theme</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model and Transition to Languages Screen</a><li>
-  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreen">Welcome Screen with real Translation API and real ViewModel</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestaboutscreen">Unit Tests: About Screen</a></li>
-  <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen plus Navigation</a></li>
-  
-<li>More to follow...</li>
 
-</ul>
 
 <b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
 <p></p>
@@ -91,4 +70,27 @@ The app supports internationalization and in-app language selection. The content
             <li>Russian</li>
             <li>Portuguese</li>
    
+</ul>
+<p></p>
+<ul>
+<li><a href="http://coroutines.com/thisdayinhistory/introduction">Building this app - Introduction</a></li>
+<li><a href="http://coroutines.com/thisdayinhistory/toml">Set up Version Catalog</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/setupNavigation">Set up Navigation</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/setupNavigationdrawer">Set up Navigation Drawer</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/logo">App Logo Composable</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/aboutScreen">About Screen - Part 1</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/languagesscreen">Languages Screen - Part 1</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/themescreen">Theme Screen - Part 1</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/applytheme">About, Languages, Theme Screens - Part 2 and NavDrawer screen - Apply Theme</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model and Transition to Languages Screen</a><li>
+  <li><a href="http://coroutines.com/thisdayinhistory/welcomescreen">Welcome Screen with real Translation API and real ViewModel</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/unittestaboutscreen">Unit Tests: About Screen</a></li>
+  <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen plus Navigation</a></li>
+  
+<li>More to follow...</li>
+
 </ul>
