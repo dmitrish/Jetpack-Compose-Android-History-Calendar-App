@@ -5,13 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LanguageScreenPreview">
+      <SelectionState runConfigName="WelcomeScreenScenarioTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="AboutScreenScenarioTest">
+      <SelectionState runConfigName="welcomeTransitionsToLanguagesOnSuccessTest()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="LanguageScreenTest">
+      <SelectionState runConfigName="welcomeTransitionsToLanguagesOnErrorTest()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="welcomeOnSuccessStateTransitions2LanguagesAfter3SecondsTest()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="welcomeOnSuccessStateStaysOnWelcomeForAtLeast2SecondsTest()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
