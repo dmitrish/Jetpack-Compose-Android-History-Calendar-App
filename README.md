@@ -21,7 +21,7 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/unittestaboutscreen">Unit Tests: About Screen</a></li>
   <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen plus Navigation</a></li>
   
 <li>More to follow...</li>
 
