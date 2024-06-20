@@ -17,10 +17,11 @@ All in early stages, work in progress.
   <li><a href="http://coroutines.com/thisdayinhistory/inapplanguages">In-App Languages/Internationalization</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/welcomescreenmock">Welcome Screen with Mock View Model and Transition to Languages Screen</a><li>
   <li><a href="http://coroutines.com/thisdayinhistory/welcomescreen">Welcome Screen with real Translation API and real ViewModel</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</li>
-  <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen</li>
-  <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</li>
+  <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/unittestaboutscreen">Unit Tests: About Screen</a></li>
+  <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen</a></li>
   
 <li>More to follow...</li>
 
