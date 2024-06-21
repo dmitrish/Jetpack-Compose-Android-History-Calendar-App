@@ -87,9 +87,10 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/welcomescreen">Welcome Screen with real Translation API and real ViewModel</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/savingonboarding">Welcome message based on device language and intergation with Preferences Data Store</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/splash">Splash Screen</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestaboutscreen">Unit Tests: About Screen</a></li>
-  <li><a href="http://coroutines.com/Thisdayinhistory/unitTestLanguagesScreen">Unit Tests: Languages Screen</a></li>
-  <li><a href="http://coroutines.com/thisdayinhistory/unittestwelcomescreen">Unit Tests: Welcome Screen plus Navigation</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/uitestaboutscreen">UI Tests: About Screen</a></li>
+  <li><a href="http://coroutines.com/Thisdayinhistory/uiTestLanguagesScreen">UI Tests: Languages Screen</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/uitestwelcomescreen">UI Tests: Welcome Screen plus Navigation</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/uitestcatlogo">UI Tests: Cat Logo under different themes</li>
   
 <li>More to follow...</li>
 
