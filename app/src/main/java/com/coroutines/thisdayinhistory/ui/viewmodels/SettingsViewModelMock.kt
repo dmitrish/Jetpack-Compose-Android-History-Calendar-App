@@ -42,7 +42,7 @@ class SettingsViewModelMock(
         .map { it.asActivityState().copy(appTheme = historyCatThemeEnum) }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
-            initialValue = viewModelState.value.asActivityState()
+            initialValue = viewModelState.value.asActivityState().copy(appTheme = historyCatThemeEnum)
         )
 
     override fun setAppTheme(theme: ThisDayInHistoryThemeEnum) {

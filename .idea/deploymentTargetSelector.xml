@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="WelcomeScreenScenarioTest">
+      <SelectionState runConfigName="CatLogoTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="welcomeTransitionsToLanguagesOnSuccessTest()">
+      <SelectionState runConfigName="catLogoImageInAutoThemeInDarkMode()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="welcomeTransitionsToLanguagesOnErrorTest()">
+      <SelectionState runConfigName="catLogoImageInAutoThemeInLightMode()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="welcomeOnSuccessStateTransitions2LanguagesAfter3SecondsTest()">
+      <SelectionState runConfigName="CatLogoThemeTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="welcomeOnSuccessStateStaysOnWelcomeForAtLeast2SecondsTest()">
+      <SelectionState runConfigName="catLogoHeaderColorInDarkMode()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
