@@ -1,13 +1,13 @@
 [versions] #TOML table
-agp = "8.4.1" #TOML key/value pair
+agp = "8.4.2" #TOML key/value pair
 kotlin = "2.0.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-lifecycleRuntimeKtx = "2.7.0"
+lifecycleRuntimeKtx = "2.8.2"
 activityCompose = "1.9.0"
-composeBom = "2024.05.00"
+composeBom = "2024.06.00"
 navigationCommonKtx = "2.7.7"
 navigationRuntimeKtx = "2.7.7"
 navigationCompose = "2.7.7"
@@ -18,12 +18,13 @@ spotless = "6.19.0"
 detekt = "1.23.3"
 androidx-datastore-preferences = "1.1.1"
 androidx-core-splash = "1.0.1"
+androidx-compose-test = "1.7.0-alpha02"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 datastorePreferencesCoreJvm = "1.1.1"
 coil = "2.4.0"
 
-lifecycleRuntimeCompose = "2.7.0"
+lifecycleRuntimeCompose = "2.8.2"
 lifecycleRuntimeComposeAndroid = "2.8.0"
 material3WindowSizeClassAndroid = "1.2.1"
 
@@ -35,6 +36,7 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test", version.ref = "androidx-compose-test" }
 androidx-core-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splash"}
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }

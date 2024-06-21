@@ -23,6 +23,7 @@ import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.ui.platform.LocalContext
@@ -33,7 +34,7 @@ import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelMock
 @Composable
 fun CatLogo(settings: AppConfigurationState, includeText: Boolean = false) {
     val catLogoDrawable =
-        if (settings.appTheme == ThisDayInHistoryThemeEnum.Dark) R.drawable.cat_logo_for_dark_theme
+        if (settings.appTheme == ThisDayInHistoryThemeEnum.Dark || (settings.appTheme == ThisDayInHistoryThemeEnum.Auto && isSystemInDarkTheme())) R.drawable.cat_logo_for_dark_theme
         else R.drawable.cat_logo_for_light_theme
 
     Image(
