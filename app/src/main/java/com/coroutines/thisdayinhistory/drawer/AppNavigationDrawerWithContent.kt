@@ -102,9 +102,9 @@ fun AppNavigationDrawerWithContent(
             }
         }
     ) {
-        val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+       // val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
         Scaffold(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection ),
+           // modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection ),
             topBar = {
                //todo
             },

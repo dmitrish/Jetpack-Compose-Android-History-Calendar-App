@@ -23,9 +23,6 @@ fun NavGraphBuilder.introGraph(navController: NavController, settingsViewModel: 
             val appConfigState = settingsViewModel.appConfigurationState.collectAsStateWithLifecycle().value
             WelcomeScreen(navController, appConfigState)
         }
-        /*composable(IntroNavOption.LanguagesScreen.name){
-            LanguageScreen(navController = navController, viewModel = settingsViewModel)
-        }*/
 
         composable(IntroNavOption.LanguagesScreen.name + "/{$langPrompt}",
             arguments = listOf(navArgument(langPrompt) { type = NavType.StringType }),

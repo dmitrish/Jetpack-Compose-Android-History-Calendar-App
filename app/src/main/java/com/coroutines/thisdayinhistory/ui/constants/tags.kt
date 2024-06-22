@@ -8,3 +8,6 @@ const val ABOUT_SCREEN_TEXT_TAG = "aboutScreenText"
 const val LANGUAGE_SELECTION_TEXT_TAG = "languageSelectionText"
 
 const val WELCOME_MESSAGE_TEXT_TAG = "welcomeMessageText"
+
+const val HISTORY_LIST_ITEM_ROW_TAG = "historyListItemRow"
+const val HISTORY_LIST_ITEM_TAG = "historyListItem"
