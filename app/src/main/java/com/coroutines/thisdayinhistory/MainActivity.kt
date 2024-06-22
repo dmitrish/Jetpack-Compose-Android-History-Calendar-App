@@ -68,13 +68,13 @@ class MainActivity : AppCompatActivity() {
         )
         val userPreferencesRepository = UserPreferencesRepository(prefStore)
         val settingsViewModel : ISettingsViewModel  by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
+        val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
         val deviceLanguage = getDeviceLanguage()
         settingsViewModel.setDeviceLanguage(deviceLanguage)
 
-        val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
 
 
-        when (!appConfigState.isLoading) {
+        when (appConfigState.isLoading) {
             true ->
                 { }//load animation
             false -> {
