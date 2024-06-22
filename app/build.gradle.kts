@@ -81,10 +81,13 @@ dependencies {
     implementation(libs.retrofit2)
     implementation(libs.retrofit2.gson.converter)
     implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.palette)
     implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":api"))
-   // implementation(libs.androidx.material3.window.size.class. android)
+    implementation(project(":models"))
+
+    // implementation(libs.androidx.material3.window.size.class. android)
     /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
 
 

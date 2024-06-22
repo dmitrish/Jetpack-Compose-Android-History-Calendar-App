@@ -1,7 +1,10 @@
 package com.coroutines.models.wiki
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Page(
     @SerializedName("description", alternate = ["d"])
     val description: String? = null,
@@ -18,4 +21,4 @@ data class Page(
     val title: String,
     @SerializedName("videoUrl")
     val videoUrl: String? = null,
-)
+) : Parcelable

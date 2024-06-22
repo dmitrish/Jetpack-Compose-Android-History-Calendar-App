@@ -19,6 +19,7 @@ detekt = "1.23.3"
 androidx-datastore-preferences = "1.1.1"
 androidx-core-splash = "1.0.1"
 androidx-compose-test = "1.7.0-alpha02"
+androidx-palette = "1.0.0"
 retrofit = "2.9.0"
 okhttp = "4.11.0"
 datastorePreferencesCoreJvm = "1.1.1"
@@ -27,6 +28,7 @@ coil = "2.4.0"
 lifecycleRuntimeCompose = "2.8.2"
 lifecycleRuntimeComposeAndroid = "2.8.0"
 material3WindowSizeClassAndroid = "1.2.1"
+material3WindowSizeClassAndroidVersion = "1.2.1"
 
 [libraries] #TOML table
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" } #TOML inline table with key/values
@@ -38,6 +40,7 @@ androidx-activity-compose = { group = "androidx.activity", name = "activity-comp
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test", version.ref = "androidx-compose-test" }
 androidx-core-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splash"}
+androidx-palette = { module = "androidx.palette:palette", version.ref = "androidx-palette" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
@@ -60,6 +63,7 @@ androidx-datastore-preferences-core-jvm = { group = "androidx.datastore", name =
 coil-kt-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 #androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
+#androidx-material3-window-size-class-android = { group = "androidx.compose.material3", name = "material3-window-size-class-android", version.ref = "material3WindowSizeClassAndroidVersion" }
 #androidx-material3-window-size-class-android = { group = "androidx.compose.material3", name = "material3-window-size-class-android", version.ref = "material3WindowSizeClassAndroid" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

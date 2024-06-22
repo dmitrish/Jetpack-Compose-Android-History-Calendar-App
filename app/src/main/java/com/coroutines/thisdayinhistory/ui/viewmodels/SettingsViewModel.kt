@@ -71,7 +71,7 @@ class SettingsViewModel  constructor(
             }.collect { combinedData ->
                 viewModelState.update { state ->
                     state.copy(
-                        isLoading = true,
+                        isLoading = false,
                         isOnboarded = combinedData.third == OnboardingStatusEnum.Onboarded,
                         useDynamicColors = true,
                         appLanguage = combinedData.first,
