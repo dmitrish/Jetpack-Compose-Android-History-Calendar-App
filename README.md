@@ -91,7 +91,8 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/Thisdayinhistory/uiTestLanguagesScreen">UI Tests: Languages Screen</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/uitestwelcomescreen">UI Tests: Welcome Screen plus Navigation</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/uitestcatlogo">UI Tests: Cat Logo under different themes</li>
-  <li><a href="http://coroutines.com/thisdayinhistory/historyscreenpart1">History Main Screen - Part 1</li>
+  <li><a href="http://coroutines.com/thisdayinhistory/historyscreenpart1">Main Screen - Part 1</li>
+  <li><a href="http://coroutines.com/thisdayinhistory/historyscreenpart2">Main Screen - Part 2 - Shimmer Animation on Loading</li>
   
 <li>More to follow...</li>
 
