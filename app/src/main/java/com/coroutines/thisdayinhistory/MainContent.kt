@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpSize
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.compose.rememberNavController
+import com.coroutines.thisdayinhistory.components.rememberSystemUiController
 import com.coroutines.thisdayinhistory.graph.AppNavHost
 import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
 import com.coroutines.thisdayinhistory.ui.theme.AppThemeLocal
@@ -37,6 +38,12 @@ fun MainContent(
         Surface(
             modifier = Modifier.background(appThemeColor)
         ) {
+            val systemUiController = rememberSystemUiController()
+            systemUiController.setSystemBarsColor(
+                color = appThemeColor,
+                isNavigationBarContrastEnforced = false
+            )
+
             val viewModelStoreOwner =
                 checkNotNull(LocalViewModelStoreOwner.current) {
                     "No ViewModelStoreOwner was provided via LocalViewModelStoreOwner"

@@ -2,11 +2,13 @@ package com.coroutines.thisdayinhistory.graph
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.coroutines.thisdayinhistory.LocalAppTheme
+import com.coroutines.thisdayinhistory.components.rememberSystemUiController
 import com.coroutines.thisdayinhistory.ui.configurations.ScreenConfiguration
 import com.coroutines.thisdayinhistory.ui.configurations.StyleConfiguration
 import com.coroutines.thisdayinhistory.ui.screens.about.AboutScreen
@@ -30,11 +32,22 @@ fun NavGraphBuilder.mainGraph(
             MainNavOption.DetailScreen.name
         )
         { backStackEntry ->
+            val systemUiController = rememberSystemUiController()
+            val appBackgroundColor = MaterialTheme.colorScheme.background
             DetailScreen(
                 modifier = Modifier,
                 navController = navController ,
-                backHandler = {    navController.popBackStack() },
-                darkThemeHandler = { /*TODO*/ },
+                backHandler = {
+                    systemUiController.setNavigationBarColor(appBackgroundColor)
+                    navController.popBackStack()
+                },
+                darkThemeHandler = {
+                    systemUiController.setNavigationBarColor(
+                        color = Color.Transparent,
+                        navigationBarContrastEnforced = false
+                    )
+                    systemUiController.setStatusBarColor(color = Color.Transparent)
+                },
                 styleConfiguration  = StyleConfiguration(
                     ScreenConfiguration(LocalAppTheme.current),
                     MaterialTheme.typography,
