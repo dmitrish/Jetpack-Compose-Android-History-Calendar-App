@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -46,11 +47,11 @@ import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 fun AppNavigationDrawerWithContent(
     navController: NavController,
     settingsViewModel: ISettingsViewModel,
+    drawerState: DrawerState =  rememberDrawerState(DrawerValue.Closed),
     content: @Composable () -> Unit
 ) {
     val settingsViewModelState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
     val items = navDrawerItems()
-    val drawerState = rememberDrawerState(DrawerValue.Closed)
     val scope = rememberCoroutineScope()
     val selectedItem = remember { mutableStateOf(items[0]) }
     val backgroundColors = gradientColors(themeViewModelState = settingsViewModelState)
