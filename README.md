@@ -95,6 +95,7 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/historyscreenpart2">Main Screen - Part 2 - Shimmer Animation on Loading</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/detailscreen">Detail Screen</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/navigationbarcolors">Navigation Bar Colors</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/upbutton">AppBar for secondary screens with Up Button</a></li>
   
 <li>More to follow...</li>
 
