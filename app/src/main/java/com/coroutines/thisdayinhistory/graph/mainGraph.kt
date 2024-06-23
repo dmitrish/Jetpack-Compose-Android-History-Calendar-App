@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.coroutines.thisdayinhistory.LocalAppTheme
 import com.coroutines.thisdayinhistory.components.rememberSystemUiController
+import com.coroutines.thisdayinhistory.ui.appbar.ScreenWithSecondaryAppBar
 import com.coroutines.thisdayinhistory.ui.configurations.ScreenConfiguration
 import com.coroutines.thisdayinhistory.ui.configurations.StyleConfiguration
 import com.coroutines.thisdayinhistory.ui.screens.about.AboutScreen
@@ -34,44 +35,55 @@ fun NavGraphBuilder.mainGraph(
         { backStackEntry ->
             val systemUiController = rememberSystemUiController()
             val appBackgroundColor = MaterialTheme.colorScheme.background
-            DetailScreen(
-                modifier = Modifier,
-                navController = navController ,
-                backHandler = {
-                    systemUiController.setNavigationBarColor(appBackgroundColor)
-                    navController.popBackStack()
-                },
-                darkThemeHandler = {
-                    systemUiController.setNavigationBarColor(
-                        color = Color.Transparent,
-                        navigationBarContrastEnforced = false
+            ScreenWithSecondaryAppBar(navController = navController) {
+                DetailScreen(
+                    modifier = Modifier,
+                    navController = navController,
+                    backHandler = {
+                        systemUiController.setNavigationBarColor(appBackgroundColor)
+                        navController.popBackStack()
+                    },
+                    darkThemeHandler = {
+                        systemUiController.setNavigationBarColor(
+                            color = Color.Transparent,
+                            navigationBarContrastEnforced = false
+                        )
+                        systemUiController.setStatusBarColor(color = Color.Transparent)
+                    },
+                    styleConfiguration = StyleConfiguration(
+                        ScreenConfiguration(LocalAppTheme.current),
+                        MaterialTheme.typography,
+                        "detail"
                     )
-                    systemUiController.setStatusBarColor(color = Color.Transparent)
-                },
-                styleConfiguration  = StyleConfiguration(
-                    ScreenConfiguration(LocalAppTheme.current),
-                    MaterialTheme.typography,
-                    "detail"
                 )
-            )
+            }
         }
 
         composable(
             MainNavOption.LanguagesScreen.name
         ) {
-           LanguageScreen(navController = navController, viewModel =  settingsViewModel)
+            ScreenWithSecondaryAppBar(navController = navController) {
+                LanguageScreen(
+                    navController = navController,
+                    viewModel = settingsViewModel
+                )
+            }
         }
 
         composable(
             MainNavOption.ThemeScreen.name
         ) {
-           ThemeScreen(viewModel  = settingsViewModel)
+            ScreenWithSecondaryAppBar(navController = navController) {
+                ThemeScreen(viewModel = settingsViewModel)
+            }
         }
 
         composable(
             MainNavOption.AboutScreen.name
         ) {
-           AboutScreen(viewModel = settingsViewModel)
+            ScreenWithSecondaryAppBar(navController = navController) {
+                AboutScreen(viewModel = settingsViewModel)
+            }
         }
     }
 }
