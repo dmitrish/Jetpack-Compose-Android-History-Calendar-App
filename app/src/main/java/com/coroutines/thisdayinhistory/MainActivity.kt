@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         enableEdgeToEdge()
+
         super.onCreate(savedInstanceState)
 
         runUi()
@@ -66,8 +67,6 @@ class MainActivity : AppCompatActivity() {
         val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
         val deviceLanguage = getDeviceLanguage()
         settingsViewModel.setDeviceLanguage(deviceLanguage)
-
-
 
         when (appConfigState.isLoading) {
             true ->
