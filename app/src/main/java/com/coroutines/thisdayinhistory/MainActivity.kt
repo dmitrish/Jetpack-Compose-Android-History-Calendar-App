@@ -5,35 +5,29 @@ package com.coroutines.thisdayinhistory
 import android.app.LocaleManager
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.Text
 import java.util.Locale
 import android.os.LocaleList
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.text.font.FontVariation
 import androidx.core.os.LocaleListCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.datastore.core.DataStore
 import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.coroutines.data.models.LangEnum
 import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
-import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelFactory
-import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelMock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -57,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         runUi()
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     private fun runUi() = setContent {
 
         val prefStore = PreferenceDataStoreFactory.create(
@@ -84,7 +79,9 @@ class MainActivity : AppCompatActivity() {
 
                 isStatePendingRestore = false
 
-                MainContent(settingsViewModel, appConfigState)
+                val windowSize = calculateWindowSizeClass(this)
+
+                MainContent(settingsViewModel, appConfigState, windowSize)
             }
         }
     }

@@ -14,42 +14,37 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.coroutines.data.models.HistoricalEvent
-import com.coroutines.thisdayinhistory.components.ScreenPlaceholder
 import com.coroutines.thisdayinhistory.drawer.AppNavigationDrawerWithContent
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
-import com.coroutines.thisdayinhistory.R
+import com.coroutines.thisdayinhistory.components.NAV_ARGUMENT_HISTORY_EVENT
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelMock
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun HistoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
     settingsViewModel : ISettingsViewModel
 ){
-
    AppNavigationDrawerWithContent(
        navController = navController,
        settingsViewModel = settingsViewModel
@@ -96,27 +91,15 @@ fun HistoryScreen(
                                .fillMaxWidth()
                                .background(MaterialTheme.colorScheme.background)
                        )
-                       val listState = rememberLazyListState()
                        val historyViewModel = HistoryViewModelMock()
-                       val data = historyViewModel.historyData
 
-                       LazyColumn(
-                           state = listState,
-                           contentPadding = PaddingValues(bottom = 65.dp),
-                           verticalArrangement = Arrangement.Top
-                       ) {
-                           item { Spacer(Modifier.height(8.dp)) }
-
-                           items(data) { item: HistoricalEvent ->
-                               HistoryListItem(
-                                   historyEvent = item,
-                                   onClick = {},
-                                   onImageClick = {},
-                                   onShare = {},
-                               )
-                           }
-                           item { Spacer(Modifier.height(20.dp)) }
-                       }
+                        HistoryEventList(
+                            viewModel = historyViewModel,
+                            windowSizeClass = WindowSizeClass.calculateFromSize(DpSize.Zero),
+                            navController = navController
+                        ) {
+                           // TO DO
+                        }
                    }
                }
            }
