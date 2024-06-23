@@ -11,3 +11,6 @@ const val WELCOME_MESSAGE_TEXT_TAG = "welcomeMessageText"
 
 const val HISTORY_LIST_ITEM_ROW_TAG = "historyListItemRow"
 const val HISTORY_LIST_ITEM_TAG = "historyListItem"
+
+const val DETAIL_BODY_TEXT_TAG = "detailBodyText"
+const val DETAIL_HEADER_TEXT_TAG = "detailHeaderText"

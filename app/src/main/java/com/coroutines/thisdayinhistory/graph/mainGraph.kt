@@ -1,10 +1,16 @@
 package com.coroutines.thisdayinhistory.graph
 
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.coroutines.thisdayinhistory.LocalAppTheme
+import com.coroutines.thisdayinhistory.ui.configurations.ScreenConfiguration
+import com.coroutines.thisdayinhistory.ui.configurations.StyleConfiguration
 import com.coroutines.thisdayinhistory.ui.screens.about.AboutScreen
+import com.coroutines.thisdayinhistory.ui.screens.detail.DetailScreen
 import com.coroutines.thisdayinhistory.ui.screens.language.LanguageScreen
 import com.coroutines.thisdayinhistory.ui.screens.main.HistoryScreen
 import com.coroutines.thisdayinhistory.ui.screens.uitheme.ThemeScreen
@@ -24,7 +30,17 @@ fun NavGraphBuilder.mainGraph(
             MainNavOption.DetailScreen.name
         )
         { backStackEntry ->
-            //todo Detail Screen goes here
+            DetailScreen(
+                modifier = Modifier,
+                navController = navController ,
+                backHandler = {    navController.popBackStack() },
+                darkThemeHandler = { /*TODO*/ },
+                styleConfiguration  = StyleConfiguration(
+                    ScreenConfiguration(LocalAppTheme.current),
+                    MaterialTheme.typography,
+                    "detail"
+                )
+            )
         }
 
         composable(

@@ -11,6 +11,8 @@ import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.data.models.LangEnum
 import com.coroutines.data.models.OnboardingStatusEnum
 import com.coroutines.models.wiki.OriginalImage
+import com.coroutines.models.wiki.Page
+import com.coroutines.models.wiki.Thumbnail
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import com.coroutines.thisdayinhistory.uimodels.CatsByLanguage
@@ -55,56 +57,129 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             )
         }
         data.add(HistoricalEvent(
-            description = "The worst day of the tornado outbreak sequence of April 25–28, 2024, with 42 tornadoes, including one confirmed EF4 tornado, and two confirmed EF3 tornadoes, which killed 4 people in total.",
-            year = "2023",
-            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Tornado_outbreak_sequence_of_April_25%E2%80%9328%2C_2024.png/320px-Tornado_outbreak_sequence_of_April_25%E2%80%9328%2C_2024.png",
-            originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Tornado_outbreak_sequence_of_April_25%E2%80%9328%2C_2024.png/320px-Tornado_outbreak_sequence_of_April_25%E2%80%9328%2C_2024.png", 200),
-            shortTitle = "short title test",
-            extract = "extract test",
-
-            ))
-        data.add(HistoricalEvent(
-            description = "The Panmunjom Declaration is signed between North and South Korea, officially declaring their intentions to end the Korean conflict.",
+            description = "Nik Wallenda becomes the first man to successfully walk across the Grand Canyon on a tight rope.",
             countryCodeMappings = buildList {
-                CountryCodeMapping("Israel", alpha2 = "KR")
+                CountryCodeMapping("USA", alpha2 = "US")
             },
             year = "2022",
-            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Korea_Summit_2018_v3.jpg/320px-Korea_Summit_2018_v3.jpg",
-            originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Korea_Summit_2018_v3.jpg/320px-Korea_Summit_2018_v3.jpg", 200),
+            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nik-Wallenda-Skyscraper-Live.jpg/320px-Nik-Wallenda-Skyscraper-Live.jpg",
+            originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nik-Wallenda-Skyscraper-Live.jpg/320px-Nik-Wallenda-Skyscraper-Live.jpg", 200),
             shortTitle = "short title test",
             extract = "extract test",
+            pages = listOf ( Page(
+                description = "test",
+                extract = "The Grand Canyon is a steep-sided canyon carved by the Colorado River in Arizona, United States. The Grand Canyon is 277 miles (446 km) long, up to 18 miles (29 km) wide and attains a depth of over a mile.",
+                extractHtml = "test",
+                title = "Grand_Canyon",
+                pageId = 1,
+                thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/320px-Canyon_River_Tree_%28165872763%29.jpeg", width = 427),
+                originalImage = OriginalImage(400, "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Canyon_River_Tree_%28165872763%29.jpeg/320px-Canyon_River_Tree_%28165872763%29.jpeg", width = 400)
+            ),
+            Page(
+                description = "test",
+                extract = "Tightrope walking, also called funambulism, is the skill of walking along a thin wire or rope. It has a long tradition in various countries and is commonly associated with the circus. Other skills similar to tightrope walking include slack rope walking and slacklining.",
+                extractHtml = "test",
+                title = "Tightrope walking",
+                pageId = 2,
+                thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Tightrope_walking.jpg/320px-Tightrope_walking.jpg", width = 427),
+                originalImage = OriginalImage(400, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Tightrope_walking.jpg/320px-Tightrope_walking.jpg", width = 400)
+            ))
 
             ))
+
         data.add(HistoricalEvent(
             description = "Israeli archaeologists discover the tomb of Herod the Great south of Jerusalem.",
             countryCodeMappings = buildList {
                 CountryCodeMapping("Israel", alpha2 = "IL")
             },
-            year = "1864",
+            year = "2007",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/320px-Flag_of_Israel.svg.png",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/320px-Flag_of_Israel.svg.png", 200),
             shortTitle = "short title test",
             extract = "extract test",
+            pages = listOf (
+                Page(
+                    description = "test",
+                    extract = "Herod I or Herod the Great was a Roman Jewish client king of the Herodian Kingdom of Judea. He is known for his colossal building projects throughout Judea. Among these works are the rebuilding of the Second Temple in Jerusalem and the expansion of its base—the Western Wall being part of it. Vital details of his life are recorded in the works of the 1st century CE Roman–Jewish historian Josephus.",
+                    extractHtml = "test",
+                    title = "Herod_the_Great",
+                    pageId = 1,
+                    thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Herods_grave_israel_museum_2013_mrach_by_history_on_the_map_efi_elian.jpg/320px-Herods_grave_israel_museum_2013_mrach_by_history_on_the_map_efi_elian.jpg", width = 427),
+                    originalImage = OriginalImage(667, "https://upload.wikimedia.org/wikipedia/commons/e/ee/Herods_grave_israel_museum_2013_mrach_by_history_on_the_map_efi_elian.jpg", width = 1000)
+                ),
+                Page(
+                    description = "Jerusalem",
+                    extract = "Jerusalem is a city in the Southern Levant, on a plateau in the Judaean Mountains between the Mediterranean and the Dead Sea. It is one of the oldest cities in the world, and is considered holy to the three major Abrahamic religions—Judaism, Christianity, and Islam. Both the State of Israel and the State of Palestine claim Jerusalem as their capital city. Israel maintains its primary governmental institutions there, and the State of Palestine ultimately foresees it as its seat of power. Neither claim is widely recognized internationally.",
+                    extractHtml = "test",
+                    title = "Jerusalem",
+                    pageId = 1,
+                    thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/%D7%94%D7%9E%D7%A6%D7%95%D7%93%D7%94_%D7%91%D7%9C%D7%99%D7%9C%D7%94.jpg/320px-%D7%94%D7%9E%D7%A6%D7%95%D7%93%D7%94_%D7%91%D7%9C%D7%99%D7%9C%D7%94.jpg", width = 427),
+                    originalImage = OriginalImage(667, "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/%D7%94%D7%9E%D7%A6%D7%95%D7%93%D7%94_%D7%91%D7%9C%D7%99%D7%9C%D7%94.jpg/320px-%D7%94%D7%9E%D7%A6%D7%95%D7%93%D7%94_%D7%91%D7%9C%D7%99%D7%9C%D7%94.jpg", width = 1000)
+                ),
 
-            ))
+                )
+        ))
+
         data.add(HistoricalEvent(
             description = "Betty Boothroyd becomes the first woman to be elected Speaker of the British House of Commons in its 700-year history.",
             countryCodeMappings = buildList {
                 CountryCodeMapping("UK", alpha2 = "UK")
             },
-            year = "1864",
+            year = "1992",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg/320px-Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg/320px-Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg", 200),
             shortTitle = "short title test",
             extract = "extract test",
+            pages = listOf ( Page(
+                description = "test",
+                extract = "The 1992 election of the Speaker of the House of Commons occurred on 27 April 1992, in the first sitting of the House of Commons following the 1992 general election and the retirement of the previous Speaker Bernard Weatherill. The election resulted in the election of Labour MP Betty Boothroyd, one of Weatherill's deputies, who was the first woman to become Speaker. This was at a time when the Conservative Party had a majority in the House of Commons. It was also the first contested election since William Morrison defeated Major James Milner on 31 October 1951, although Geoffrey de Freitas had been nominated against his wishes in the 1971 election.",
+                extractHtml = "test",
+                title = "1992_Speaker_of_the_British_House_of_Commons_election",
+                pageId = 1,
+                thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/f/f2/Official_portrait_of_Baroness_Boothroyd_crop_2.jpg", width = 427),
+                originalImage = OriginalImage(400, "https://upload.wikimedia.org/wikipedia/commons/f/f2/Official_portrait_of_Baroness_Boothroyd_crop_2.jpg", width = 400)
+            ))
+        ))
+        data.add(HistoricalEvent(
+            description = "The famous Hand of God goal, scored by Diego Maradona in the quarter-finals of the 1986 FIFA World Cup match between Argentina and England, ignites controversy. This was later followed by the Goal of the Century. Argentina wins 2–1 and later goes on to win the World Cup.",
+            year = "1986",
+            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Maradona_shilton_mano_dios.jpg/320px-Maradona_shilton_mano_dios.jpg",
+            originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Maradona_shilton_mano_dios.jpg/320px-Maradona_shilton_mano_dios.jpg", 200),
+            shortTitle = "short title test",
+            extract = "extract test",
+
+            pages = listOf (
+                Page(
+                    description = "test",
+                    extract = "Diego Armando Maradona was an Argentine professional football player and manager. Widely regarded as one of the greatest players in the history of the sport, he was one of the two joint winners of the FIFA Player of the 20th Century award.",
+                    extractHtml = "test",
+                    title = "Diego_Maradona",
+                    pageId = 1,
+                    thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/320px-Maradona-Mundial_86_con_la_copa.JPG", width = 427),
+                    originalImage = OriginalImage(667, "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maradona-Mundial_86_con_la_copa.JPG/320px-Maradona-Mundial_86_con_la_copa.JPG", width = 1000)
+                ),
+                Page(
+                    description = "1986 World Cup",
+                    extract = "The 1986 FIFA World Cup was the 13th FIFA World Cup, a quadrennial football tournament for men's senior national teams. It was played in Mexico from 31 May to 29 June 1986. The tournament was the second to feature a 24-team format. Colombia had been originally chosen to host the competition by FIFA but, largely due to economic reasons, was not able to do so, and resigned in November 1982. Mexico was selected as the new host in May 1983, and became the first country to host the World Cup more than once, after previously hosting the 1970 edition.",
+                    extractHtml = "test",
+                    title = "1986_FIFA_World_Cup",
+                    pageId = 1,
+                    thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/1986_FIFA_World_Cup.svg/320px-1986_FIFA_World_Cup.svg.png", width = 427),
+                    originalImage = OriginalImage(667, "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/1986_FIFA_World_Cup.svg/320px-1986_FIFA_World_Cup.svg.png", width = 1000)
+                ),
 
             ))
+        )
 
-        /*viewModelState.update { state ->
+
+
+
+
+        viewModelState.update { state ->
             state.copy(
                 dataRequestState = DataRequestState.CompletedSuccessfully()
             )
-        }*/
+        }
 
     }
 

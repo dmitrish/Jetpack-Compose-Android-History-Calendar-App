@@ -18,11 +18,8 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -46,6 +43,7 @@ import com.coroutines.thisdayinhistory.uimodels.ShareableHistoryEvent
 @Composable
 inline fun HistoryListItem(
     historyEvent: HistoricalEvent,
+    windowSizeClass: WindowSizeClass,
     crossinline onClick: (HistoricalEvent) -> Unit,
     crossinline onImageClick: (HistoricalEvent) -> Unit,
     crossinline onShare: (ShareableHistoryEvent) -> Unit
