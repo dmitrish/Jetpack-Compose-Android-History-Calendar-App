@@ -9,15 +9,19 @@ import androidx.lifecycle.viewModelScope
 import com.coroutines.data.models.CountryCodeMapping
 import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.data.models.LangEnum
+import com.coroutines.data.models.OnboardingStatusEnum
 import com.coroutines.models.wiki.OriginalImage
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import com.coroutines.thisdayinhistory.uimodels.CatsByLanguage
 import com.coroutines.thisdayinhistory.uimodels.SelectedDate
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 
 private data class HistoryStateMock(
@@ -25,7 +29,7 @@ private data class HistoryStateMock(
     val selectedCategory: String = CatsByLanguage(LangEnum.ENGLISH).getDefaultCategory(),
     val previousCategory: String = CatsByLanguage(LangEnum.ENGLISH).getDefaultCategory(),
     val selectedItem: HistoricalEvent = HistoricalEvent(description = "No Events"),
-    val selectedDate: SelectedDate = SelectedDate("March", 1),
+    val selectedDate: SelectedDate = SelectedDate("June", 22),
     val catsByLanguage: CatsByLanguage = CatsByLanguage(LangEnum.ENGLISH),
     val filter: String = ""
 ) {
@@ -42,7 +46,14 @@ private data class HistoryStateMock(
 class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
     private val data = mutableStateListOf<HistoricalEvent>()
     private val isScrolledState = mutableStateOf(false)
+    private val viewModelState = MutableStateFlow(value = HistoryStateMock())
     init{
+
+        viewModelState.update { state ->
+            state.copy(
+                dataRequestState = DataRequestState.Started
+            )
+        }
         data.add(HistoricalEvent(
             description = "The worst day of the tornado outbreak sequence of April 25–28, 2024, with 42 tornadoes, including one confirmed EF4 tornado, and two confirmed EF3 tornadoes, which killed 4 people in total.",
             year = "2023",
@@ -88,8 +99,15 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             extract = "extract test",
 
             ))
+
+        /*viewModelState.update { state ->
+            state.copy(
+                dataRequestState = DataRequestState.CompletedSuccessfully()
+            )
+        }*/
+
     }
-    private val viewModelState = MutableStateFlow(value = HistoryStateMock())
+
     override val historyData: SnapshotStateList<HistoricalEvent>
         get() = data
     override var isScrolled: MutableState<Boolean>
