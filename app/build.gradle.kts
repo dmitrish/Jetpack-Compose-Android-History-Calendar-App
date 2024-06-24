@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.palette)
     implementation(libs.androidx.compose.materialWindow)
+    implementation(libs.kotlinx.datetime)
     implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":api"))

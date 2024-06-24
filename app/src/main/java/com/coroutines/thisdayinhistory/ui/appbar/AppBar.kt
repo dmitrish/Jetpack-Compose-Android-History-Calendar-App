@@ -25,6 +25,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import com.coroutines.thisdayinhistory.ui.components.HistoryDatePickerDialog
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,6 +62,17 @@ fun AppBar(
             CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
                 var showDatePicker by remember {
                     mutableStateOf(false)
+                }
+
+                if (showDatePicker) {
+                    HistoryDatePickerDialog(
+                        historyViewModel,
+                        resIdCancel = cancelButtonText,
+                        onDateSelected = {
+                            historyViewModel.onDateChanged(it!!)
+                        },
+                        onDismiss = { showDatePicker = false }
+                    )
                 }
 
                 IconButton(
