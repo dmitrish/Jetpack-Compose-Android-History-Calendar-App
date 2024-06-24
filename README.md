@@ -97,6 +97,7 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/navigationbarcolors">Navigation Bar Colors</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/upbutton">AppBar for secondary screens with Up Button</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/appbar">Primary AppBar with a hamburger menu to open Navigation Drawer and calendar icon to open Calendar</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/datepicker">Date Picker</a></li>
   
 <li>More to follow...</li>
 
