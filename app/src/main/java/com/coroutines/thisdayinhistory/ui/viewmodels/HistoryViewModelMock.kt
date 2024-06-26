@@ -64,7 +64,7 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             year = "2022",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nik-Wallenda-Skyscraper-Live.jpg/320px-Nik-Wallenda-Skyscraper-Live.jpg",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Nik-Wallenda-Skyscraper-Live.jpg/320px-Nik-Wallenda-Skyscraper-Live.jpg", 200),
-            shortTitle = "short title test",
+            shortTitle = "Grand Canyon",
             extract = "extract test",
             pages = listOf ( Page(
                 description = "test",
@@ -95,7 +95,7 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             year = "2007",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/320px-Flag_of_Israel.svg.png",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/320px-Flag_of_Israel.svg.png", 200),
-            shortTitle = "short title test",
+            shortTitle = "Herod the Great",
             extract = "extract test",
             pages = listOf (
                 Page(
@@ -119,6 +119,46 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
 
                 )
         ))
+        data.add(HistoricalEvent(
+            description = "The prime minister of Bangladesh, Sheikh Hasina inaugurates the longest bridge of Bangladesh, Padma Bridge.",
+            countryCodeMappings = buildList {
+                CountryCodeMapping("UK", alpha2 = "UK")
+            },
+            year = "1992",
+            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/c/c7/Sheikh_Hasina_in_Sep_2023.jpg",
+            originalImage = OriginalImage(1567, "https://upload.wikimedia.org/wikipedia/commons/c/c7/Sheikh_Hasina_in_Sep_2023.jpg", 828),
+            shortTitle = "Shiekh Hasina",
+            extract = "extract test",
+            pages = listOf ( Page(
+                description = "test",
+                extract = "Sheikh Hasina Wazed is a Bangladeshi politician who has served as the tenth prime minister of Bangladesh from June 1996 to July 2001 and again since January 2009. She is the daughter of Sheikh Mujibur Rahman, the founding father and first president of Bangladesh. Having served for a combined total of over 20 years, she is the longest serving prime minister in the history of Bangladesh. As of 23 June 2024, she is the world's longest-serving female head of government",
+                extractHtml = "test",
+                title = "Sheikh_Hasina",
+                pageId = 1,
+                thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/c/c7/Sheikh_Hasina_in_Sep_2023.jpg", width = 427),
+                originalImage = OriginalImage(400, "https://upload.wikimedia.org/wikipedia/commons/c/c7/Sheikh_Hasina_in_Sep_2023.jpg", width = 400)
+            ))
+        ))
+        data.add(HistoricalEvent(
+            description = "Kim Campbell is sworn in as the first female Prime Minister of Canada.",
+            countryCodeMappings = buildList {
+                CountryCodeMapping("UK", alpha2 = "UK")
+            },
+            year = "1992",
+            imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/0/07/Kim_Campbell.jpg",
+            originalImage = OriginalImage(2998, "https://upload.wikimedia.org/wikipedia/commons/0/07/Kim_Campbell.jpg", 1862),
+            shortTitle = "Kim Campbell",
+            extract = "extract test",
+            pages = listOf ( Page(
+                description = "test",
+                extract = "Avril Phaedra Douglas \\\"Kim\\\" Campbell is a former Canadian politician, diplomat, lawyer, and writer who served as the 19th prime minister of Canada from June 25 to November 4, 1993. Campbell is the first and only female prime minister of Canada. Prior to becoming the final Progressive Conservative (PC) prime minister, she was also the first woman to serve as minister of justice in Canadian history and the first woman to become minister of defence in a NATO member state.",
+                extractHtml = "test",
+                title = "Kim Campbell",
+                pageId = 1,
+                thumbnail = Thumbnail(320, "https://upload.wikimedia.org/wikipedia/commons/0/07/Kim_Campbell.jpg", width = 427),
+                originalImage = OriginalImage(2998, "https://upload.wikimedia.org/wikipedia/commons/0/07/Kim_Campbell.jpg", width = 1862)
+            ))
+        ))
 
         data.add(HistoricalEvent(
             description = "Betty Boothroyd becomes the first woman to be elected Speaker of the British House of Commons in its 700-year history.",
@@ -128,7 +168,7 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             year = "1992",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg/320px-Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg/320px-Official_portrait_of_Baroness_Boothroyd_%28cropped%29.jpg", 200),
-            shortTitle = "short title test",
+            shortTitle = "Betty Boothroyd",
             extract = "extract test",
             pages = listOf ( Page(
                 description = "test",
@@ -145,7 +185,7 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             year = "1986",
             imageBigUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Maradona_shilton_mano_dios.jpg/320px-Maradona_shilton_mano_dios.jpg",
             originalImage = OriginalImage(200, "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Maradona_shilton_mano_dios.jpg/320px-Maradona_shilton_mano_dios.jpg", 200),
-            shortTitle = "short title test",
+            shortTitle = "Hand of God",
             extract = "extract test",
 
             pages = listOf (
@@ -185,15 +225,9 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
 
     override val historyData: SnapshotStateList<HistoricalEvent>
         get() = data
-    override var isScrolled: MutableState<Boolean>
-        get() = isScrolledState
-        set(value) {}
-    override var filterKey: String
-        get() = TODO("Not yet implemented")
-        set(value) {}
-    override var selectedItem: HistoricalEvent
-        get() = data[0]
-        set(value) {}
+    override var isScrolled = mutableStateOf(false)
+    override var filterKey: String = ""
+    override var selectedItem: HistoricalEvent = HistoricalEvent("No Events")
     override val uiState = viewModelState
         .map {it.asActivityState() }
         .stateIn (
