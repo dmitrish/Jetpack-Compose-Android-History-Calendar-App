@@ -17,6 +17,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ModalBottomSheetLayout
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -52,8 +54,12 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 
+//noinspection UsingMaterialAndMaterial3Libraries
+import androidx.compose.material.ModalBottomSheetValue
+
+
+@OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedContentLambdaTargetStateParameter")
-//@OptIn(ExperimentalMaterialApi::class)
 @Suppress("LongMethod")
 @Composable
 fun HistoryEventList(
@@ -62,6 +68,10 @@ fun HistoryEventList(
     navController: NavController,
     onItemImageStateChanged: (readyState: Boolean) -> Unit
 ) {
+    val context = LocalContext.current
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val selectedCategory = uiState.selectedCategory
+    val previousCategory = uiState.previousCategory
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
     val data = viewModel.historyData
@@ -70,57 +80,120 @@ fun HistoryEventList(
     val dominantColorState = rememberDominantColorState { color ->
         color.contrastAgainst(backgroundColor) >= MinContrastOfPrimaryVsSurface
     }
-    LazyColumn(
-        state = listState,
-        contentPadding = PaddingValues(bottom = 65.dp),
-        verticalArrangement = Arrangement.Top
-    ) {
-        item { Spacer(Modifier.height(8.dp)) }
 
-        items(data) { item: HistoricalEvent ->
-        HistoryListItem(
-            historyEvent = item,
-            windowSizeClass = windowSizeClass,
-            onClick = { selectedEvent ->
-                viewModel.selectedItem = selectedEvent
-                navController.currentBackStackEntry?.savedStateHandle?.set(
-                    NAV_ARGUMENT_HISTORY_EVENT, selectedEvent)
-                navigateToDetail(
-                    backgroundColor,
-                    coroutineScope,
-                    viewModel,
-                    dominantColorState,
-                    navController
-                )
-            },
-            onImageClick = {
-            },
-            onShare = {
+    val skipHalfExpanded by remember { mutableStateOf(true) }
+    val modalBottomSheetState = androidx.compose.material.rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden,
+        skipHalfExpanded = skipHalfExpanded
+    )
+
+    var showModalBottomSheet by remember { mutableStateOf(false) }
+    if (modalBottomSheetState.currentValue != ModalBottomSheetValue.Hidden) {
+        DisposableEffect(Unit) {
+            onDispose {
+                showModalBottomSheet = false
+                onItemImageStateChanged (false)
             }
-            )
-        }
-        item { Spacer(Modifier.height(20.dp)) }
-    }
-
-
-    val showButton by remember {
-        derivedStateOf {
-            listState.firstVisibleItemIndex > 0
         }
     }
 
-    viewModel.isScrolled.value = showButton
 
-    AnimatedVisibility(
-        visible = showButton,
-        enter = fadeIn(),
-        exit = fadeOut()
+    ModalBottomSheetLayout(
+        sheetState = modalBottomSheetState,
+        sheetShape = RoundedCornerShape(topEnd = 35.dp, topStart = 35.dp),
+        sheetBackgroundColor = Color.Transparent,
+        scrimColor = Color.Transparent,
+        sheetElevation = 0.dp,
+        sheetContent = {
+            BottomSheetContent(viewModel, showModalBottomSheet, dominantColorState)
+        }
     ) {
-        ScrollToTopButton(onClick = {
-            coroutineScope.launch {
-                listState.scrollToItem(0)
+        AnimatedContent(
+            targetState = Pair<String, String>(
+                selectedCategory,
+                previousCategory
+            ),
+            transitionSpec = {
+                if (selectedCategory != previousCategory) {
+                    (slideInHorizontally(
+                        animationSpec = tween(
+                            durationMillis = 200
+                        )
+                    )
+                    { width -> width }
+                            + fadeIn()).togetherWith(slideOutHorizontally
+                    { width -> -width } + fadeOut())
+                } else {
+                    fadeIn(animationSpec = tween(200)) togetherWith
+                            fadeOut(animationSpec = tween(200))
+                }
+            }, label = ""
+        ) {
+            LazyColumn(
+                state = listState,
+                contentPadding = PaddingValues(bottom = 65.dp),
+                verticalArrangement = Arrangement.Top
+            ) {
+                item { Spacer(Modifier.height(8.dp)) }
+
+                items(data) { item: HistoricalEvent ->
+                    HistoryListItem(
+                        historyEvent = item,
+                        windowSizeClass = windowSizeClass,
+                        onClick = { selectedEvent ->
+                            viewModel.selectedItem = selectedEvent
+                            navController.currentBackStackEntry?.savedStateHandle?.set(
+                                NAV_ARGUMENT_HISTORY_EVENT, selectedEvent
+                            )
+                            navigateToDetail(
+                                backgroundColor,
+                                coroutineScope,
+                                viewModel,
+                                dominantColorState,
+                                navController
+                            )
+                        },
+                        onImageClick = { selectedEvent ->
+                            viewModel.selectedItem = selectedEvent
+                            coroutineScope.launch {
+                                if (viewModel.selectedItem.imageUrl.isNotEmpty()) {
+                                    dominantColorState.updateColorsFromImageUrl(viewModel.selectedItem.imageUrl)
+                                } else {
+                                    dominantColorState.reset()
+                                }
+                                showModalBottomSheet = true
+                                onItemImageStateChanged(true)
+                                modalBottomSheetState.show()
+                            }
+                        },
+                        onShare = {
+                        }
+                    )
+                }
+                item { Spacer(Modifier.height(20.dp)) }
             }
-        })
+
+
+            val showButton by remember {
+                derivedStateOf {
+                    listState.firstVisibleItemIndex > 0
+                }
+            }
+
+            viewModel.isScrolled.value = showButton
+
+            AnimatedVisibility(
+                visible = showButton,
+                enter = fadeIn(),
+                exit = fadeOut()
+            ) {
+                ScrollToTopButton(onClick = {
+                    coroutineScope.launch {
+                        listState.scrollToItem(0)
+                    }
+                })
+            }
+        }
     }
 }
 

@@ -58,7 +58,6 @@ fun BottomSheetContent(viewModel: IHistoryViewModel, readyState: Boolean, domina
                     startYPercentage = 1f,
                     endYPercentage = 0f
                 )
-            // color = MaterialTheme.colors.surface
         ) {
             Column(
                 modifier = Modifier
@@ -72,7 +71,6 @@ fun BottomSheetContent(viewModel: IHistoryViewModel, readyState: Boolean, domina
                         endYPercentage = 0f
                     )
                     .padding(getPadding()),
-                // .padding(bottom = 80.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (readyState) {

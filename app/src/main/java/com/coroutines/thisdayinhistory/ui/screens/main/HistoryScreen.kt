@@ -32,6 +32,9 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.DpSize
@@ -67,6 +70,7 @@ fun HistoryScreen(
        val dataRequestState = uiState.dataRequestState
        val option = uiState.selectedCategory
        val categories = uiState.catsByLanguage.getCategories().values.toList()
+       var isItemImageExpanded by remember { mutableStateOf(false) }
 
        AnimatedContent(targetState = dataRequestState,
            transitionSpec = {
@@ -130,8 +134,8 @@ fun HistoryScreen(
                                    viewModel = historyViewModel,
                                    windowSizeClass = WindowSizeClass.calculateFromSize(DpSize.Zero),
                                    navController = navController
-                               ) {
-                                   // TO DO
+                               ) { result ->
+                                    isItemImageExpanded = result
                                }
                            }
                        }
