@@ -25,7 +25,9 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import com.coroutines.thisdayinhistory.ui.components.HistoryDatePickerDialog
+import com.coroutines.thisdayinhistory.ui.components.SearchView
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -58,6 +60,10 @@ fun AppBar(
                     AppBarAction(appBarAction)
                 }
             }*/
+
+            val textState = remember { mutableStateOf(TextFieldValue("")) }
+            SearchView(state = textState , viewModel = historyViewModel)
+
 
             CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
                 var showDatePicker by remember {
