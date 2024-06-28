@@ -99,6 +99,7 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/appbar">Primary AppBar with a hamburger menu to open Navigation Drawer and calendar icon to open Calendar</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/datepicker">Date Picker</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/bottomsheet">Modal Bottom Sheet to display expanded image</li>
+  <li><a href="http://coroutines.com/thisdayinhistory/searchbar">Search Bar</a></li>
   
 <li>More to follow...</li>
 
