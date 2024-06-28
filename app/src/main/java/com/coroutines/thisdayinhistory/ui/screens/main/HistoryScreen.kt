@@ -1,13 +1,16 @@
 package com.coroutines.thisdayinhistory.ui.screens.main
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,7 +51,9 @@ import com.coroutines.thisdayinhistory.drawer.AppNavigationDrawerWithContent
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 import com.coroutines.thisdayinhistory.components.NAV_ARGUMENT_HISTORY_EVENT
 import com.coroutines.thisdayinhistory.ui.appbar.AppBar
+import com.coroutines.thisdayinhistory.ui.components.BottomNavigationBarCalendar
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
+import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelMock
 import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
@@ -112,7 +117,11 @@ fun HistoryScreen(
                            )
                        },
                        bottomBar = {
-
+                           BottomBar(
+                               isItemImageExpanded,
+                               viewModel,
+                               uiState
+                           )
                        }
                    ) { paddingValues ->
                        Column(
@@ -146,6 +155,26 @@ fun HistoryScreen(
            }
        }
    }
+}
+@Composable
+@Suppress("MagicNumber")
+private fun BottomBar(
+    isItemImageExpanded: Boolean,
+    historyViewModel: IHistoryViewModel,
+    historyViewModelState: HistoryViewModelState,
+) {
+    AnimatedVisibility(
+        visible = (!isItemImageExpanded) && (!historyViewModel.isScrolled.value),
+        enter = fadeIn() + slideInVertically(animationSpec = tween(10),
+            initialOffsetY = { fullHeight -> fullHeight }),
+        exit = fadeOut() + slideOutVertically(animationSpec = tween(10),
+            targetOffsetY = { fullHeight -> fullHeight }),
+    ) {
+        BottomNavigationBarCalendar(
+            historyViewModel = historyViewModel,
+            historyViewModelState = historyViewModelState
+        )
+    }
 }
 
 private fun keyFramesToNonTargetState(initialSize: IntSize) = keyframes {
