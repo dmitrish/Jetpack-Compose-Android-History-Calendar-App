@@ -51,6 +51,7 @@ import com.coroutines.thisdayinhistory.ui.appbar.AppBar
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelMock
+import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -58,6 +59,7 @@ fun HistoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
     settingsViewModel : ISettingsViewModel,
+    viewModel: IHistoryViewModel =  HistoryViewModelMock()
 ){
    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
    AppNavigationDrawerWithContent(
@@ -65,7 +67,7 @@ fun HistoryScreen(
        settingsViewModel = settingsViewModel,
        drawerState
    ) {
-       val viewModel = HistoryViewModelMock()
+
        val uiState by viewModel.uiState.collectAsStateWithLifecycle()
        val dataRequestState = uiState.dataRequestState
        val option = uiState.selectedCategory
@@ -103,7 +105,7 @@ fun HistoryScreen(
                        modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection ),
                        topBar = {
                            AppBar(
-                               historyViewModel = HistoryViewModelMock(),
+                               historyViewModel = viewModel,
                                drawerState = drawerState,
                                cancelButtonText = R.string.cancel,
                                scrollBehavior = scrollBehavior
@@ -128,10 +130,10 @@ fun HistoryScreen(
                                        .fillMaxWidth()
                                        .background(MaterialTheme.colorScheme.background)
                                )
-                               val historyViewModel = HistoryViewModelMock()
+
 
                                HistoryEventList(
-                                   viewModel = historyViewModel,
+                                   viewModel = viewModel,
                                    windowSizeClass = WindowSizeClass.calculateFromSize(DpSize.Zero),
                                    navController = navController
                                ) { result ->
