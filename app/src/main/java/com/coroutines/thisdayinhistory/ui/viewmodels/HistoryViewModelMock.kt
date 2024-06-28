@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.coroutines.data.models.CountryCodeMapping
@@ -211,20 +212,28 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             ))
         )
 
-
-
-
-
         viewModelState.update { state ->
             state.copy(
                 dataRequestState = DataRequestState.CompletedSuccessfully()
             )
         }
-
     }
 
     override val historyData: SnapshotStateList<HistoricalEvent>
-        get() = data
+        get() = getData()
+
+    private fun getData(): SnapshotStateList<HistoricalEvent> {
+        val category = "selected"
+        val data = this.data
+
+        return if (filterKey.isNotBlank()) {
+            val result = data?.filter {
+                it.description.contains(filterKey, true) }!!.toMutableStateList()
+            result
+        } else {
+            data ?: mutableStateListOf()
+        }
+    }
     override var isScrolled = mutableStateOf(false)
     override var filterKey: String = ""
     override var selectedItem: HistoricalEvent = HistoricalEvent("No Events")
@@ -235,7 +244,6 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
             started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
             initialValue = viewModelState.value.asActivityState()
         )
-
 
     override fun onDateChanged(localDateTime: LocalDateTime) {
         TODO("Not yet implemented")
@@ -250,6 +258,11 @@ class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
     }
 
     override fun search(searchTerm: String) {
-        TODO("Not yet implemented")
+        filterKey = searchTerm
+        viewModelState.update { state ->
+            state.copy(
+                filter = searchTerm
+            )
+        }
     }
 }
