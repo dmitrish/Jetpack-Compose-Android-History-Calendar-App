@@ -14,3 +14,5 @@ const val HISTORY_LIST_ITEM_TAG = "historyListItem"
 
 const val DETAIL_BODY_TEXT_TAG = "detailBodyText"
 const val DETAIL_HEADER_TEXT_TAG = "detailHeaderText"
+
+const val NAVIGATION_BAR_ROW_TAG = "navBarRow"
