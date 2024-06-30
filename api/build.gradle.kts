@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.okhttp3)
     implementation(libs.retrofit2)
+    implementation(project(":models"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
