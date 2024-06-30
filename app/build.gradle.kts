@@ -89,6 +89,7 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":api"))
     implementation(project(":models"))
+    implementation(project(":usecase"))
 
     // implementation(libs.androidx.material3.window.size.class. android)
     /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
