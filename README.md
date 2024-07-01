@@ -73,22 +73,6 @@ The app supports internationalization and in-app language selection. The content
 </ul>
 <p></p>
 
-<table style="width:100%">
-  <tr>
-    <th>Building this app - Introduction</th>
-  </tr>
-  <tr>
-    <td><iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  width="600"
-  height="400"
-  src="http://coroutines.com/thisdayinhistory/introduction">
-</iframe></td>
-  </tr>
-  
-</table>
-
 <ul>
 <li><a href="http://coroutines.com/thisdayinhistory/introduction">Building this app - Introduction</a></li>
 <li><a href="http://coroutines.com/thisdayinhistory/toml">Set up Version Catalog</a></li>
