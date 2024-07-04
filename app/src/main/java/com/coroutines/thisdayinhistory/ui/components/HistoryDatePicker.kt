@@ -15,7 +15,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import com.coroutines.thisdayinhistory.components.ADJUSTED_COLOR_LIGHTER_FACTOR
 import com.coroutines.thisdayinhistory.ui.utils.lighter
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
+import com.coroutines.thisdayinhistory.uimodels.HistoryCalendar
 import kotlinx.datetime.toInstant
 import kotlinx.datetime.toKotlinLocalDateTime
 import kotlinx.datetime.toKotlinTimeZone
@@ -33,12 +35,12 @@ fun HistoryDatePickerDialog(
     onDateSelected: (LocalDateTime?) -> Unit,
     onDismiss: () -> Unit
 ) {
-   // val calendar = (viewModel as HistoryViewModel).historyCalendar as HistoryCalendar
+    val calendar = (viewModel as HistoryViewModel).historyCalendar as HistoryCalendar
 
-    val time = kotlinx.datetime.Clock.System.now().toEpochMilliseconds()
+ // kotlinx.datetime.Clock.System.now().toEpochMilliseconds()
 
-        //calendar.currentLocalDateTime.toKotlinLocalDateTime().toInstant(
-       // ZoneId.systemDefault().toKotlinTimeZone()).toEpochMilliseconds()
+    val time =  calendar.currentLocalDateTime.toKotlinLocalDateTime().toInstant(
+        ZoneId.systemDefault().toKotlinTimeZone()).toEpochMilliseconds()
 
     val datePickerState = remember { DatePickerState(
         locale = androidx.compose.material3.CalendarLocale.FRANCE,

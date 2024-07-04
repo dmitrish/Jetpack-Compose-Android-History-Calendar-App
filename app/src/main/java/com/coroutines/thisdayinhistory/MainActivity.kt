@@ -23,19 +23,51 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.coroutines.api.wiki.WikiMediaApiService
+import com.coroutines.api.wiki.WikiMediaApiServiceImpl
+import com.coroutines.data.converters.JsonConverterService
 import com.coroutines.data.models.LangEnum
 import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelFactory
+import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
+import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelFactory
+import com.coroutines.thisdayinhistory.uimodels.HistoryCalendar
+import com.coroutines.thisdayinhistory.uimodels.HistoryDataMap
+import com.coroutines.usecase.HistoryDataStandardUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
     private var isStatePendingRestore = true
+
+    val cacheSize = 5242880L
+    lateinit var myCache : Cache
+    lateinit var okHttpClient: OkHttpClient
+   // val myCache = Cache(this.applicationContext.cacheDir, cacheSize)
+
+
+
+    object RetrofitWikiApiFactory {
+
+        val baseUrl = WikiMediaApiService.BASE_WIKI_URL
+
+        fun getInstance(okHttpClient: OkHttpClient): Retrofit {
+            return Retrofit.Builder().baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(okHttpClient)
+                .build()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //https://www.youtube.com/watch?v=mlL6H-s0nF0
@@ -49,11 +81,30 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
+        myCache = Cache(this.applicationContext.cacheDir, cacheSize)
+        okHttpClient = OkHttpClient.Builder()
+            .cache(myCache)
+            .addInterceptor { chain ->
+                var request = chain.request()
+                // request = if (hasNetwork(context)!!)
+                //     request.newBuilder().header("Cache-Control", "public, max-age=" + 5).build()
+                // else
+                request =  request.newBuilder().header("Cache-Control", "public, max-age=" + 5).build()
+                chain.proceed(request)
+            }
+            .build()
+
         runUi()
     }
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     private fun runUi() = setContent {
+
+        val historyDataStandardUseCase = HistoryDataStandardUseCase(
+            WikiMediaApiServiceImpl(
+                RetrofitWikiApiFactory.getInstance(okHttpClient).create(
+                    WikiMediaApiService::class.java)), JsonConverterService())
+
 
         val prefStore = PreferenceDataStoreFactory.create(
             corruptionHandler = ReplaceFileCorruptionHandler(
@@ -63,24 +114,38 @@ class MainActivity : AppCompatActivity() {
             produceFile = { application.applicationContext.preferencesDataStoreFile("USER_PREFF") }
         )
         val userPreferencesRepository = UserPreferencesRepository(prefStore)
-        val settingsViewModel : ISettingsViewModel  by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
+        val settingsViewModel : SettingsViewModel by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
+
+
         val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
         val deviceLanguage = getDeviceLanguage()
-        settingsViewModel.setDeviceLanguage(deviceLanguage)
+        //settingsViewModel.setDeviceLanguage(deviceLanguage)
+
+        val historyViewModel: IHistoryViewModel  by viewModels { HistoryViewModelFactory (
+            lang = appConfigState.appLanguage,
+            historyDataUseCase =  historyDataStandardUseCase,
+            historyCalendar = HistoryCalendar(),
+            historyDataMap = HistoryDataMap()
+        )}
+
+
 
         when (appConfigState.isLoading) {
             true ->
                 { }//load animation
             false -> {
+
                 if (deviceLanguage != appConfigState.appLanguage.langId) {
                     setPerAppLanguage(appConfigState)
+
+
                 }
 
                 isStatePendingRestore = false
 
                 val windowSize = calculateWindowSizeClass(this)
 
-                MainContent(settingsViewModel, appConfigState, windowSize)
+                MainContent(settingsViewModel, appConfigState, historyViewModel, windowSize)
             }
         }
     }
