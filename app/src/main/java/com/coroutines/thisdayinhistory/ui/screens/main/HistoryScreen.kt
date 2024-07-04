@@ -45,18 +45,33 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.coroutines.api.translation.TranslationApiService
+import com.coroutines.api.wiki.WikiMediaApiService
+import com.coroutines.api.wiki.WikiMediaApiServiceImpl
+import com.coroutines.data.converters.JsonConverterService
 import com.coroutines.data.models.HistoricalEvent
+import com.coroutines.data.models.LangEnum
 import com.coroutines.thisdayinhistory.R
 import com.coroutines.thisdayinhistory.drawer.AppNavigationDrawerWithContent
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 import com.coroutines.thisdayinhistory.components.NAV_ARGUMENT_HISTORY_EVENT
 import com.coroutines.thisdayinhistory.ui.appbar.AppBar
 import com.coroutines.thisdayinhistory.ui.components.BottomNavigationBarCalendar
+import com.coroutines.thisdayinhistory.ui.screens.welcome.RetrofitTranslationApiFactory
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelMock
 import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
+import com.coroutines.thisdayinhistory.uimodels.HistoryCalendar
+import com.coroutines.thisdayinhistory.uimodels.HistoryDataMap
+import com.coroutines.usecase.HistoryDataStandardUseCase
+import okhttp3.Cache
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -64,7 +79,7 @@ fun HistoryScreen(
     modifier: Modifier = Modifier,
     navController: NavController,
     settingsViewModel : ISettingsViewModel,
-    viewModel: IHistoryViewModel =  HistoryViewModelMock()
+    viewModel: IHistoryViewModel
 ){
    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
    AppNavigationDrawerWithContent(

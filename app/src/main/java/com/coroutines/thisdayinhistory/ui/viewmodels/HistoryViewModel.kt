@@ -8,12 +8,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.coroutines.data.models.EventCategoryEnum
 import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.data.models.LangEnum
 import com.coroutines.models.synonyms.HistoryDay
 import com.coroutines.models.synonyms.HistoryMonth
+import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.ui.state.DataRequestParams
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
@@ -61,6 +63,16 @@ private data class HistoryState(
         catsByLanguage = catsByLanguage,
         filter = filter
     )
+}
+
+class HistoryViewModelFactory(private val lang: LangEnum,
+                              private val historyDataUseCase: IHistoryDataStandardUseCase,
+                              private val historyDataMap: IHistoryDataMap,
+                              val historyCalendar: IHistoryCalendar
+    ) : ViewModelProvider.Factory {@Suppress("UNCHECKED_CAST")
+override fun <T : ViewModel> create(modelClass: Class<T>): T {
+    return HistoryViewModel(lang, historyDataUseCase, historyDataMap, historyCalendar) as T
+}
 }
 
 @SuppressLint("StaticFieldLeak")

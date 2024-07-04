@@ -1,5 +1,6 @@
 package com.coroutines.thisdayinhistory.ui.viewmodels
 
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import com.coroutines.data.models.HistoricalEvent
@@ -7,7 +8,7 @@ import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import kotlinx.coroutines.flow.StateFlow
 import java.time.LocalDateTime
 
-
+@Immutable
 interface IHistoryViewModel {
 
     val historyData: SnapshotStateList<HistoricalEvent>
