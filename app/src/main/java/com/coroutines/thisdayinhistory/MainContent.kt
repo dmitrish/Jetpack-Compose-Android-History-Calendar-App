@@ -12,13 +12,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpSize
 import androidx.lifecycle.viewmodel.compose.LocalViewModelStoreOwner
 import androidx.navigation.compose.rememberNavController
+import com.coroutines.api.wiki.WikiMediaApiService
+import com.coroutines.api.wiki.WikiMediaApiServiceImpl
+import com.coroutines.data.converters.JsonConverterService
+import com.coroutines.data.models.LangEnum
 import com.coroutines.thisdayinhistory.components.rememberSystemUiController
 import com.coroutines.thisdayinhistory.graph.AppNavHost
 import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
 import com.coroutines.thisdayinhistory.ui.theme.AppThemeLocal
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
+import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
+import com.coroutines.thisdayinhistory.uimodels.HistoryCalendar
+import com.coroutines.thisdayinhistory.uimodels.HistoryDataMap
+import com.coroutines.usecase.HistoryDataStandardUseCase
+import com.coroutines.usecase.IHistoryDataStandardUseCase
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 val LocalAppTheme = compositionLocalOf {
@@ -28,6 +38,7 @@ val LocalAppTheme = compositionLocalOf {
 fun MainContent(
     settingsViewModel: ISettingsViewModel,
     appConfigState: AppConfigurationState,
+    historyViewModel: IHistoryViewModel,
     windowSize: WindowSizeClass
 ){
     val navController = rememberNavController()
@@ -52,6 +63,8 @@ fun MainContent(
             val localAppTheme =
                 AppThemeLocal(appConfigState.appTheme, windowSize)
 
+
+
             CompositionLocalProvider(
                 LocalViewModelStoreOwner provides viewModelStoreOwner,
                 LocalAppTheme provides localAppTheme
@@ -59,6 +72,7 @@ fun MainContent(
                 AppNavHost(
                     navController = navController,
                     settingsViewModel = settingsViewModel,
+                    historyViewModel = historyViewModel,
                     isOnboarded = appConfigState.isOnboarded
                 )
             }
