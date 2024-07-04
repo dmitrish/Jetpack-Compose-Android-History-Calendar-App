@@ -102,6 +102,7 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/bottomsheet">Modal Bottom Sheet to display expanded image</li>
   <li><a href="http://coroutines.com/thisdayinhistory/searchbar">Search Bar</a></li>
   <li><a href="http://coroutines.com/thisdayinhistory/bottombarcalendar">Bottom Bar Date Picker</a></li>
+  <li><a href="http://coroutines.com/thisdayinhistory/historyviewmodel">Real ViewModel with real API calls</li>
   
 <li>More to follow...</li>
 
