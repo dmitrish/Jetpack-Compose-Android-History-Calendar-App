@@ -4,7 +4,7 @@
 
  <video preload="auto"  width="460" controls>
       <source
-        src="http://coroutines.com/lib/dayinhistory1.mp4"
+        src="https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/64e0c782-f0ff-46cb-9780-ea8402d742ec"
         type="video/mp4"
       />
   </video>
