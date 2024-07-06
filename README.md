@@ -8,7 +8,7 @@
 
  <video preload="auto"  width="460" controls>
       <source
-        src="https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/454e3162-7555-4679-a8b5-718f1661d2a0"
+        src='https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/454e3162-7555-4679-a8b5-718f1661d2a0'
         type="video/mp4"
       />
   </video>
