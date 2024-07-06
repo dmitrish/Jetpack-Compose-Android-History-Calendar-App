@@ -22,6 +22,7 @@ import androidx.datastore.core.handlers.ReplaceFileCorruptionHandler
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.emptyPreferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.coroutines.api.wiki.WikiMediaApiService
 import com.coroutines.api.wiki.WikiMediaApiServiceImpl
@@ -38,6 +39,7 @@ import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModelFactory
 import com.coroutines.thisdayinhistory.uimodels.HistoryCalendar
 import com.coroutines.thisdayinhistory.uimodels.HistoryDataMap
 import com.coroutines.usecase.HistoryDataStandardUseCase
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -46,7 +48,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var isStatePendingRestore = true
 
@@ -121,12 +123,20 @@ class MainActivity : AppCompatActivity() {
         val deviceLanguage = getDeviceLanguage()
         //settingsViewModel.setDeviceLanguage(deviceLanguage)
 
-        val historyViewModel: IHistoryViewModel  by viewModels { HistoryViewModelFactory (
+        /*val historyViewModel: IHistoryViewModel  by viewModels { HistoryViewModelFactory (
             lang = appConfigState.appLanguage,
             historyDataUseCase =  historyDataStandardUseCase,
             historyCalendar = HistoryCalendar(),
             historyDataMap = HistoryDataMap()
-        )}
+        )}*/
+
+        val historyViewModel =
+            hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
+                key = appConfigState.appLanguage.langId
+            ) { factory ->
+                factory.create(appConfigState.appLanguage)
+            }
+
 
 
 

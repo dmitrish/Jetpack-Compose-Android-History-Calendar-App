@@ -33,7 +33,18 @@ lifecycleRuntimeComposeAndroid = "2.8.0"
 material3WindowSizeClassAndroid = "1.2.1"
 material3WindowSizeClassAndroidVersion = "1.2.1"
 
+ksp = "2.0.0-1.0.21"
+hilt = "2.51.1"
+hiltNavigation = "1.2.0"
+hiltExtensions = "1.2.0"
+
 [libraries] #TOML table
+dagger-hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+dagger-hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hiltExtensions" }
+hilt-navigation-compose = { module="androidx.hilt:hilt-navigation-compose", version.ref ="hiltNavigation"}
+
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" } #TOML inline table with key/values
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -72,6 +83,10 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 #androidx-material3-window-size-class-android = { group = "androidx.compose.material3", name = "material3-window-size-class-android", version.ref = "material3WindowSizeClassAndroidVersion" }
 #androidx-material3-window-size-class-android = { group = "androidx.compose.material3", name = "material3-window-size-class-android", version.ref = "material3WindowSizeClassAndroid" }
+
+
+
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -81,3 +96,6 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt"}
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless"}
+
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

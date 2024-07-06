@@ -13,9 +13,10 @@ import kotlinx.datetime.toKotlinTimeZone
 import kotlinx.datetime.toLocalDateTime
 import java.time.LocalDateTime
 import java.time.ZoneId
+import javax.inject.Inject
 
 
-class HistoryCalendar  constructor() : IHistoryCalendar {
+class HistoryCalendar @Inject  constructor() : IHistoryCalendar {
 
     private val clock: Clock = Clock.System
     private var currentMoment : Instant
