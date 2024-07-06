@@ -5,9 +5,10 @@ import com.coroutines.data.converters.IJsonConverterService
 import com.coroutines.data.models.CountryCodeMapping
 import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.models.wiki.WikimediaEvent
+import javax.inject.Inject
 
 
-class HistoryDataStandardPlusFlagsUseCase
+class HistoryDataStandardPlusFlagsUseCase @Inject
 constructor(
     wikiMediaApi: WikiMediaApi,
     private val jsonConverter: IJsonConverterService,

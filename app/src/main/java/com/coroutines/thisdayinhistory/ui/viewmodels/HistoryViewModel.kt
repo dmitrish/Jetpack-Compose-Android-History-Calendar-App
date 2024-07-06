@@ -27,6 +27,10 @@ import com.coroutines.thisdayinhistory.uimodels.IInternationalMonth
 import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
 import com.coroutines.thisdayinhistory.uimodels.SelectedDate
 import com.coroutines.usecase.IHistoryDataStandardUseCase
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -77,12 +81,12 @@ override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
 @SuppressLint("StaticFieldLeak")
 @Immutable
-//@HiltViewModel(assistedFactory = HistoryViewModel.IHistoryViewModelFactory::class)
-class HistoryViewModel  constructor(
-    private val lang: LangEnum,
+@HiltViewModel(assistedFactory = HistoryViewModel.IHistoryViewModelFactory::class)
+class HistoryViewModel @AssistedInject constructor(
+    @Assisted private val lang: LangEnum,
     private val historyDataUseCase: IHistoryDataStandardUseCase,
     private val historyDataMap: IHistoryDataMap,
-    val historyCalendar: IHistoryCalendar,
+    val historyCalendar: IHistoryCalendar
 ) : IHistoryViewModel,
     IHistoryCalendar by historyCalendar,
     IInternationalMonth by InternationalMonth(
@@ -306,10 +310,10 @@ class HistoryViewModel  constructor(
         }
     }
 
-   /* @AssistedFactory
+    @AssistedFactory
     interface IHistoryViewModelFactory {
         fun create(language: LangEnum): HistoryViewModel
-    }*/
+    }
     companion object {
         const val TAG = "HistoryViewModel"
         const val REQUEST_COUNT_SUCCESS = 3
