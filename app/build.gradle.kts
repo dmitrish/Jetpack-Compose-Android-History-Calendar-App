@@ -1,8 +1,11 @@
 
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -34,11 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
 
         //comment following lines (freeCompilerArgs) to disable compose-metrics
         freeCompilerArgs += listOf(
@@ -55,12 +58,14 @@ android {
 
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/*"
+            excludes +="/META-INF/gradle/incremental.annotation.processors"
         }
     }
 }
 
 dependencies {
+
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.core.ktx)
@@ -85,15 +90,17 @@ dependencies {
     implementation(libs.androidx.palette)
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.kotlinx.datetime)
+    //ksp/hilt
+    ksp(libs.dagger.hilt.compiler)
+    ksp(libs.hilt.compiler)
+    implementation(libs.dagger.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+
     implementation(project(":common"))
     implementation(project(":data"))
     implementation(project(":api"))
     implementation(project(":models"))
     implementation(project(":usecase"))
-
-    // implementation(libs.androidx.material3.window.size.class. android)
-    /* implementation(libs.androidx.lifecycle.runtime.compose.android)*/
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

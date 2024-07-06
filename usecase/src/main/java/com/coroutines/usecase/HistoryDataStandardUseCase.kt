@@ -13,11 +13,12 @@ import com.coroutines.models.wiki.OriginalImage
 import com.coroutines.models.wiki.WikimediaEvent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 import kotlin.streams.asSequence
 
 class CountryCodeMappingsRawJson (val value: String) {
 }
-open class HistoryDataStandardUseCase //@Inject
+open class HistoryDataStandardUseCase @Inject
 constructor(
     private val wikiMediaApi: WikiMediaApi,
     private val jsonConverter: IJsonConverterService,
