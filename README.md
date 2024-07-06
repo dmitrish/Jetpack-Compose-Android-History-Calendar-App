@@ -4,7 +4,7 @@
 
  <video preload="auto"  width="460" controls>
       <source
-        src="https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/64e0c782-f0ff-46cb-9780-ea8402d742ec"
+        src="https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/413a8429-b82b-4750-a644-a6f7f1897292"
         type="video/mp4"
       />
   </video>
