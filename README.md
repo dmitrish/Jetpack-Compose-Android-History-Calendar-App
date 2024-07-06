@@ -7,7 +7,7 @@
         src="http://coroutines.com/lib/dayinhistory1.mp4"
         type="video/mp4"
       />
-
+  </video>
 
 Open-sourcing as I am re-writing (based on a better understanding of Compose) an app I wrote a couple of years ago. 
 <p><a href="https://play.google.com/store/apps/details?id=com.coroutines.historycat">History Calendar app on Google Play Store</a></p>
