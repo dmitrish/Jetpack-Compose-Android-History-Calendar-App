@@ -12,6 +12,8 @@ import androidx.compose.material3.DatePickerDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import com.coroutines.thisdayinhistory.components.ADJUSTED_COLOR_LIGHTER_FACTOR
 import com.coroutines.thisdayinhistory.ui.utils.lighter
@@ -52,6 +54,7 @@ fun HistoryDatePickerDialog(
     }
 
     DatePickerDialog(
+        modifier = Modifier.testTag("datePickerDialog"),
         colors = DatePickerDefaults.colors().copy(
             containerColor = MaterialTheme.colorScheme.background.lighter(
                 ADJUSTED_COLOR_LIGHTER_FACTOR),
