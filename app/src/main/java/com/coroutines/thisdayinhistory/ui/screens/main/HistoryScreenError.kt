@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,12 +22,28 @@ fun HistoryScreenError(errorMessage: String) {
             .fillMaxSize()
             .wrapContentSize(Alignment.Center)
     ) {
-        val errorMessageFormatter: String =
+        val errorMessagePrefix = stringResource(id =R.string.error_message_prefix)
+
+        if (BidiFormatter.getInstance().isRtlContext){
+            Text(
+                text= errorMessage + " " + errorMessagePrefix,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        }
+        else{
+            Text(
+                text= errorMessagePrefix + " " + errorMessage,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+        }
+
+       /* val errorMessageFormatter: String =
             java.lang.String.format(
                 stringResource(R.string.error_message_prefix),
                 BidiFormatter.getInstance().unicodeWrap(errorMessage)
             )
-        Text(errorMessageFormatter)
+        Text(errorMessageFormatter)*/
     }
 }
 
