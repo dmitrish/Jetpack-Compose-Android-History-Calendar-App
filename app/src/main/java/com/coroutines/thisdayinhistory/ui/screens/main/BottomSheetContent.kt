@@ -16,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -78,6 +79,7 @@ fun BottomSheetContent(viewModel: IHistoryViewModel, readyState: Boolean, domina
                         text = viewModel.selectedItem.shortTitle!!.replace("_", " "),
                         fontSize = 20.sp,
                         modifier = Modifier
+                            .testTag("bottomSheetContentText")
                             .padding(10.dp)
                             .padding(bottom = 10.dp),
                         color = dominantColorState.onColor,
