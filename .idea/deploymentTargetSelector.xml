@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="CatLogoTest">
+      <SelectionState runConfigName="HistoryListItemTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="catLogoImageInAutoThemeInDarkMode()">
+      <SelectionState runConfigName="allLanguagesCountTest()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="catLogoImageInAutoThemeInLightMode()">
+      <SelectionState runConfigName="bottomSheetTitleShouldDisplay()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="CatLogoThemeTest">
+      <SelectionState runConfigName="BottomSheetContentTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="catLogoHeaderColorInDarkMode()">
+      <SelectionState runConfigName="bottomSheetTitleShouldDisplay() (1)">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
