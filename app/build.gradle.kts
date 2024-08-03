@@ -16,8 +16,8 @@ android {
         applicationId = "com.coroutines.thisdayinhistory"
         minSdk = 29
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 38
+        versionName = "3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -27,9 +27,22 @@ android {
         resourceConfigurations += listOf("en", "fr", "it", "pt", "es", "de", "sv", "ar", "ru")
     }
 
+
+    signingConfigs {
+        create("release") {
+            storeFile = file("/Users/dmitri/Documents/ktor/historycatkey.jks")
+            storePassword = "dmitri"
+            keyAlias = "upload"
+            keyPassword = "dmitri"
+        }
+    }
+
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
