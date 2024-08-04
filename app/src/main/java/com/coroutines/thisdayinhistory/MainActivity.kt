@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     private fun runUi() = setContent {
 
-        val historyDataStandardUseCase = HistoryDataStandardUseCase(
+        /*val historyDataStandardUseCase = HistoryDataStandardUseCase(
             WikiMediaApiServiceImpl(
                 RetrofitWikiApiFactory.getInstance(okHttpClient).create(
                     WikiMediaApiService::class.java)), JsonConverterService())
@@ -115,9 +115,9 @@ class MainActivity : AppCompatActivity() {
             scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
             produceFile = { application.applicationContext.preferencesDataStoreFile("USER_PREFF") }
         )
-        val userPreferencesRepository = UserPreferencesRepository(prefStore)
-        val settingsViewModel : SettingsViewModel by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
-
+        val userPreferencesRepository = UserPreferencesRepository(prefStore)*/
+        //val settingsViewModel : SettingsViewModel by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
+        val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
 
         val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
         val deviceLanguage = getDeviceLanguage()

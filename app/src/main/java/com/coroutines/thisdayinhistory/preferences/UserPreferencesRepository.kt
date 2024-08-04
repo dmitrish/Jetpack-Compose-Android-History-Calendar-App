@@ -8,9 +8,10 @@ import com.coroutines.data.models.LangEnum
 import com.coroutines.data.models.OnboardingStatusEnum
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 
-class UserPreferencesRepository constructor(
+class UserPreferencesRepository @Inject constructor(
     private val dataStore: DataStore<Preferences>
 ) {
     fun getLanguagePreference(): Flow<LangEnum> {
