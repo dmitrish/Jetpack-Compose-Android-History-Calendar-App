@@ -12,6 +12,7 @@ import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.ui.state.AppConfigurationState
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
 import com.coroutines.thisdayinhistory.ui.utils.zip
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -19,6 +20,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 private data class SettingsViewModelState(
     val isLoading: Boolean = true,
@@ -44,8 +46,8 @@ override fun <T : ViewModel> create(modelClass: Class<T>): T {
     }
 }
 
-
-class SettingsViewModel  constructor(
+@HiltViewModel
+class SettingsViewModel @Inject constructor(
     private val userPreferencesRepository: UserPreferencesRepository
 ) :
     ISettingsViewModel, ViewModel() {

@@ -13,11 +13,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.coroutines.thisdayinhistory"
+        applicationId = "com.coroutines.historycat"
         minSdk = 29
         targetSdk = 34
-        versionCode = 38
-        versionName = "3.0"
+        versionCode = 40
+        versionName = "3.0.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
