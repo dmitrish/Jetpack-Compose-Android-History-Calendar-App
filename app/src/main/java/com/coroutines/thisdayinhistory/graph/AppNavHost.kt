@@ -23,3 +23,6 @@ fun AppNavHost(
         mainGraph(navController, settingsViewModel, historyViewModel)
     }
 }
+
+
+

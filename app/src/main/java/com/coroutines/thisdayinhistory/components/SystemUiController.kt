@@ -1,4 +1,4 @@
-@file:Suppress("DEPRECATION")
+@file:Suppress("DEPRECATION", "MagicNumber")
 
 package com.coroutines.thisdayinhistory.components
 
@@ -328,3 +328,4 @@ private val BlackScrim = Color(0f, 0f, 0f, 0.3f) // 30% opaque black
 private val BlackScrimmed: (Color) -> Color = { original ->
     BlackScrim.compositeOver(original)
 }
+

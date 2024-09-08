@@ -21,3 +21,4 @@ const val FLAG_ITALY_1861_1946 = "italy_1861_1946"
 const val FLAG_GERMANY_1933_1945 = "nazi_germany"
 const val FLAG_COUNTRY_RESOURCE_NAME_PREFIX = "country_"
 const val FLAG_COUNTRY_RESOURCE_HTTP_PREFIX = "http"
+

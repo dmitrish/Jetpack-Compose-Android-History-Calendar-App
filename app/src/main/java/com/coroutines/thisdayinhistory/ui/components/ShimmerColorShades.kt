@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.coroutines.thisdayinhistory.ui.components
 
 import androidx.compose.ui.graphics.Color

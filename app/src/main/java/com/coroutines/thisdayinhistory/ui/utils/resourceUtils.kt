@@ -15,7 +15,7 @@ inline fun <reified T: Class<*>> T.getId(resourceName: String): Int {
 }
 
 object ResourceLookUpByReflection {
-    var typeCache: MutableMap<String, Int?> =  ConcurrentHashMap()
+    private var typeCache: MutableMap<String, Int?> =  ConcurrentHashMap()
 
     @Suppress("ReturnCount")
     fun getResourceId(name: String) : Int {

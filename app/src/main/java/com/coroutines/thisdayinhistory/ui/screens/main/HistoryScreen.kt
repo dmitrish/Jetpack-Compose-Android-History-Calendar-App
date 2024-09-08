@@ -192,6 +192,7 @@ private fun BottomBar(
     }
 }
 
+@Suppress("MagicNumber")
 private fun keyFramesToNonTargetState(initialSize: IntSize) = keyframes {
     IntSize(
         initialSize.width / 5,
@@ -210,7 +211,7 @@ private fun keyFramesToNonTargetState(initialSize: IntSize) = keyframes {
     durationMillis = 70
 }
 
-
+@Suppress("MagicNumber")
 private fun keyFramesToTargetState(targetSize: IntSize) = keyframes {
     // Expand horizontally first.
     IntSize(0, 0) at 0

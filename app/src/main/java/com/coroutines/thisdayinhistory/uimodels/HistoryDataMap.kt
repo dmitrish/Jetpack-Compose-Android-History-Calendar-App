@@ -20,3 +20,4 @@ class HistoryDataMap @Inject  constructor() : IHistoryDataMap {
         historyDataMap.put(EventCategoryEnum.births, _historyBirthsData)
     }
 }
+

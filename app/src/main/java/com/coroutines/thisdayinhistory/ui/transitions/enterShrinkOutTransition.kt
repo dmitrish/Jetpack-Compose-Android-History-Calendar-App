@@ -22,3 +22,4 @@ fun exitShrinkOutTransition(): ExitTransition {
         IntSize(fullSize.width / 10, fullSize.height / 5)
     }
 }
+

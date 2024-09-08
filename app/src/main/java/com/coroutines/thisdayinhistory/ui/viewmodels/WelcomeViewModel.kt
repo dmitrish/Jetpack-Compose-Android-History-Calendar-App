@@ -6,16 +6,18 @@ import androidx.lifecycle.viewModelScope
 import com.coroutines.api.translation.TranslationApi
 import com.coroutines.data.models.TranslateRequestParams
 import com.coroutines.thisdayinhistory.ui.state.WelcomeScreenUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withTimeout
+import javax.inject.Inject
 
-
+@HiltViewModel
 class WelcomeViewModel
-constructor(private val translationApiService: TranslationApi):
+@Inject constructor(private val translationApiService: TranslationApi):
     ViewModel(), IWelcomeViewModel {
     private var _prompt: String = DEFAULT_LANGUAGE_PROMPT
     private val _screenState = MutableStateFlow<WelcomeScreenUiState>(

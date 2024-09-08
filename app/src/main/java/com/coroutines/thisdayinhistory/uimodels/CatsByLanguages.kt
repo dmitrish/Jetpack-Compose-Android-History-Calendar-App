@@ -93,3 +93,4 @@ data class CatsByLanguage(val langEnum: LangEnum){
         )
     }
 }
+

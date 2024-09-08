@@ -15,3 +15,4 @@ abstract class JsonConverterServiceModule {
         jsonConverter: JsonConverterServiceImplHilt,
     ): IJsonConverterService
 }
+
