@@ -28,7 +28,10 @@ fun NavGraphBuilder.mainGraph(
     navigation(startDestination = MainNavOption.HistoryScreen.name, route = NavRoutes.MainRoute.name) {
 
         composable(MainNavOption.HistoryScreen.name) {
-           HistoryScreen(navController = navController, settingsViewModel = settingsViewModel, viewModel = historyViewModel)
+           HistoryScreen(navController = navController,
+               settingsViewModel = settingsViewModel,
+               viewModel = historyViewModel
+           )
         }
 
         composable(
@@ -89,3 +92,5 @@ fun NavGraphBuilder.mainGraph(
         }
     }
 }
+
+

@@ -41,3 +41,4 @@ object AppModule {
             .build().create(WikiMediaApiService::class.java)
     }
 }
+

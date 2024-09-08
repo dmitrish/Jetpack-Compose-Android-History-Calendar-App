@@ -16,3 +16,4 @@ abstract class UseCasesModule {
         historyDataStandardUseCase: HistoryDataStandardUseCase,
     ): IHistoryDataStandardUseCase
 }
+

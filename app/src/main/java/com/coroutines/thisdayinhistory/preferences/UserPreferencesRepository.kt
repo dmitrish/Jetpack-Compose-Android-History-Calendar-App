@@ -37,3 +37,4 @@ class UserPreferencesRepository @Inject constructor(
         dataStore.setEnum(OnboardingStatusEnum.Onboarded)
     }
 }
+

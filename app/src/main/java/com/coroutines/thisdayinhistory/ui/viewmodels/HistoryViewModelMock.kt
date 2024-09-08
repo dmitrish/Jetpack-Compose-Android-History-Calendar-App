@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package com.coroutines.thisdayinhistory.ui.viewmodels
 
 import androidx.compose.runtime.mutableStateListOf
@@ -46,6 +48,7 @@ private data class HistoryStateMock(
         filter =  filter
     )
 }
+@Suppress("MaxLineLength")
 class HistoryViewModelMock : ViewModel(), IHistoryViewModel {
     private val data = mutableStateListOf<HistoricalEvent>()
     private val isScrolledState = mutableStateOf(false)

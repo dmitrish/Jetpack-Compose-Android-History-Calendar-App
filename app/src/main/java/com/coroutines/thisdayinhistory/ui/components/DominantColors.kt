@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber")
 package com.coroutines.thisdayinhistory.ui.components
 
 import android.content.Context
@@ -191,3 +192,4 @@ private suspend fun calculateSwatchesInImage(
         }
     } ?: emptyList()
 }
+

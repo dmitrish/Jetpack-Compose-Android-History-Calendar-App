@@ -13,3 +13,4 @@ class WikiMediaApiServiceImpl @Inject constructor(private val apiService: WikiMe
         option: String,
     ): WikiEvent = apiService.getWikimediaPage(historyMonth, historyDay, language, option)
 }
+

@@ -56,6 +56,7 @@ import com.coroutines.thisdayinhistory.ui.utils.padUp
 import com.coroutines.thisdayinhistory.ui.utils.stripHtml
 
 @OptIn(ExperimentalFoundationApi::class)
+@Suppress("MagicNumber")
 @Composable
 fun CollapsingEffectScreen(
     modifier: Modifier,
