@@ -7,3 +7,4 @@ data class ShareableHistoryEvent(
     val bitMapName: String?,
     val shareWith: ShareWith = ShareWith.OTHER
 )
+

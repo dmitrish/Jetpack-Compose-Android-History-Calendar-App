@@ -141,3 +141,5 @@ private fun gradientColors(themeViewModelState: AppConfigurationState) =
             MaterialTheme.colorScheme.background,
             MetallicSilver
         )
+
+

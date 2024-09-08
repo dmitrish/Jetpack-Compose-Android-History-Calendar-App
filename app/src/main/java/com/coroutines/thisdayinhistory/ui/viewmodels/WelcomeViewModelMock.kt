@@ -45,3 +45,4 @@ class WelcomeViewModelMock(
         private const val DEFAULT_LANGUAGE_PROMPT  =  "Please choose your language"
     }
 }
+

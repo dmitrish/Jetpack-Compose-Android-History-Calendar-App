@@ -52,24 +52,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
     private var isStatePendingRestore = true
 
-    val cacheSize = 5242880L
-    lateinit var myCache : Cache
-    lateinit var okHttpClient: OkHttpClient
-   // val myCache = Cache(this.applicationContext.cacheDir, cacheSize)
-
-
-
-    object RetrofitWikiApiFactory {
-
-        val baseUrl = WikiMediaApiService.BASE_WIKI_URL
-
-        fun getInstance(okHttpClient: OkHttpClient): Retrofit {
-            return Retrofit.Builder().baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(okHttpClient)
-                .build()
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //https://www.youtube.com/watch?v=mlL6H-s0nF0
@@ -83,64 +65,26 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        myCache = Cache(this.applicationContext.cacheDir, cacheSize)
-        okHttpClient = OkHttpClient.Builder()
-            .cache(myCache)
-            .addInterceptor { chain ->
-                var request = chain.request()
-                // request = if (hasNetwork(context)!!)
-                //     request.newBuilder().header("Cache-Control", "public, max-age=" + 5).build()
-                // else
-                request =  request.newBuilder().header("Cache-Control", "public, max-age=" + 5).build()
-                chain.proceed(request)
-            }
-            .build()
-
         runUi()
     }
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     private fun runUi() = setContent {
 
-        /*val historyDataStandardUseCase = HistoryDataStandardUseCase(
-            WikiMediaApiServiceImpl(
-                RetrofitWikiApiFactory.getInstance(okHttpClient).create(
-                    WikiMediaApiService::class.java)), JsonConverterService())
+    val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
+
+    val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
+    val deviceLanguage = getDeviceLanguage()
 
 
-        val prefStore = PreferenceDataStoreFactory.create(
-            corruptionHandler = ReplaceFileCorruptionHandler(
-                produceNewData = { emptyPreferences() }
-            ),
-            scope = CoroutineScope(Dispatchers.IO + SupervisorJob()),
-            produceFile = { application.applicationContext.preferencesDataStoreFile("USER_PREFF") }
-        )
-        val userPreferencesRepository = UserPreferencesRepository(prefStore)*/
-        //val settingsViewModel : SettingsViewModel by viewModels { SettingsViewModelFactory (userPreferencesRepository) }
-        val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
+    val historyViewModel =
+        hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
+            key = appConfigState.appLanguage.langId
+        ) { factory ->
+            factory.create(appConfigState.appLanguage)
+        }
 
-        val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
-        val deviceLanguage = getDeviceLanguage()
-        //settingsViewModel.setDeviceLanguage(deviceLanguage)
-
-        /*val historyViewModel: IHistoryViewModel  by viewModels { HistoryViewModelFactory (
-            lang = appConfigState.appLanguage,
-            historyDataUseCase =  historyDataStandardUseCase,
-            historyCalendar = HistoryCalendar(),
-            historyDataMap = HistoryDataMap()
-        )}*/
-
-        val historyViewModel =
-            hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
-                key = appConfigState.appLanguage.langId
-            ) { factory ->
-                factory.create(appConfigState.appLanguage)
-            }
-
-
-
-
-        when (appConfigState.isLoading) {
+     when (appConfigState.isLoading) {
             true ->
                 { }//load animation
             false -> {
@@ -202,4 +146,6 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
 

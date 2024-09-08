@@ -7,3 +7,5 @@ import kotlinx.coroutines.flow.Flow
 interface TranslationApi {
     fun getTranslation(language: String, text: String): Flow<TranslateResult>
 }
+
+

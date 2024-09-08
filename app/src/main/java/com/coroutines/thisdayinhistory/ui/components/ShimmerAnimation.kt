@@ -12,6 +12,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 
+@Suppress("MagicNumber")
 @Composable
 fun ShimmerAnimation() {
     /*

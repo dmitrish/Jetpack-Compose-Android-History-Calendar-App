@@ -16,3 +16,4 @@ abstract class HistoryDataMapModule {
     ): IHistoryDataMap
 
 }
+

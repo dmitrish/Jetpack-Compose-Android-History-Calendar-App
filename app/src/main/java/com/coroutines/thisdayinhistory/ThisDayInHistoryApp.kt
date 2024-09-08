@@ -35,3 +35,5 @@ class ThisDayInHistoryApp : Application(), ImageLoaderFactory {
         const val CACHE_DIR = "image_cache"
     }
 }
+
+
