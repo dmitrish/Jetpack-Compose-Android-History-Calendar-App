@@ -45,16 +45,7 @@ import kotlin.time.Duration.Companion.seconds
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitTranslationApiFactory {
 
-    val baseUrl = TranslationApiService.BASE_URL
-
-    fun getInstance(): Retrofit {
-        return Retrofit.Builder().baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-}
 
 @Composable
 fun WelcomeScreen (
