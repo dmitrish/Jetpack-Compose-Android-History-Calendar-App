@@ -57,7 +57,6 @@ import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 import com.coroutines.thisdayinhistory.components.NAV_ARGUMENT_HISTORY_EVENT
 import com.coroutines.thisdayinhistory.ui.appbar.AppBar
 import com.coroutines.thisdayinhistory.ui.components.BottomNavigationBarCalendar
-import com.coroutines.thisdayinhistory.ui.screens.welcome.RetrofitTranslationApiFactory
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.HistoryViewModelState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
