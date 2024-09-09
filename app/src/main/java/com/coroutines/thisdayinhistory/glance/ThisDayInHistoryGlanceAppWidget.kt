@@ -2,6 +2,7 @@ package com.coroutines.thisdayinhistory.glance
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -10,10 +11,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toBitmapOrNull
+import androidx.core.net.toUri
+import androidx.glance.Button
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.Image
+import androidx.glance.action.actionStartActivity
+import androidx.glance.action.clickable
 import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.components.Scaffold
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.lazy.LazyColumn
@@ -33,6 +39,7 @@ import coil.request.ImageRequest
 import coil.request.SuccessResult
 import com.coroutines.models.synonyms.HistoryDay
 import com.coroutines.models.synonyms.HistoryMonth
+import com.coroutines.thisdayinhistory.MainActivity
 import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -77,7 +84,12 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
                     //val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
                     val dataUnwrapped = data.collectAsState()
 
-                    Scaffold (
+                    GlanceContent(
+                        context = context,
+                        data = dataUnwrapped.value ,
+                        header = internationalMonth.monthSelected + ", " + dayNumber)
+
+                  /*  Scaffold (
                         titleBar =  { Text(
                             "Today in History: " + internationalMonth.monthSelected + ", " + dayNumber,
                             modifier = GlanceModifier.padding(20.dp)
@@ -89,21 +101,32 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
                                 .background(Color.White)
                                 .padding(16.dp)
                             // .clickable(actionRunCallback<RefreshQuoteAction>())
-                        ) {
-                            LazyColumn {
+                        ){
+                            LazyColumn () {
                                 items(items = dataUnwrapped.value) { item ->
-                                    Row {
+                                    Row (GlanceModifier.clickable {
+                                        actionStartActivity(
+                                            Intent(context.applicationContext, MainActivity::class.java)
+                                                .setAction(Intent.ACTION_VIEW)
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                                               // .setData("https://socialite.google.com/chat/${model.contactId}".toUri()),
+                                    }) {
                                         CoinImage(coinImage = item.bitMap!!)
                                         androidx.glance.layout.Spacer( modifier = GlanceModifier.size(16.dp))
 
-                                        Text(item.description)
+                                       // Text(item.description)
+                                        Button(text = item.description, onClick = actionStartActivity(
+                                            Intent(context.applicationContext, MainActivity::class.java)
+                                                .setAction(Intent.ACTION_VIEW)
+                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                                    )
                                     }
                                     androidx.glance.layout.Spacer( modifier = GlanceModifier.size(8.dp))
                                 }
 
                             }
                         }
-                    }
+                    }*/
                     }
 
 
@@ -120,16 +143,6 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
                     }
                 }
             }
-           /* provideContent {
-                Box(
-                    modifier = GlanceModifier
-                        .background(Color.White)
-                        .padding(16.dp)
-                    // .clickable(actionRunCallback<RefreshQuoteAction>())
-                ) {
-                    Text(text = "History")
-                }
-            }*/
         }
 
     }
