@@ -25,8 +25,10 @@ import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.ContentScale
 import androidx.glance.layout.Row
+import androidx.glance.layout.fillMaxHeight
 import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import androidx.glance.layout.size
 import androidx.glance.layout.wrapContentSize
@@ -49,7 +51,8 @@ fun GlanceContent (modifier: GlanceModifier = GlanceModifier,
         titleBar =  {
             Text(
                 text = "Today in History: $header",
-                modifier = GlanceModifier.padding(20.dp)
+                modifier = GlanceModifier.fillMaxWidth().padding(top = 10.dp, bottom = 10.dp ),
+                style = TextStyle( textAlign = TextAlign.Center, fontSize = 14.sp)
             )
         }
     ){
@@ -60,7 +63,7 @@ fun GlanceContent (modifier: GlanceModifier = GlanceModifier,
         ){
             LazyColumn () {
                 items(items = data) { item ->
-                    Row (GlanceModifier.wrapContentSize().padding(bottom = 15.dp).clickable {
+                    Row (GlanceModifier.padding(bottom = 15.dp).clickable {
                         actionStartActivity(
                             Intent(context.applicationContext, MainActivity::class.java)
                                 .setAction(Intent.ACTION_VIEW)
@@ -69,25 +72,40 @@ fun GlanceContent (modifier: GlanceModifier = GlanceModifier,
                         CoinImage(coinImage = item.bitMap!!)
                         androidx.glance.layout.Spacer( modifier = GlanceModifier.size(16.dp))
 
-                        // Text(item.description)
-                        Button(
-                            text = "${item.year}: ${item.description}",
-                            maxLines = 3,
-                            style = TextStyle(
-                                textAlign = TextAlign.Start,
-                                fontSize = 12.sp,
-                                fontStyle = FontStyle.Normal),
-                            colors = ButtonDefaults.buttonColors(
-                                backgroundColor = ColorProvider(Color.Transparent),
-                                ColorProvider(Color.Black)
-                            ),
-                            onClick = actionStartActivity(
-                            Intent(context.applicationContext, MainActivity::class.java)
-                                .setAction(Intent.ACTION_VIEW)
-                                .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)),
-                            modifier = modifier.fillMaxSize()
-                        )
+                      //  Text("2022L This is just a sample text to display and nothing else")
+                         Text(text = "${item.year}: ${item.description}",
+                             modifier = modifier.clickable(
+                                 actionStartActivity(
+                                     Intent(context.applicationContext, MainActivity::class.java)
+                                         .setAction(Intent.ACTION_VIEW)
+                                         .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                         .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                 )
+                             )
+                         )
+
+                       /* Box() {
+                            Button(
+                                text = "${item.year}: ${item.description}",
+                                maxLines = 4,
+                                style = TextStyle(
+                                    textAlign = TextAlign.Left,
+                                    fontSize = 12.sp,
+                                    fontStyle = FontStyle.Normal
+                                ),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = ColorProvider(Color.Transparent),
+                                    ColorProvider(Color.Black)
+                                ),
+                                onClick = actionStartActivity(
+                                    Intent(context.applicationContext, MainActivity::class.java)
+                                        .setAction(Intent.ACTION_VIEW)
+                                        .setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                ),
+                               // modifier = modifier.height(110.dp)
+                            )
+                        }*/
                     }
                     androidx.glance.layout.Spacer( modifier = GlanceModifier.size(12.dp))
                 }
