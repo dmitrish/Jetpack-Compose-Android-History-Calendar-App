@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -15,6 +16,7 @@ import androidx.core.net.toUri
 import androidx.glance.Button
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.GlanceTheme
 import androidx.glance.Image
 import androidx.glance.action.actionStartActivity
 import androidx.glance.action.clickable
@@ -32,6 +34,7 @@ import androidx.glance.layout.Row
 import androidx.glance.layout.padding
 import androidx.glance.layout.size
 import androidx.glance.text.Text
+import androidx.glance.unit.ColorProvider
 import coil.imageLoader
 import coil.request.CachePolicy
 import coil.request.ErrorResult
@@ -51,6 +54,8 @@ import kotlinx.datetime.toKotlinTimeZone
 import kotlinx.datetime.toLocalDateTime
 import java.time.ZoneId
 
+val LocalContentColor = compositionLocalOf { ColorProvider(Color.Black) }
+val LocalAccentColor = compositionLocalOf { ColorProvider(Color.White) }
 
 class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
 
@@ -83,51 +88,14 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
                 provideContent {
                     //val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
                     val dataUnwrapped = data.collectAsState()
-
-                    GlanceContent(
-                        context = context,
-                        data = dataUnwrapped.value ,
-                        header = internationalMonth.monthSelected + ", " + dayNumber)
-
-                  /*  Scaffold (
-                        titleBar =  { Text(
-                            "Today in History: " + internationalMonth.monthSelected + ", " + dayNumber,
-                            modifier = GlanceModifier.padding(20.dp)
+                    GlanceTheme {
+                        GlanceContent(
+                            context = context,
+                            data = dataUnwrapped.value,
+                            header = internationalMonth.monthSelected + ", " + dayNumber
                         )
-                        }
-                    ){
-                        Box(
-                            modifier = GlanceModifier
-                                .background(Color.White)
-                                .padding(16.dp)
-                            // .clickable(actionRunCallback<RefreshQuoteAction>())
-                        ){
-                            LazyColumn () {
-                                items(items = dataUnwrapped.value) { item ->
-                                    Row (GlanceModifier.clickable {
-                                        actionStartActivity(
-                                            Intent(context.applicationContext, MainActivity::class.java)
-                                                .setAction(Intent.ACTION_VIEW)
-                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                                               // .setData("https://socialite.google.com/chat/${model.contactId}".toUri()),
-                                    }) {
-                                        CoinImage(coinImage = item.bitMap!!)
-                                        androidx.glance.layout.Spacer( modifier = GlanceModifier.size(16.dp))
-
-                                       // Text(item.description)
-                                        Button(text = item.description, onClick = actionStartActivity(
-                                            Intent(context.applicationContext, MainActivity::class.java)
-                                                .setAction(Intent.ACTION_VIEW)
-                                                .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                                    )
-                                    }
-                                    androidx.glance.layout.Spacer( modifier = GlanceModifier.size(8.dp))
-                                }
-
-                            }
-                        }
-                    }*/
                     }
+                }
 
 
             }
