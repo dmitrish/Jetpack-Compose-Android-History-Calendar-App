@@ -31,12 +31,12 @@ All in early stages, work in progress.
   <tr>
     <th>English, Dark Theme</th>
     <th>Glance Widget</th> 
-
+    <th>Spanish, Dark Theme</th> 
   </tr>
   <tr>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/ase6.gif"/></td>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget1.gif"/></td> 
-
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/develop/spanishDark.gif"</td>
   </tr>
   
 </table>
