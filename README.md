@@ -21,7 +21,7 @@ All in early stages, work in progress.
 <p></p>
 
 
-<b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
+<b>This Day In History</b> is a fully functional Android app, with a companion Glance Widget, built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
 <p></p>
 <p>
   
