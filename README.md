@@ -34,7 +34,7 @@ All in early stages, work in progress.
     <th>Arabic, Light Theme</th> 
   </tr>
   <tr>
-    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/develop/app.gif"/></td>
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/ase6.gif"/></td>
     <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app3.gif"/></td> 
   <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app4.gif"/></td> 
   </tr>
