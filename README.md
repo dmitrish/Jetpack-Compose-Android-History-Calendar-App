@@ -62,6 +62,7 @@ All in early stages, work in progress.
   <li>Kotlin 2.0</li>
   <li>Coroutines and Flows</li>
   <li>Jetpack Compose</li>
+  <li>Jetpack Compose Glance</li>
   <li>Jetpack Compose Navigation</li>
   <li>Hilt</li>
   <li>Retrofit2</li>
