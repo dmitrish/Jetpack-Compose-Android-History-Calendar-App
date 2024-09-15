@@ -104,6 +104,7 @@ dependencies {
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.kotlinx.datetime)
     implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.work.runtime.ktx)
     //ksp/hilt
     ksp(libs.dagger.hilt.compiler)
     ksp(libs.hilt.compiler)
