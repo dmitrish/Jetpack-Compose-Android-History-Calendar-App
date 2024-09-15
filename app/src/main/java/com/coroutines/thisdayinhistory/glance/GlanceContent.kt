@@ -8,15 +8,18 @@ import androidx.annotation.StringRes
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
 import androidx.glance.Image
+import androidx.glance.ImageProvider
 import androidx.glance.LocalContext
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
+import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.appWidgetBackground
 import androidx.glance.appwidget.components.Scaffold
@@ -41,6 +44,9 @@ import com.coroutines.thisdayinhistory.MainActivity
 import androidx.glance.layout.Spacer
 import androidx.glance.text.FontFamily
 import androidx.glance.text.FontWeight
+import com.coroutines.thisdayinhistory.R
+import com.coroutines.thisdayinhistory.ui.utils.darker
+import com.coroutines.thisdayinhistory.ui.utils.lighter
 
 @Composable
 fun GlanceContent (
@@ -135,18 +141,28 @@ fun GlanceModifier.appWidgetBackgroundModifier(): GlanceModifier {
 
 @Composable
 private fun glanceHeader(header: String, accentColor: ColorProvider) {
-    Text(
-        text = "Today in History: $header",
-        modifier = GlanceModifier
-            .fillMaxWidth()
-            .padding(top = 12.dp, bottom = 10.dp),
-        style = TextStyle(
-            textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Bold,
-            color = accentColor,
-            fontSize = 15.sp
+    val context = LocalContext.current
+    Row(GlanceModifier
+        .fillMaxWidth()
+        .background(GlanceTheme.colors.background.getColor(context).darker (0.3f))
+        .padding(top = 12.dp, bottom = 10.dp, start = 16.dp)) {
+        Image( modifier = GlanceModifier.size(36.dp).padding(top = 12.dp, start = 16.dp),
+            provider = ImageProvider(resId = R.drawable.cat_logo_for_light_theme),
+            contentDescription = "Icon" )
+        Text(
+           // text = "Today in History: $header",
+            text = "$header",
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .padding(top = 12.dp, bottom = 10.dp),
+            style = TextStyle(
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                color = accentColor,
+                fontSize = 15.sp
+            )
         )
-    )
+    }
 }
 
 

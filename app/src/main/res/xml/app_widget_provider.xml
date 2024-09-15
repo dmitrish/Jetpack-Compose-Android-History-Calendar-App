@@ -8,7 +8,7 @@
     android:minResizeWidth="160dp"
     android:previewImage="@drawable/app_widget_preview_background"
     android:initialLayout="@layout/app_widget_preview"
-    android:updatePeriodMillis="1800000"
+    android:updatePeriodMillis="6000"
     android:resizeMode="horizontal"
     android:widgetCategory="home_screen">
 </appwidget-provider>
