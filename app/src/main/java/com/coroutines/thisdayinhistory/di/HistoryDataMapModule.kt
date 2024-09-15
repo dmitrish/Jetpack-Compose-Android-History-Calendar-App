@@ -15,5 +15,10 @@ abstract class HistoryDataMapModule {
         historyDataMap: HistoryDataMap,
     ): IHistoryDataMap
 
+   /* @Binds
+    abstract fun bindWidgetViewModel(
+        widgetViewModel: WidgetViewModel,
+    ): WidgetViewModel*/
+
 }
 
