@@ -14,4 +14,8 @@
     <string name="dark_mode">Dark</string>
     <string name="auto_mode">Auto</string>
     <string name="home_screen_placeholder">Home Screen Placeholder</string>
+    <string name="widget_preview_item_1">
+Det amerikanske konsulat og CIA anneks i Libyen blev angrebet af en tungt bevæbnet gruppe, hvilket resulterede i, at den amerikanske ambassadør J. Christopher Stevens og tre andre døde.</string>
+    <string name="widget_preview_item_2">Angrebene den 11. september, en række koordinerede terrorangreb, der dræbte 2.977 mennesker ved hjælp af fire fly kapret af 19 medlemmer af al-Qaeda. To fly styrter ind i World Trade Center i New York City, et tredje styrter ned i Pentagon i Arlington County, Virginia, og et fjerde ind i en mark nær Shanksville, Pennsylvania.</string>
+    <string name="widget_preview_item_3">NASAs Mars Global Surveyor når Mars.</string>
 </resources>
