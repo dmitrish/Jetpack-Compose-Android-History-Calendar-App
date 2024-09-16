@@ -6,9 +6,11 @@
     android:maxWidth="250dp"
     android:minResizeHeight="30dp"
     android:minResizeWidth="160dp"
-    android:previewImage="@drawable/app_widget_preview_background"
+
+    android:previewLayout="@layout/app_widget_preview"
     android:initialLayout="@layout/app_widget_preview"
     android:updatePeriodMillis="6000"
     android:resizeMode="horizontal"
+    android:description="@string/app_name"
     android:widgetCategory="home_screen">
 </appwidget-provider>
