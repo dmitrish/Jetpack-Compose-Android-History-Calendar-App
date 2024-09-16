@@ -14,4 +14,7 @@
     <string name="dark_mode">Dark</string>
     <string name="auto_mode">Auto</string>
     <string name="home_screen_placeholder">marcador de posición de la pantalla de inicio</string>
+    <string name="widget_preview_item_1">El consulado estadounidense y el anexo de la CIA en Libia fueron atacados por un grupo fuertemente armado, lo que provocó la muerte del embajador estadounidense J. Christopher Stevens y otras tres personas.</string>
+    <string name="widget_preview_item_2">Los atentados del 11 de septiembre, una serie de ataques terroristas coordinados que mataron a 2.977 personas utilizando cuatro aviones secuestrados por 19 miembros de Al Qaeda. Dos aviones se estrellan contra el World Trade Center en la ciudad de Nueva York, un tercero se estrella contra el Pentágono en el condado de Arlington, Virginia, y un cuarto contra un campo cerca de Shanksville, Pensilvania.</string>
+    <string name="widget_preview_item_3">El Mars Global Surveyor de la NASA llega a Marte.</string>
 </resources>

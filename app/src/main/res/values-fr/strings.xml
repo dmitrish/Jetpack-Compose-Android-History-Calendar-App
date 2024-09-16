@@ -14,4 +14,7 @@
     <string name="dark_mode">Dark</string>
     <string name="auto_mode">Auto</string>
     <string name="home_screen_placeholder">espace réservé pour l\'écran d\'accueil</string>
+    <string name="widget_preview_item_1">Le consulat américain et l\'annexe de la CIA en Libye ont été attaqués par un groupe lourdement armé, entraînant la mort de l\'ambassadeur américain J. Christopher Stevens et de trois autres personnes.</string>
+    <string name="widget_preview_item_2">Les attentats du 11 septembre, une série d\'attentats terroristes coordonnés tuant 2 977 personnes à bord de quatre avions détournés par 19 membres d\'Al-Qaïda.</string>
+    <string name="widget_preview_item_3">Le Mars Global Surveyor de la NASA atteint Mars.</string>
 </resources>
