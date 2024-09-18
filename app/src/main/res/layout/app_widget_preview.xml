@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/josefinsans_bold"
                 android:text="Today in History"
                 android:textAlignment="center"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -55,7 +55,7 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -67,7 +67,7 @@
                 android:layout_height="36dp"
                 android:background="@drawable/round_shape"
                 android:clipToOutline="true"
-                android:src="@drawable/cia_seal" />
+                android:src="@drawable/nine11" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -76,13 +76,13 @@
                 android:paddingRight="30dp"
                 android:text="@string/widget_preview_item_2"
                 android:textColor="@color/white" />
-        </LinearLayout>
+        </LinearLayout> -->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -94,7 +94,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:text="@string/widget_preview_item_3"
                 android:textColor="@color/white" />
@@ -104,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="95dp"
             android:orientation="horizontal">
 
             <ImageView

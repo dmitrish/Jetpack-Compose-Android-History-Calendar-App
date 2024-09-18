@@ -85,9 +85,12 @@ fun GlanceContent (
                     LazyColumn() {
                         items(items = data) { item ->
                             Row(GlanceModifier.padding(bottom = 15.dp)) {
-                                GlanceImage(coinImage = item.bitMap!!)
-                                Spacer(modifier = GlanceModifier.size(16.dp))
-                                GlanceText(item, contentColor, modifier, action)
+                                item.bitMap?.let {
+                                    GlanceImage(coinImage = item.bitMap!!)
+                                    Spacer(modifier = GlanceModifier.size(16.dp))
+                                    GlanceText(item, contentColor, modifier, action)
+                                }
+
                             }
                             Spacer(modifier = GlanceModifier.size(12.dp))
                         }
