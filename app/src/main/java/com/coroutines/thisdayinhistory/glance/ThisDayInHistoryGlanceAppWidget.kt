@@ -2,8 +2,10 @@ package com.coroutines.thisdayinhistory.glance
 
 import android.content.Context
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
@@ -14,12 +16,15 @@ import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
 import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
 import androidx.glance.background
 import androidx.glance.layout.Box
+import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.padding
 import androidx.glance.text.Text
 import androidx.glance.unit.ColorProvider
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.imageLoader
 import coil.request.ImageRequest
 import com.coroutines.data.models.HistoricalEvent
@@ -53,42 +58,63 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
     }
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
-          context.starGlanceWorker()
+          //context.starGlanceWorker()
 
-          try {
-              val viewModel = GlanceServiceProvider.get(context).widgetViewModel
+        //  coroutineScope {
+              try {
+                  val viewModel = GlanceServiceProvider.get(context).widgetViewModel
+                  provideContent {
+                      val dataState by viewModel.dataState.collectAsState()
+                      LaunchedEffect(key1 = Unit) {
+                          viewModel.start(context)
+                      }
 
-              viewModel.start(context)
+                      GlanceTheme {
+                          when (dataState) {
+                              WidgetState.Empty -> {
+                                  Box(
+                                      modifier = GlanceModifier
+                                          .cornerRadius(32.dp)
+                                          .fillMaxSize()
+                                          .background(Color.Transparent)
+                                          .padding(16.dp)
+                                  ) {
+                                      Text("Empty")
+                                  }
+                              }
 
-              provideContent {
-                val dataState = viewModel.dataState.collectAsState().value
-                val flowData = viewModel.dataFlow.collectAsState()
-                val data = flowData.value
+                              WidgetState.Loading -> {
+                                  Box(
+                                      modifier = GlanceModifier
+                                          .cornerRadius(32.dp)
+                                          .fillMaxSize()
+                                          .background(Color.Transparent)
+                                          .padding(16.dp)
+                                  ) {
+                                      Text("Loading")
+                                  }
+                              }
 
-                 GlanceTheme {
-                     when (dataState){
-                         WidgetState.Empty -> {}
-                         WidgetState.Loading -> {
-                             Text("Loading")
-                         }
-                         WidgetState.Loaded -> {
-                             GlanceContent(
-                                 context = context,
-                                 data = data,
-                                 header = "test" //"${internationalMonth.monthSelected} ,  $dayNumber"
-                             )
-                         }
-                     }
+                              else -> {
+                                  val header = viewModel.internationalHeader
 
+                                  GlanceContent(
+                                      context = context,
+                                      data = (dataState as WidgetState.Loaded).data,
+                                      header = header
+                                  )
+                              }
+                          }
+
+                      }
                   }
+
+              } catch (e: CancellationException) {
+                  println(e)
+              } catch (e: Exception) {
+                  println(e)
               }
-      }
-      catch (e: CancellationException) {
-          println(e)
-      }
-      catch (e: Exception) {
-          println(e)
-      }
+      //    }
 
     }
 

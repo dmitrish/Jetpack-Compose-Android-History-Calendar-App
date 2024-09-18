@@ -8,9 +8,9 @@
     android:minResizeWidth="160dp"
 
     android:previewLayout="@layout/app_widget_preview"
-    android:initialLayout="@layout/app_widget_preview"
+    android:initialLayout="@layout/app_widget_initial"
     android:updatePeriodMillis="6000"
-    android:resizeMode="horizontal"
-    android:description="@string/app_name"
+    android:resizeMode="vertical"
+    android:description="@string/welcome_message"
     android:widgetCategory="home_screen">
 </appwidget-provider>
