@@ -13,12 +13,14 @@ import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
 import com.coroutines.usecase.IHistoryDataStandardUseCase
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.datetime.Clock
 import kotlinx.datetime.toKotlinTimeZone
@@ -30,15 +32,17 @@ class WidgetStateHolder @Inject constructor(
     private val dataRepository: IHistoryDataStandardUseCase,
     private val userPreferencesRepository: UserPreferencesRepository
 )  {
-    private val today = Clock.System.now().toLocalDateTime(ZoneId.systemDefault().toKotlinTimeZone())
-    private var _dataFlow = MutableStateFlow<List<HistoricalEvent>>(listOf())
-    private var _widgetState = MutableStateFlow<WidgetState>(WidgetState.Empty)
+    private val today = Clock.System.now().toLocalDateTime(timeZone = ZoneId.systemDefault().toKotlinTimeZone())
+    private val _dataFlow = MutableStateFlow<List<HistoricalEvent>>(value = listOf())
+    private val _widgetState = MutableStateFlow<WidgetState>(value = WidgetState.Empty)
 
     val dataFlow = _dataFlow.asStateFlow()
     val dataState = _widgetState.asStateFlow()
 
+    lateinit var internationalHeader: String
+
     suspend fun start(context: Context){
-        _widgetState.value = WidgetState.Loading
+
 
         val langId = userPreferencesRepository.getLanguagePreference().first().langId
 
@@ -46,6 +50,8 @@ class WidgetStateHolder @Inject constructor(
         val dayNumber = today.dayOfMonth
 
         val internationalMonth =  InternationalMonth(mutableStateOf(langId), mutableIntStateOf(monthNumber))
+
+        internationalHeader = "${internationalMonth.monthSelected}, $dayNumber"
 
         dataRepository.wikiFlowList(
             HistoryMonth(monthNumber),
@@ -64,8 +70,11 @@ class WidgetStateHolder @Inject constructor(
                 }
             }
             .flowOn(Dispatchers.Default)
+            .onStart {
+                _widgetState.value = WidgetState.Loading
+            }
             .onCompletion {
-                _widgetState.value = WidgetState.Loaded
+                _widgetState.value = WidgetState.Loaded (_dataFlow.value)
             }
             .collect {
                 _dataFlow.value = it

@@ -15,6 +15,7 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
+import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.usecase.IHistoryDataStandardUseCase
 import java.util.concurrent.TimeUnit
 
@@ -22,7 +23,7 @@ import java.util.concurrent.TimeUnit
 sealed interface WidgetState {
     data object Empty : WidgetState
     data object Loading : WidgetState
-    data object Loaded : WidgetState
+    data class Loaded (val data: List<HistoricalEvent>) : WidgetState
 }
 
 class GlanceWidgetWorker(
