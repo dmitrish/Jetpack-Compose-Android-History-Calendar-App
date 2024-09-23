@@ -12,9 +12,9 @@ import javax.inject.Singleton
 
 @Singleton
 class GlanceServiceProvider @Inject internal constructor(
-    var dataRepository: IHistoryDataStandardUseCase,
-    var userPreferencesRepository: UserPreferencesRepository,
-    var widgetViewModel: WidgetStateHolder
+    //var dataRepository: IHistoryDataStandardUseCase,
+   // var userPreferencesRepository: UserPreferencesRepository,
+    var widgetStateHolder: WidgetStateHolder
 ) {
 
     @EntryPoint

@@ -8,7 +8,6 @@ import androidx.annotation.StringRes
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,7 +18,6 @@ import androidx.glance.ImageProvider
 import androidx.glance.LocalContext
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
-import androidx.glance.appwidget.action.actionRunCallback
 import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.appWidgetBackground
 import androidx.glance.appwidget.components.Scaffold
@@ -46,7 +44,6 @@ import androidx.glance.text.FontFamily
 import androidx.glance.text.FontWeight
 import com.coroutines.thisdayinhistory.R
 import com.coroutines.thisdayinhistory.ui.utils.darker
-import com.coroutines.thisdayinhistory.ui.utils.lighter
 
 @Composable
 fun GlanceContent (
@@ -71,7 +68,7 @@ fun GlanceContent (
     ) {
         val accentColor = LocalAccentColor.current
         val contentColor = LocalContentColor.current
-       // Box(GlanceModifier.appWidgetBackground().cornerRadius(48.dp)) {
+
         Scaffold(
             titleBar = { glanceHeader(header, accentColor)}
         ) {
@@ -90,7 +87,6 @@ fun GlanceContent (
                                     Spacer(modifier = GlanceModifier.size(16.dp))
                                     GlanceText(item, contentColor, modifier, action)
                                 }
-
                             }
                             Spacer(modifier = GlanceModifier.size(12.dp))
                         }
@@ -98,7 +94,6 @@ fun GlanceContent (
                 }
             }
         }
-
     }
 
 @Composable
@@ -121,9 +116,9 @@ private fun GlanceText(
 }
 
 @Composable
-fun AppWidgetBox(
+fun AppWidgetPlaceholderBox(
     modifier: GlanceModifier = GlanceModifier,
-    contentAlignment: Alignment = Alignment.TopStart,
+    contentAlignment: Alignment = Alignment.Center,
     content: @Composable () -> Unit,
 ) {
     Box(
@@ -145,9 +140,11 @@ fun GlanceModifier.appWidgetBackgroundModifier(): GlanceModifier {
 @Composable
 private fun glanceHeader(header: String, accentColor: ColorProvider) {
     val context = LocalContext.current
+
+    val color = GlanceTheme.colors.background.getColor(context)
     Row(GlanceModifier
         .fillMaxWidth()
-        .background(GlanceTheme.colors.background.getColor(context).darker (0.3f))
+        //.background(GlanceTheme.colors.background)
         .padding(top = 12.dp, bottom = 10.dp, start = 16.dp)) {
         Image( modifier = GlanceModifier.size(36.dp).padding(top = 12.dp, start = 16.dp),
             provider = ImageProvider(resId = R.drawable.cat_logo_for_light_theme),
