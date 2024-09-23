@@ -10,7 +10,11 @@ import com.coroutines.data.models.HistoricalEvent
 import com.coroutines.models.synonyms.HistoryDay
 import com.coroutines.models.synonyms.HistoryMonth
 import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
+import com.coroutines.thisdayinhistory.ui.state.DataRequestState
+import com.coroutines.thisdayinhistory.ui.state.RequestCategory
+import com.coroutines.thisdayinhistory.uimodels.CatsByLanguage
 import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
+import com.coroutines.thisdayinhistory.uimodels.SelectedDate
 import com.coroutines.usecase.IHistoryDataStandardUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -28,13 +32,20 @@ import kotlinx.datetime.toLocalDateTime
 import java.time.ZoneId
 import javax.inject.Inject
 
+data class AppWidgetState(
+    val dataRequestState: DataRequestState,
+    val data: List<HistoricalEvent>? = null
+)
+
+const val DATA_CATEGORY = "selected"
+
 class WidgetStateHolder @Inject constructor(
     private val dataRepository: IHistoryDataStandardUseCase,
     private val userPreferencesRepository: UserPreferencesRepository
 )  {
     private val today = Clock.System.now().toLocalDateTime(timeZone = ZoneId.systemDefault().toKotlinTimeZone())
     private val _dataFlow = MutableStateFlow<List<HistoricalEvent>>(value = listOf())
-    private val _widgetState = MutableStateFlow<WidgetState>(value = WidgetState.Empty)
+    private val _widgetState = MutableStateFlow<AppWidgetState>(value = AppWidgetState(DataRequestState.NotStarted))
 
     val dataFlow = _dataFlow.asStateFlow()
     val dataState = _widgetState.asStateFlow()
@@ -57,7 +68,7 @@ class WidgetStateHolder @Inject constructor(
             HistoryMonth(monthNumber),
             HistoryDay(dayNumber),
             langId,
-            "selected")
+            DATA_CATEGORY)
             .onEach { it ->
                 it.forEach { item ->
                     val request = ImageRequest.Builder(context)
@@ -71,13 +82,19 @@ class WidgetStateHolder @Inject constructor(
             }
             .flowOn(Dispatchers.Default)
             .onStart {
-                _widgetState.value = WidgetState.Loading
+                _widgetState.update { appWidgetState ->
+                    appWidgetState.copy(dataRequestState = DataRequestState.Started)
+                }
             }
             .onCompletion {
-                _widgetState.value = WidgetState.Loaded (_dataFlow.value)
+                _widgetState.update { appWidgetState ->
+                    appWidgetState.copy(dataRequestState = DataRequestState.CompletedSuccessfully(RequestCategory.Data))
+                }
             }
-            .collect {
-                _dataFlow.value = it
+            .collect { data ->
+                _widgetState.update { appWidgetState ->
+                    appWidgetState.copy(data = data)
+                }
         }
     }
 }
