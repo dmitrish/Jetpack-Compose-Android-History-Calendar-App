@@ -8,7 +8,7 @@
 
 
 
-  <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
+
 
 Open-sourcing as I am re-writing (based on a better understanding of Compose) an app I wrote a couple of years ago. 
 <p><a href="https://play.google.com/store/apps/details?id=com.coroutines.historycat">History Calendar app on Google Play Store</a></p>
@@ -120,5 +120,8 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/uitesterrorscreen">Ui Tests: Error Screen</li>
   
 <li>More to follow...</li>
+
+
+  <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
 
 </ul>
