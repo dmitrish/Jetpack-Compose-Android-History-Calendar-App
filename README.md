@@ -33,8 +33,8 @@ All in early stages, work in progress.
   <tr>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/ase6.gif"/></td>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget1.gif"/></td> 
-    <!--<td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/spanishDark.gif"/></td>-->
-    <td><video src="https://github.com/user-attachments/assets/ea491cbb-cabc-43f6-9ad3-db1e1fed75cd"/></td>
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/spanishDark.gif"/></td>
+  
   </tr>
   
 </table>
@@ -58,10 +58,12 @@ All in early stages, work in progress.
   <tr>
     <th width="480">Widget Preview and Selection</th>
    <th width="480">Widget Preview</th>
+    <th width="480">Spanish Dark</th>
   </tr>
   <tr>
     <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"  /></td>
     <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widgetdark.png" /></td>
+        <td><video src="https://github.com/user-attachments/assets/ea491cbb-cabc-43f6-9ad3-db1e1fed75cd"/></td>
   </tr>
   
 </table>
