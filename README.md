@@ -33,7 +33,8 @@ All in early stages, work in progress.
   <tr>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/ase6.gif"/></td>
     <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget1.gif"/></td> 
-    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/spanishDark.gif"/></td>
+    <!--<td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/spanishDark.gif"/></td>-->
+    <td><video src="https://github.com/user-attachments/assets/ea491cbb-cabc-43f6-9ad3-db1e1fed75cd"/></td>
   </tr>
   
 </table>
