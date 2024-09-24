@@ -85,9 +85,6 @@ fun GlanceContent (
                         items(items = data) { item ->
                             Row(GlanceModifier.padding(bottom = 15.dp)) {
                                 item.bitMap?.let {
-                                   // Spacer(GlanceModifier
-                                   //     .fillMaxWidth())
-                                      //  .defaultWeight())
                                     GlanceImage(coinImage = item.bitMap!!)
                                     Spacer(modifier = GlanceModifier.size(14.dp))
                                     GlanceText(item, contentColor, modifier, action)
@@ -153,13 +150,13 @@ private fun glanceHeader(header: String, accentColor: ColorProvider) {
             start = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
         ) {
-        Image(
+       /* Image(
             modifier = GlanceModifier
 
                 .size(36.dp)
                 .padding(top = 12.dp, start = 16.dp),
             provider = ImageProvider(resId = R.drawable.cat_logo_for_light_theme),
-            contentDescription = "Icon" )
+            contentDescription = "Icon" )*/
         Text(
             text = "$header",
             modifier = GlanceModifier

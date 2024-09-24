@@ -72,7 +72,7 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
               provideContent {
                   val dataState by widgetState.dataState.collectAsState()
                   LaunchedEffect(key1 = Unit) {
-                      delay(200)
+                      delay(250)
                       widgetState.start(context)
                   }
 
@@ -95,7 +95,8 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
                               }
                           }
                           DataRequestState.CompletedSuccessfully(RequestCategory.Data) -> {
-                              val header = widgetState.internationalHeader
+                              val header = "Today in History: ${widgetState.internationalHeader}"
+
 
                               dataState.data?.let {
                                   GlanceContent(

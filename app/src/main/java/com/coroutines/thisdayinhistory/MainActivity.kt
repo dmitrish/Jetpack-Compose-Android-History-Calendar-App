@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //https://www.youtube.com/watch?v=mlL6H-s0nF0
+
         installSplashScreen().apply {
             setKeepOnScreenCondition {
                 return@setKeepOnScreenCondition isStatePendingRestore
@@ -71,37 +71,35 @@ class MainActivity : AppCompatActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     private fun runUi() = setContent {
 
-    val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
+        val settingsViewModel: ISettingsViewModel = hiltViewModel<SettingsViewModel>()
 
-    val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
-    val deviceLanguage = getDeviceLanguage()
-
-
-    val historyViewModel =
-        hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
-            key = appConfigState.appLanguage.langId
-        ) { factory ->
-            factory.create(appConfigState.appLanguage)
-        }
-
-     when (appConfigState.isLoading) {
-            true ->
-                { }//load animation
-            false -> {
-
-                if (deviceLanguage != appConfigState.appLanguage.langId) {
-                    setPerAppLanguage(appConfigState)
+        val appConfigState by settingsViewModel.appConfigurationState.collectAsStateWithLifecycle()
+        val deviceLanguage = getDeviceLanguage()
 
 
-                }
-
-                isStatePendingRestore = false
-
-                val windowSize = calculateWindowSizeClass(this)
-
-                MainContent(settingsViewModel, appConfigState, historyViewModel, windowSize)
+        val historyViewModel =
+            hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
+                key = appConfigState.appLanguage.langId
+            ) { factory ->
+                factory.create(appConfigState.appLanguage)
             }
-        }
+
+         when (appConfigState.isLoading) {
+                true ->
+                    { }//load animation
+                false -> {
+
+                    if (deviceLanguage != appConfigState.appLanguage.langId) {
+                        setPerAppLanguage(appConfigState)
+                    }
+
+                    isStatePendingRestore = false
+
+                    val windowSize = calculateWindowSizeClass(this)
+
+                    MainContent(settingsViewModel, appConfigState, historyViewModel, windowSize)
+                }
+            }
     }
 
     private fun getDeviceLanguage(): String  {
