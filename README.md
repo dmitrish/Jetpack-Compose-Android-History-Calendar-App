@@ -76,6 +76,7 @@ All in early stages, work in progress.
   <li>Jetpack Compose</li>
   <li>Jetpack Compose Glance</li>
   <li>Jetpack Compose Navigation</li>
+  <li>Workmanager</li>
   <li>Hilt</li>
   <li>Retrofit2</li>
   <li>Material3</li>
