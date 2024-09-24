@@ -51,6 +51,9 @@ All in early stages, work in progress.
   </tr>
   
 </table>
+
+
+  <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
 <p></p>
 <p>
    <h2>Technology Stack</h2>
@@ -122,6 +125,5 @@ The app supports internationalization and in-app language selection. The content
 <li>More to follow...</li>
 
 
-  <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
 
 </ul>
