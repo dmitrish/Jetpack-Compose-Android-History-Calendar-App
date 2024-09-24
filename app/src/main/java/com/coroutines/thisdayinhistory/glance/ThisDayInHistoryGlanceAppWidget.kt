@@ -72,7 +72,7 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
               provideContent {
                   val dataState by widgetState.dataState.collectAsState()
                   LaunchedEffect(key1 = Unit) {
-                      delay(3999)
+                      delay(200)
                       widgetState.start(context)
                   }
 
