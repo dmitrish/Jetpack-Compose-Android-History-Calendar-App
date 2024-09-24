@@ -6,12 +6,7 @@
 
 
 
- <video preload="auto"  width="460" controls>
-      <source
-        src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"
-        type="video/mp4"
-      />
-  </video>
+
 
   <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
 
