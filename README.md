@@ -60,7 +60,7 @@ All in early stages, work in progress.
   </tr>
   <tr>
     <td><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" /></td>
-    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget_preview.png"/></td>
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget_preview.png" width="480"/></td>
   </tr>
   
 </table>
