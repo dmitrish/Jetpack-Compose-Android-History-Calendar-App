@@ -58,12 +58,12 @@ All in early stages, work in progress.
   <tr>
     <th width="480">Widget Preview and Selection</th>
    <th width="480">Widget Preview</th>
-    <th width="480">Spanish Dark</th>
+    <th width="480">Arabic Dark</th>
   </tr>
   <tr>
     <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"  /></td>
     <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widgetdark.png" /></td>
-        <td><video src="https://github.com/user-attachments/assets/ea491cbb-cabc-43f6-9ad3-db1e1fed75cd"/></td>
+        <td><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
   </tr>
   
 </table>
