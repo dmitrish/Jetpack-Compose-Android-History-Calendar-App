@@ -59,8 +59,8 @@ All in early stages, work in progress.
    <th width="480">Widget Preview</th>
   </tr>
   <tr>
-    <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" /></td>
-    <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget_preview.png" width="480"/></td>
+    <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"  /></td>
+    <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget_preview.png" /></td>
   </tr>
   
 </table>
