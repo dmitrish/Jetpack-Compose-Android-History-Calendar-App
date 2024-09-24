@@ -52,8 +52,22 @@ All in early stages, work in progress.
   
 </table>
 
+<p></p>
+<table style="width:100%">
+  <tr>
+    <th>Spanish, Detail</th>
+    <th>French, Detail</th> 
+    <th>Spanish, Settings</th> 
+  </tr>
+  <tr>
+    <td><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" /></td>
+    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/frenchDetail.jpg"/></td> 
+  <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/spanishSettings.jpg"/></td> 
+  </tr>
+  
+</table>
 
-  <video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb" width="480" />
+  
 <p></p>
 <p>
    <h2>Technology Stack</h2>
