@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceModifier
@@ -18,6 +19,7 @@ import androidx.glance.ImageProvider
 import androidx.glance.LocalContext
 import androidx.glance.action.Action
 import androidx.glance.action.clickable
+import androidx.glance.appwidget.ExperimentalGlanceRemoteViewsApi
 import androidx.glance.appwidget.action.actionStartActivity
 import androidx.glance.appwidget.appWidgetBackground
 import androidx.glance.appwidget.components.Scaffold
@@ -77,14 +79,17 @@ fun GlanceContent (
                     .cornerRadius(32.dp)
                     .fillMaxSize()
                     .background(Color.Transparent)
-                    .padding(16.dp)
+                    .padding(8.dp)
             ) {
                     LazyColumn() {
                         items(items = data) { item ->
                             Row(GlanceModifier.padding(bottom = 15.dp)) {
                                 item.bitMap?.let {
+                                   // Spacer(GlanceModifier
+                                   //     .fillMaxWidth())
+                                      //  .defaultWeight())
                                     GlanceImage(coinImage = item.bitMap!!)
-                                    Spacer(modifier = GlanceModifier.size(16.dp))
+                                    Spacer(modifier = GlanceModifier.size(14.dp))
                                     GlanceText(item, contentColor, modifier, action)
                                 }
                             }
@@ -139,18 +144,23 @@ fun GlanceModifier.appWidgetBackgroundModifier(): GlanceModifier {
 
 @Composable
 private fun glanceHeader(header: String, accentColor: ColorProvider) {
-    val context = LocalContext.current
 
-    val color = GlanceTheme.colors.background.getColor(context)
     Row(GlanceModifier
         .fillMaxWidth()
-        //.background(GlanceTheme.colors.background)
-        .padding(top = 12.dp, bottom = 10.dp, start = 16.dp)) {
-        Image( modifier = GlanceModifier.size(36.dp).padding(top = 12.dp, start = 16.dp),
+        .padding(
+            top = 12.dp,
+            bottom = 10.dp,
+            start = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+        Image(
+            modifier = GlanceModifier
+
+                .size(36.dp)
+                .padding(top = 12.dp, start = 16.dp),
             provider = ImageProvider(resId = R.drawable.cat_logo_for_light_theme),
             contentDescription = "Icon" )
         Text(
-           // text = "Today in History: $header",
             text = "$header",
             modifier = GlanceModifier
                 .fillMaxWidth()
@@ -194,4 +204,22 @@ fun GlanceModifier.appWidgetInnerCornerRadius(): GlanceModifier {
 @Composable
 fun stringResource(@StringRes id: Int, vararg args: Any): String {
     return LocalContext.current.getString(id, args)
+}
+
+@OptIn(ExperimentalGlanceRemoteViewsApi::class)
+@Preview
+@Composable
+fun glanceHeaderPreview(){
+ GlanceTheme {
+     Row(GlanceModifier
+         .fillMaxWidth()
+         .padding(
+             top = 12.dp,
+             bottom = 10.dp,
+             start = 16.dp),
+         horizontalAlignment = Alignment.CenterHorizontally
+     ) {
+
+     }
+ }
 }
