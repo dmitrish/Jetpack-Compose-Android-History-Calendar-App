@@ -9,7 +9,8 @@ enum class MainNavOption {
     DetailScreen,
     LanguagesScreen,
     ThemeScreen,
-    AboutScreen
+    AboutScreen,
+    WidgetScreen
 }
 
 enum class IntroNavOption {

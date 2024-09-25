@@ -5,6 +5,7 @@
     <string name="language_prompt">Wähle deine Sprache</string>
     <string name="drawer_home">Startseite</string>
     <string name="drawer_settings">Einstellungen</string>
+    <string name="drawer_widget">Widget</string>
     <string name="drawer_about">Sobre History Cat</string>
     <string name="drawer_language">Sprache</string>
     <string name="cancel">Cancel</string>

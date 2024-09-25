@@ -7,4 +7,5 @@ object AppIcons {
     val Settings = R.drawable.ic_settings
     val Language = R.drawable.ic_language
     val About = R.drawable.ic_book
+    val Widget = R.drawable.widget_svg
 }
