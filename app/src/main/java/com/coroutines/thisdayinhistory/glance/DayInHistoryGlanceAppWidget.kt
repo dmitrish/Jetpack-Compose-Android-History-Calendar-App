@@ -5,11 +5,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.core.graphics.drawable.toBitmap
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
@@ -18,24 +15,7 @@ import androidx.glance.ImageProvider
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.provideContent
 import androidx.glance.unit.ColorProvider
-import coil.imageLoader
-import coil.request.ImageRequest
-import com.coroutines.data.models.HistoricalEvent
-import com.coroutines.models.synonyms.HistoryDay
-import com.coroutines.models.synonyms.HistoryMonth
-import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
 import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.stateIn
-import kotlinx.datetime.Clock
-import kotlinx.datetime.toKotlinTimeZone
-import kotlinx.datetime.toLocalDateTime
-import java.time.ZoneId
 import androidx.glance.appwidget.CircularProgressIndicator
 import androidx.glance.layout.ContentScale
 import androidx.glance.layout.padding
@@ -48,7 +28,7 @@ import kotlinx.coroutines.delay
 val LocalContentColor = compositionLocalOf { ColorProvider(Color.Black) }
 val LocalAccentColor = compositionLocalOf { ColorProvider(Color.White) }
 
-class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
+class DayInHistoryGlanceAppWidget: GlanceAppWidget() {
 
     companion object {
         const val UNIQUE_WORK_TAG = "ThisDayInHistoryWidgetWork"
@@ -67,7 +47,7 @@ class ThisDayInHistoryGlanceAppWidget: GlanceAppWidget() {
 
     override suspend fun provideGlance(context: Context, id: GlanceId) {
           try {
-              val widgetState = GlanceServiceProvider.get(context).widgetStateHolder
+              val widgetState = DayInHistoryGlanceServiceProvider.get(context).widgetStateHolder
 
               provideContent {
                   val dataState by widgetState.dataState.collectAsState()

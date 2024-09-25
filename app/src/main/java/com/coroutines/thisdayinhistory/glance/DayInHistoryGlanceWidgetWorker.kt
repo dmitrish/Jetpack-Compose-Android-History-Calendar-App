@@ -1,22 +1,16 @@
 package com.coroutines.thisdayinhistory.glance
 
 import android.content.Context
-import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.glance.GlanceId
 import androidx.glance.appwidget.GlanceAppWidgetManager
-import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
-import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import androidx.work.workDataOf
 import com.coroutines.data.models.HistoricalEvent
-import com.coroutines.usecase.IHistoryDataStandardUseCase
 import java.util.concurrent.TimeUnit
 
 
@@ -33,10 +27,10 @@ class GlanceWidgetWorker(
 
     override suspend fun doWork(): Result {
         val glanceId = GlanceAppWidgetManager(appContext)
-            .getGlanceIds(ThisDayInHistoryGlanceAppWidget::class.java).firstOrNull()
+            .getGlanceIds(DayInHistoryGlanceAppWidget::class.java).firstOrNull()
 
         glanceId?.let {
-            ThisDayInHistoryGlanceAppWidget().apply {
+            DayInHistoryGlanceAppWidget().apply {
                 update(appContext, glanceId)
             }
         }
@@ -62,7 +56,7 @@ fun Context.starGlanceWorker() {
         .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 5000L, TimeUnit.MILLISECONDS)
         .setConstraints(networkConstraint)
         .build()
-    val uniqueTag = ThisDayInHistoryGlanceAppWidget.UNIQUE_WORK_TAG
+    val uniqueTag = DayInHistoryGlanceAppWidget.UNIQUE_WORK_TAG
     WorkManager.getInstance(this)
         .enqueueUniquePeriodicWork(
             uniqueTag,

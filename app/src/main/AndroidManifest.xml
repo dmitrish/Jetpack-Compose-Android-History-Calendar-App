@@ -30,7 +30,7 @@
         </intent-filter>
         </activity>
 
-        <receiver android:name=".glance.ThisDayInHistoryGlanceAppWidgetReceiver"
+        <receiver android:name=".glance.DayInHistoryGlanceAppWidgetReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

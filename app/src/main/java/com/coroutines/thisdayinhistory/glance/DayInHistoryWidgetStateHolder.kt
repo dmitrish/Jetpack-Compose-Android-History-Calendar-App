@@ -12,12 +12,9 @@ import com.coroutines.models.synonyms.HistoryMonth
 import com.coroutines.thisdayinhistory.preferences.UserPreferencesRepository
 import com.coroutines.thisdayinhistory.ui.state.DataRequestState
 import com.coroutines.thisdayinhistory.ui.state.RequestCategory
-import com.coroutines.thisdayinhistory.uimodels.CatsByLanguage
 import com.coroutines.thisdayinhistory.uimodels.InternationalMonth
-import com.coroutines.thisdayinhistory.uimodels.SelectedDate
 import com.coroutines.usecase.IHistoryDataStandardUseCase
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
