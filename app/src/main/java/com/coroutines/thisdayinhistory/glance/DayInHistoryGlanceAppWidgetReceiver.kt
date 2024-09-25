@@ -7,8 +7,8 @@ import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ThisDayInHistoryGlanceAppWidgetReceiver : GlanceAppWidgetReceiver() {
-    override val glanceAppWidget: GlanceAppWidget = ThisDayInHistoryGlanceAppWidget()
+class DayInHistoryGlanceAppWidgetReceiver : GlanceAppWidgetReceiver() {
+    override val glanceAppWidget: GlanceAppWidget = DayInHistoryGlanceAppWidget()
 
     override fun onUpdate(
         context: Context,
