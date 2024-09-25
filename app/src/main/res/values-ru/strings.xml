@@ -5,6 +5,7 @@
     <string name="language_prompt">Выберите язык</string>
     <string name="drawer_home">Главная</string>
     <string name="drawer_settings">Настройки</string>
+    <string name="drawer_widget">Widget</string>
     <string name="drawer_about">О нас</string>
     <string name="drawer_language">Язык</string>
     <string name="cancel">Отмена</string>

@@ -5,6 +5,7 @@
     <string name="language_prompt">Choisissez votre langue</string>
     <string name="drawer_home">Accueil</string>
     <string name="drawer_settings">Paramètres</string>
+    <string name="drawer_widget">Widget</string>
     <string name="drawer_about">À propos de appt</string>
     <string name="drawer_language">Langues</string>
     <string name="cancel">Cancel</string>

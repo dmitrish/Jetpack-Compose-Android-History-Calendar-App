@@ -5,6 +5,7 @@
     <string name="language_prompt">Välj ditt språk</string>
     <string name="drawer_home">Hemsida</string>
     <string name="drawer_settings">Inställningar</string>
+    <string name="drawer_widget">Widget</string>
     <string name="drawer_about">Om appen</string>
     <string name="drawer_language">Språk</string>
     <string name="cancel">Cancel</string>

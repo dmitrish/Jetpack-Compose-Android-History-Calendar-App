@@ -17,6 +17,7 @@ import com.coroutines.thisdayinhistory.ui.screens.detail.DetailScreen
 import com.coroutines.thisdayinhistory.ui.screens.language.LanguageScreen
 import com.coroutines.thisdayinhistory.ui.screens.main.HistoryScreen
 import com.coroutines.thisdayinhistory.ui.screens.uitheme.ThemeScreen
+import com.coroutines.thisdayinhistory.ui.screens.widget.WidgetScreen
 import com.coroutines.thisdayinhistory.ui.viewmodels.IHistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.ISettingsViewModel
 
@@ -88,6 +89,14 @@ fun NavGraphBuilder.mainGraph(
         ) {
             ScreenWithSecondaryAppBar(navController = navController) {
                 AboutScreen(viewModel = settingsViewModel)
+            }
+        }
+
+        composable(
+            MainNavOption.WidgetScreen.name
+        ) {
+            ScreenWithSecondaryAppBar(navController = navController) {
+                WidgetScreen(viewModel = settingsViewModel)
             }
         }
     }

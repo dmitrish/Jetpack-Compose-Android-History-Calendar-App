@@ -5,6 +5,7 @@
     <string name="language_prompt">scegli la tua lingua</string>
     <string name="drawer_home">Pagina inizialeio</string>
     <string name="drawer_settings">Impostazioni</string>
+    <string name="drawer_widget">Widget</string>
     <string name="drawer_about">Informazioni sull\'app</string>
     <string name="drawer_language">Lingua</string>
     <string name="cancel">Cancel</string>
