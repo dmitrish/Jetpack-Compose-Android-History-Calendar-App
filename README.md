@@ -60,14 +60,10 @@ All in early stages, work in progress.
    <th width="480">Widget Preview</th>
     <th width="480">Arabic Dark</th>
   </tr>
-  <tr>
-    
+  <tr>    
     <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"  /></td>
-    <td width="480">
-        <video src="https://github.com/user-attachments/assets/6999d2ba-9fb6-47ce-a525-6416a6578386"/>
-     
-    </td>
-        <td><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
+    <td width="480"> <video src="https://github.com/user-attachments/assets/6999d2ba-9fb6-47ce-a525-6416a6578386"/>   </td>             
+    <td width="480"><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
   </tr>
   
 </table>
