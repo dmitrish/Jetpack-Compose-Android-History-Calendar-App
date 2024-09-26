@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HistoryCat</string>
     <string name="title">History Cat</string>
-    <string name="welcome_message">Welcome to our app! You will learn all history secrets here!</string>
+    <string name="welcome_message">Bem-vindo à nossa aplicação! Aprenderá todos os segredos da história aqui!</string>
     <string name="language_prompt">Escolha seu idioma</string>
     <string name="drawer_home">Entrar</string>
     <string name="drawer_settings">Configurações</string>
