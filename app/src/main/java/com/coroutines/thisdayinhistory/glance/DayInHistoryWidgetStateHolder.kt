@@ -40,7 +40,7 @@ class WidgetStateHolder @Inject constructor(
     private val dataRepository: IHistoryDataStandardUseCase,
     private val userPreferencesRepository: UserPreferencesRepository
 )  {
-    private val today = Clock.System.now().toLocalDateTime(timeZone = ZoneId.systemDefault().toKotlinTimeZone())
+
     private val _dataFlow = MutableStateFlow<List<HistoricalEvent>>(value = listOf())
     private val _widgetState = MutableStateFlow<AppWidgetState>(value = AppWidgetState(DataRequestState.NotStarted))
 
@@ -51,6 +51,7 @@ class WidgetStateHolder @Inject constructor(
 
     suspend fun start(context: Context){
 
+        val today = Clock.System.now().toLocalDateTime(timeZone = ZoneId.systemDefault().toKotlinTimeZone())
 
         val langId = userPreferencesRepository.getLanguagePreference().first().langId
 

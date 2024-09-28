@@ -11,6 +11,11 @@ import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
 import com.coroutines.data.models.HistoricalEvent
+import kotlinx.datetime.Clock
+import kotlinx.datetime.toKotlinTimeZone
+import kotlinx.datetime.toLocalDateTime
+import java.time.Duration
+import java.time.ZoneId
 import java.util.concurrent.TimeUnit
 
 
@@ -49,12 +54,22 @@ class GlanceWidgetWorker(
 }
 
 fun Context.starGlanceWorker() {
+
+
+    val diff = 24L - Clock.System.now().toLocalDateTime(ZoneId.systemDefault().toKotlinTimeZone()).hour
+    val delayDuration = Duration.ofHours(diff)
+
     val networkConstraint =
-        Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+        Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresCharging(false)
+            .setRequiresBatteryNotLow(true)
+            .build()
     val request = PeriodicWorkRequest
         .Builder(GlanceWidgetWorker::class.java, 15, TimeUnit.MINUTES)
         .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 5000L, TimeUnit.MILLISECONDS)
         .setConstraints(networkConstraint)
+        .setInitialDelay(delayDuration)
         .build()
     val uniqueTag = DayInHistoryGlanceAppWidget.UNIQUE_WORK_TAG
     WorkManager.getInstance(this)
