@@ -75,7 +75,7 @@ All in early stages, work in progress.
 <table style="width:100%">
   <tr>
     <th width="480">Widget Preview - Portuguese</th>
-   <th width="480">Widget Pinning</th>
+   <th width="480">Widget Pinning from App</th>
     <th width="480">Arabic Dark</th>
   </tr>
   <tr>    
