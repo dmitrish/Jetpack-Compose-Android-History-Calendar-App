@@ -55,29 +55,6 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
-       <!-- <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/round_shape"
-                android:clipToOutline="true"
-                android:src="@drawable/nine11" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:paddingRight="30dp"
-                android:text="@string/widget_preview_item_2"
-                android:textColor="@color/white" />
-        </LinearLayout> -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,15 +98,5 @@
                 android:text="@string/widget_preview_item_2"
                 android:textColor="@color/white" />
         </LinearLayout>
-
-
     </LinearLayout>
-
-    <!--<ImageView
-        android:id="@+id/logo"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_gravity="center"
-        android:src="@drawable/cat"
-        tools:ignore="UseAppTint" />-->
 </FrameLayout>
