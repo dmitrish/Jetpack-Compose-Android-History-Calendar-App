@@ -75,12 +75,12 @@ All in early stages, work in progress.
 <table style="width:100%">
   <tr>
     <th width="480">Widget Preview - Portuguese</th>
-   <th width="480">Widget Preview</th>
+   <th width="480">Widget Pinning</th>
     <th width="480">Arabic Dark</th>
   </tr>
   <tr>    
     <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/art/widget_preview_portuguese.png"  /></td>
-    <td width="480"> <video src="https://github.com/user-attachments/assets/6999d2ba-9fb6-47ce-a525-6416a6578386"/>   </td>             
+    <td width="480"> <img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/art/widget_pinning.png"/>   </td>             
     <td width="480"><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
   </tr>
   
