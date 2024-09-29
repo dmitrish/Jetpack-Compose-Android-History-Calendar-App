@@ -16,6 +16,9 @@ class DayInHistoryGlanceAppWidgetReceiver : GlanceAppWidgetReceiver() {
         appWidgetIds: IntArray
     ) {
         super.onUpdate(context, appWidgetManager, appWidgetIds)
+        context?.let { nonNullContext ->
+            nonNullContext.starGlanceWorker()
+        }
     }
 
     override fun onEnabled(context: Context?) {
