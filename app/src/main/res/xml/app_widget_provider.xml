@@ -7,6 +7,8 @@
     android:minResizeHeight="30dp"
     android:minResizeWidth="160dp"
 
+    android:configure="com.coroutines.thisdayinhistory.GlanceConfigurationActivity"
+    android:widgetFeatures="reconfigurable|configuration_optional"
 
     android:previewLayout="@layout/app_widget_preview"
     android:initialLayout="@layout/app_widget_initial"
