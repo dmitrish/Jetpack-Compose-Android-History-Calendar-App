@@ -59,6 +59,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
 
         setContent {
             val settingsViewModel = hiltViewModel<SettingsViewModel>()
+            val appConfigState = settingsViewModel.appConfigurationState.value
             ThisDayInHistoryTheme(viewModel = settingsViewModel) {
                 val appThemeColor = MaterialTheme.colorScheme.background
 
@@ -72,9 +73,9 @@ class GlanceConfigurationActivity : ComponentActivity() {
                         .background(appThemeColor)
                 ) {
                         Column(Modifier.background(appThemeColor)) {
-                        CatLogo(settings = settingsViewModel.appConfigurationState.value)
+                        CatLogo(settings = appConfigState)
                         Text(
-                            settingsViewModel.appConfigurationState.value.appLanguage.name,
+                            appConfigState.appLanguage.name,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         Button(onClick = { onItemClick() }) {
