@@ -45,6 +45,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
 
         enableEdgeToEdge()
@@ -59,8 +60,9 @@ class GlanceConfigurationActivity : ComponentActivity() {
 
         setContent {
             val settingsViewModel = hiltViewModel<SettingsViewModel>()
-            val appConfigState = settingsViewModel.appConfigurationState.value
+
             ThisDayInHistoryTheme(viewModel = settingsViewModel) {
+                val appConfigState = settingsViewModel.appConfigurationState.value
                 val appThemeColor = MaterialTheme.colorScheme.background
 
                 val systemUiController = rememberSystemUiController()
