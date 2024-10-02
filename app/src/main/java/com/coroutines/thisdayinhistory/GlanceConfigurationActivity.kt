@@ -1,5 +1,6 @@
 package com.coroutines.thisdayinhistory
 
+import android.annotation.SuppressLint
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
@@ -44,6 +45,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
     }
 
+    @SuppressLint("StateFlowValueCalledInComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -60,11 +62,9 @@ class GlanceConfigurationActivity : ComponentActivity() {
 
         setContent {
             val settingsViewModel = hiltViewModel<SettingsViewModel>()
-
+            val appConfigState = settingsViewModel.appConfigurationState.value
+            val appThemeColor = MaterialTheme.colorScheme.background
             ThisDayInHistoryTheme(viewModel = settingsViewModel) {
-                val appConfigState = settingsViewModel.appConfigurationState.value
-                val appThemeColor = MaterialTheme.colorScheme.background
-
                 val systemUiController = rememberSystemUiController()
                 systemUiController.setSystemBarsColor(
                     color = appThemeColor,
@@ -74,7 +74,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize()
                         .background(appThemeColor)
                 ) {
-                        Column(Modifier.background(appThemeColor)) {
+                        Column(Modifier.fillMaxSize().background(appThemeColor)) {
                         CatLogo(settings = appConfigState)
                         Text(
                             appConfigState.appLanguage.name,
