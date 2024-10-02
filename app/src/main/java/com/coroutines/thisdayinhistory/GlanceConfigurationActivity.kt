@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 
 import androidx.compose.material3.MaterialTheme
@@ -25,17 +26,23 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberTopAppBarState
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
+import coil.size.Size
 import com.coroutines.thisdayinhistory.components.rememberSystemUiController
 import com.coroutines.thisdayinhistory.ui.components.CatLogo
+import com.coroutines.thisdayinhistory.ui.screens.main.HistoryListItem
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
+import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -50,6 +57,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     @SuppressLint("StateFlowValueCalledInComposition", "UnusedMaterialScaffoldPaddingParameter",
         "UnusedMaterial3ScaffoldPaddingParameter"
     )
@@ -70,7 +78,16 @@ class GlanceConfigurationActivity : ComponentActivity() {
         setContent {
             val settingsViewModel = hiltViewModel<SettingsViewModel>()
             val appConfigState = settingsViewModel.appConfigurationState.value
+
+            val historyViewModel =
+                hiltViewModel<HistoryViewModel, HistoryViewModel.IHistoryViewModelFactory>(
+                    key = appConfigState.appLanguage.langId
+                ) { factory ->
+                    factory.create(appConfigState.appLanguage)
+                }
+            val data = historyViewModel.historyData
             val appThemeColor = MaterialTheme.colorScheme.background
+            val appThemeOnBackground = MaterialTheme.colorScheme.onBackground
             ThisDayInHistoryTheme(viewModel = settingsViewModel) {
                 val systemUiController = rememberSystemUiController()
                 systemUiController.setSystemBarsColor(
@@ -82,7 +99,8 @@ class GlanceConfigurationActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(appThemeColor)
                 ) {
-                    Scaffold (
+                    Scaffold  (
+                        Modifier.background(appThemeColor),
                         topBar = {},
                         bottomBar = {}
                     ) {
@@ -90,26 +108,43 @@ class GlanceConfigurationActivity : ComponentActivity() {
                             Modifier
                                 .fillMaxSize()
                                 .background(appThemeColor)
-                                .padding(40.dp)
+                                .padding(20.dp)
                         ) {
                             CatLogo(settings = appConfigState)
-                            Text(
-                                appConfigState.appLanguage.name,
-                                color = MaterialTheme.colorScheme.onBackground
-                            )
+
                             Button(onClick = { onItemClick() }) {
                                 Text(text = "Here we go")
-
                             }
 
-                            AndroidView(
+                            LazyColumn (
+                                Modifier.background(appThemeColor)
+                            ) {
+                                items(data){ item ->
+                                    Row{
+                                        HistoryListItem(
+                                            historyEvent = item,
+                                            windowSizeClass = WindowSizeClass.calculateFromSize(
+                                                DpSize.Companion.Zero),
+                                            onClick = {} ,
+                                            onImageClick = {}
+                                        ) {
+
+                                        }
+                                       /* Text (text = item.description,
+                                            color = appThemeOnBackground
+                                        )*/
+                                    }
+                                }
+                            }
+
+                           /* AndroidView(
                                 factory = { context ->
                                     val view = LayoutInflater.from(context)
                                         .inflate(R.layout.app_widget_preview, null, false)
                                     view
                                 },
                                 update = { }
-                            )
+                            )*/
 
                         }
                     }
