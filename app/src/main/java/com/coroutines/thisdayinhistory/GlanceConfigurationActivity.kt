@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.view.LayoutInflater
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -15,15 +16,19 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
+
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -45,7 +50,9 @@ class GlanceConfigurationActivity : ComponentActivity() {
         ) ?: AppWidgetManager.INVALID_APPWIDGET_ID
     }
 
-    @SuppressLint("StateFlowValueCalledInComposition")
+    @SuppressLint("StateFlowValueCalledInComposition", "UnusedMaterialScaffoldPaddingParameter",
+        "UnusedMaterial3ScaffoldPaddingParameter"
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -71,17 +78,38 @@ class GlanceConfigurationActivity : ComponentActivity() {
                     isNavigationBarContrastEnforced = false
                 )
                 Surface(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .fillMaxSize()
                         .background(appThemeColor)
                 ) {
-                        Column(Modifier.fillMaxSize().background(appThemeColor)) {
-                        CatLogo(settings = appConfigState)
-                        Text(
-                            appConfigState.appLanguage.name,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        Button(onClick = { onItemClick() }) {
-                            Text(text = "Here we go")
+                    Scaffold (
+                        topBar = {},
+                        bottomBar = {}
+                    ) {
+                        Column(
+                            Modifier
+                                .fillMaxSize()
+                                .background(appThemeColor)
+                                .padding(40.dp)
+                        ) {
+                            CatLogo(settings = appConfigState)
+                            Text(
+                                appConfigState.appLanguage.name,
+                                color = MaterialTheme.colorScheme.onBackground
+                            )
+                            Button(onClick = { onItemClick() }) {
+                                Text(text = "Here we go")
+
+                            }
+
+                            AndroidView(
+                                factory = { context ->
+                                    val view = LayoutInflater.from(context)
+                                        .inflate(R.layout.app_widget_preview, null, false)
+                                    view
+                                },
+                                update = { }
+                            )
 
                         }
                     }
