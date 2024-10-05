@@ -139,7 +139,7 @@ fun HistoryEventList(
                 items(data) { item: HistoricalEvent ->
                     HistoryListItem(
                         historyEvent = item,
-                        windowSizeClass = windowSizeClass,
+                        //windowSizeClass = windowSizeClass,
                         onClick = { selectedEvent ->
                             viewModel.selectedItem = selectedEvent
                             navController.currentBackStackEntry?.savedStateHandle?.set(
