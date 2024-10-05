@@ -23,10 +23,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
 import coil.imageLoader
 import coil.memory.MemoryCache
 import com.coroutines.data.models.CountryCodeMapping
@@ -40,10 +43,33 @@ import com.coroutines.thisdayinhistory.uimodels.ShareableHistoryEvent
 
 
 
+
+open class HistoryTextStyle (
+    open val maxLines: Int = 15,
+    open val lineHeight: TextUnit = 20.sp,
+    open val style: TextStyle
+)
+
+class HistoryTextHeaderStyle : HistoryTextStyle {
+    constructor(maxLines: Int, lineHeight: TextUnit, style: TextStyle) : super(maxLines, lineHeight, style)
+
+}
+ /*class HistoryTextHeaderStyle(
+     val maxLines: Int = 15,
+    override val lineHeight: TextUnit = 20.sp,
+    override val style: TextStyle): HistoryTextStyle(maxLines, lineHeight, style) {
+
+}*/
+
+
 @Composable
 inline fun HistoryListItem(
     historyEvent: HistoricalEvent,
-    windowSizeClass: WindowSizeClass,
+    styles: List<HistoryTextStyle> = buildList<HistoryTextStyle> {
+        add(HistoryTextStyle(style = MaterialTheme.typography.bodyMedium))
+        add(HistoryTextHeaderStyle(maxLines = 1, lineHeight = 20.sp,  style = MaterialTheme.typography.bodyMedium))
+    },
+    //windowSizeClass: WindowSizeClass,
     crossinline onClick: (HistoricalEvent) -> Unit,
     crossinline onImageClick: (HistoricalEvent) -> Unit,
     crossinline onShare: (ShareableHistoryEvent) -> Unit
@@ -56,7 +82,7 @@ inline fun HistoryListItem(
         Modifier
             .padding(start = keyLine1, end = keyLine1, top =  1.dp),
         colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.background.darker(0.02f),
+            containerColor = MaterialTheme.colorScheme.background.darker(0.01f),
             contentColor = MaterialTheme.colorScheme.onBackground,
             disabledContainerColor = MaterialTheme.colorScheme.background,
             disabledContentColor = MaterialTheme.colorScheme.onBackground
@@ -95,9 +121,9 @@ inline fun HistoryListItem(
 
                 Text(
                     text = historyEvent.description,
-                    maxLines = 15,
+                    maxLines = styles.filterIsInstance<HistoryTextStyle>()[0].maxLines,
                     lineHeight = 20.sp,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = styles.filterIsInstance<HistoryTextStyle>()[0].style,
                     modifier = Modifier
                         .padding(top = 16.dp, end = keyLine1.minus(12.dp))
                         .clickable(enabled = true) {

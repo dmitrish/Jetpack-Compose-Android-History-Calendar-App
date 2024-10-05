@@ -16,10 +16,14 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -35,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
@@ -44,8 +49,12 @@ import coil.size.Size
 import com.coroutines.thisdayinhistory.components.rememberSystemUiController
 import com.coroutines.thisdayinhistory.ui.components.CatLogo
 import com.coroutines.thisdayinhistory.ui.screens.main.HistoryListItem
+import com.coroutines.thisdayinhistory.ui.screens.main.HistoryTextHeaderStyle
+import com.coroutines.thisdayinhistory.ui.screens.main.HistoryTextStyle
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryTheme
 import com.coroutines.thisdayinhistory.ui.theme.ThisDayInHistoryThemeEnum
+import com.coroutines.thisdayinhistory.ui.utils.darker
+import com.coroutines.thisdayinhistory.ui.utils.lighter
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModel
 import com.coroutines.thisdayinhistory.ui.viewmodels.HistoryViewModelMock
 import com.coroutines.thisdayinhistory.ui.viewmodels.SettingsViewModel
@@ -122,8 +131,10 @@ class GlanceConfigurationActivity : ComponentActivity() {
                                     Row{
                                         HistoryListItem(
                                             historyEvent = item,
-                                            windowSizeClass = WindowSizeClass.calculateFromSize(
-                                                DpSize.Companion.Zero),
+                                            styles = buildList {
+                                                add(HistoryTextStyle(maxLines = 3, style = MaterialTheme.typography.bodySmall))
+                                                add(HistoryTextHeaderStyle(maxLines = 1, lineHeight = 20.sp,  style = MaterialTheme.typography.bodyMedium))
+                                            },
                                             onClick = {} ,
                                             onImageClick = {}
                                         ) {
@@ -192,32 +203,58 @@ fun ConfigurationContent(){
                     .background(appThemeColor)
                     .padding(20.dp)
             ) {
-
                 CatLogo(settings = appConfigState)
-
-
-
-                LazyColumn(
+                ElevatedCard (
                     Modifier
-                        .fillMaxSize()
-                        .background(appThemeColor)
-                ) {
-                    items(data) { item ->
-                        Row {
-                            HistoryListItem(
-                                historyEvent = item,
-                                windowSizeClass = WindowSizeClass.calculateFromSize(
-                                    DpSize.Companion.Zero
-                                ),
-                                onClick = {},
-                                onImageClick = {}
-                            ) {
+                        .padding(start = 10.dp, end = 10.dp, top =  1.dp),
+                        //.height(200.dp),
+                    colors = CardColors(
+                        containerColor = MaterialTheme.colorScheme.background.lighter(0.5f),
+                        contentColor = MaterialTheme.colorScheme.onBackground,
+                        disabledContainerColor = MaterialTheme.colorScheme.background,
+                        disabledContentColor = MaterialTheme.colorScheme.onBackground
+                    ),
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 1.dp
+                    ))
+                {
+                    LazyColumn(
+                        Modifier
+                            //.fillMaxSize()
+                            .background(appThemeColor.lighter(0.1f))
+                            .height(300.dp)
+                    ) {
+                        items(data) { item ->
+                            Row {
+                                HistoryListItem(
+                                    historyEvent = item,
+                                    styles = buildList {
+                                        add(
+                                            HistoryTextStyle(
+                                                maxLines = 3,
+                                                style = MaterialTheme.typography.bodySmall
+                                            )
+                                        )
+                                        add(
+                                            HistoryTextHeaderStyle(
+                                                maxLines = 1,
+                                                lineHeight = 20.sp,
+                                                style = MaterialTheme.typography.bodyMedium
+                                            )
+                                        )
+                                    },
+                                    onClick = {},
+                                    onImageClick = {}
+                                ) {
+
+                                }
 
                             }
-
                         }
                     }
                 }
+
+
             }
         }
     }
