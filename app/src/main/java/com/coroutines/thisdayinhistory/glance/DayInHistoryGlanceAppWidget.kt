@@ -76,8 +76,6 @@ class DayInHistoryGlanceAppWidget: GlanceAppWidget() {
                           }
                           DataRequestState.CompletedSuccessfully(RequestCategory.Data) -> {
                               val header = "Today in History: ${widgetState.internationalHeader}"
-
-
                               dataState.data?.let {
                                   GlanceContent(
                                       context = context,
@@ -89,8 +87,6 @@ class DayInHistoryGlanceAppWidget: GlanceAppWidget() {
                          else -> {
 
                          }
-                          //DataRequestState.CompletedSuccessfully -> TODO()
-                         // DataRequestState.CompletedWithError -> TODO()
                       }
                   }
               }
