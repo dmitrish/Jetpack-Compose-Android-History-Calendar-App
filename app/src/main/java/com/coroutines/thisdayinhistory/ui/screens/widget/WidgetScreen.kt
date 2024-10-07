@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.coroutines.thisdayinhistory.ConfigurationContent
 import com.coroutines.thisdayinhistory.R
 
 import com.coroutines.thisdayinhistory.glance.DayInHistoryGlanceAppWidgetReceiver
@@ -49,11 +50,12 @@ fun WidgetScreen(
         val context = LocalContext.current
         val themeState by viewModel.appConfigurationState.collectAsState()
 
-        CatLogo(themeState)
-        Spacer(modifier = Modifier.height(30.dp))
-        Text("Widget for Home Screen", color = MaterialTheme.colorScheme.onBackground)
-        Spacer(modifier = Modifier.height(30.dp))
-        val scope = rememberCoroutineScope()
+        //CatLogo(themeState)
+       // Spacer(modifier = Modifier.height(30.dp))
+       // Text("Widget for Home Screen", color = MaterialTheme.colorScheme.onBackground)
+       // Spacer(modifier = Modifier.height(30.dp))
+        ConfigurationContent()
+       /* val scope = rememberCoroutineScope()
 
         val appWidgetManager = AppWidgetManager.getInstance(context)
 
@@ -90,7 +92,7 @@ fun WidgetScreen(
             /* flags = */ PendingIntent.FLAG_UPDATE_CURRENT)*/
 
           //  appWidgetManager.requestPinAppWidget(myProvider, null, null)
-        }
+        } */
 
     }
 }

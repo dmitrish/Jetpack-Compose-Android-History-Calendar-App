@@ -34,6 +34,7 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -91,6 +92,7 @@ class GlanceConfigurationActivity : ComponentActivity() {
 
 
         setContent {
+
             val settingsViewModel = hiltViewModel<SettingsViewModel>()
             val appConfigState = settingsViewModel.appConfigurationState.collectAsState()
 
@@ -192,6 +194,14 @@ fun ConfigurationContent(){
             color = appThemeColor,
             isNavigationBarContrastEnforced = false
         )
+
+        val cardColors = CardColors(
+            containerColor = MaterialTheme.colorScheme.background.lighter(0.5f),
+            contentColor = MaterialTheme.colorScheme.onBackground,
+            disabledContainerColor = MaterialTheme.colorScheme.background,
+            disabledContentColor = MaterialTheme.colorScheme.onBackground
+        )
+
         Surface(
             modifier = Modifier
                 .fillMaxSize()
@@ -205,15 +215,12 @@ fun ConfigurationContent(){
             ) {
                 CatLogo(settings = appConfigState)
                 ElevatedCard (
-                    Modifier
-                        .padding(start = 10.dp, end = 10.dp, top =  1.dp),
-                        //.height(200.dp),
-                    colors = CardColors(
-                        containerColor = MaterialTheme.colorScheme.background.lighter(0.5f),
-                        contentColor = MaterialTheme.colorScheme.onBackground,
-                        disabledContainerColor = MaterialTheme.colorScheme.background,
-                        disabledContentColor = MaterialTheme.colorScheme.onBackground
+                    Modifier.padding(
+                        start = 10.dp,
+                        end = 10.dp,
+                        top =  1.dp
                     ),
+                    colors = cardColors,
                     elevation = CardDefaults.cardElevation(
                         defaultElevation = 1.dp
                     ))
@@ -221,7 +228,7 @@ fun ConfigurationContent(){
                     LazyColumn(
                         Modifier
                             //.fillMaxSize()
-                            .background(appThemeColor.lighter(0.1f))
+                            .background(appThemeColor.lighter(0.5f))
                             .height(300.dp)
                     ) {
                         items(data) { item ->
@@ -243,6 +250,7 @@ fun ConfigurationContent(){
                                             )
                                         )
                                     },
+                                    cardColors = cardColors,
                                     onClick = {},
                                     onImageClick = {}
                                 ) {
