@@ -74,6 +74,8 @@ fun GlanceContent (
         Scaffold(
             titleBar = { glanceHeader(header, accentColor)}
         ) {
+
+
             Box(
                 modifier = GlanceModifier
                     .cornerRadius(32.dp)

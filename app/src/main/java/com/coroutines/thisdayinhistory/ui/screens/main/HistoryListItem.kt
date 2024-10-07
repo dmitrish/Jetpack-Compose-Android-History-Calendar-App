@@ -65,10 +65,20 @@ class HistoryTextHeaderStyle : HistoryTextStyle {
 @Composable
 inline fun HistoryListItem(
     historyEvent: HistoricalEvent,
-    styles: List<HistoryTextStyle> = buildList<HistoryTextStyle> {
+    styles: List<HistoryTextStyle> = buildList {
         add(HistoryTextStyle(style = MaterialTheme.typography.bodyMedium))
-        add(HistoryTextHeaderStyle(maxLines = 1, lineHeight = 20.sp,  style = MaterialTheme.typography.bodyMedium))
+        add(HistoryTextHeaderStyle(
+            maxLines = 1,
+            lineHeight = 20.sp,
+            style = MaterialTheme.typography.bodyMedium
+        ))
     },
+    cardColors: CardColors = CardColors(
+        containerColor = MaterialTheme.colorScheme.background.darker(0.01f),
+        contentColor = MaterialTheme.colorScheme.onBackground,
+        disabledContainerColor = MaterialTheme.colorScheme.background,
+        disabledContentColor = MaterialTheme.colorScheme.onBackground
+    ),
     //windowSizeClass: WindowSizeClass,
     crossinline onClick: (HistoricalEvent) -> Unit,
     crossinline onImageClick: (HistoricalEvent) -> Unit,
@@ -81,12 +91,7 @@ inline fun HistoryListItem(
     ElevatedCard (
         Modifier
             .padding(start = keyLine1, end = keyLine1, top =  1.dp),
-        colors = CardColors(
-            containerColor = MaterialTheme.colorScheme.background.darker(0.01f),
-            contentColor = MaterialTheme.colorScheme.onBackground,
-            disabledContainerColor = MaterialTheme.colorScheme.background,
-            disabledContentColor = MaterialTheme.colorScheme.onBackground
-        ),
+        colors = cardColors,
         elevation = CardDefaults.cardElevation(
             defaultElevation = 1.dp
         ))
