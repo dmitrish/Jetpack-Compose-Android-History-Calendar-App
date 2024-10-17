@@ -71,7 +71,7 @@ android {
 
     packaging {
         resources {
-            excludes += "/META-INF/*"
+
             excludes +="/META-INF/gradle/incremental.annotation.processors"
         }
     }

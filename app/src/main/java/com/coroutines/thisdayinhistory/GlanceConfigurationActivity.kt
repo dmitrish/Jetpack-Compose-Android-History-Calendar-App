@@ -217,7 +217,7 @@ fun ConfigurationContent() {
 
                     Spacer(modifier = Modifier.height(50.dp))
                     val pagerState = rememberPagerState(pageCount = {
-                        10
+                        LangEnum.entries.size
                     })
                     HorizontalPager(state = pagerState,
                         modifier = Modifier.fillMaxWidth(),
@@ -232,9 +232,9 @@ fun ConfigurationContent() {
                                // .background(Color.Green)
                         ) {
                             Text(
-                                text = Languages.SWEDISH.native,
+                                text =  LangEnum.entries[page].langNativeName,
                                 modifier = Modifier.align(Alignment.Center),
-                                fontSize = 50.sp,
+                                fontSize = 50.sp
                             )
                         }
                        /* Text(
