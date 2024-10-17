@@ -1,13 +1,14 @@
 [versions] #TOML table
-agp = "8.4.2" #TOML key/value pair
-kotlin = "2.0.0"
+agp = "8.5.1" #TOML key/value pair
+kotlin = "2.0.21"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
-composeBom = "2024.06.00"
+composeBom = "2024.09.03"
+composeUi = "1.7.3"
 #navigationCommonKtx = "2.7.7"
 #navigationRuntimeKtx = "2.7.7"
 navigationCompose = "2.8.0-beta06"
@@ -33,7 +34,7 @@ lifecycleRuntimeComposeAndroid = "2.8.0"
 material3WindowSizeClassAndroid = "1.2.1"
 material3WindowSizeClassAndroidVersion = "1.2.1"
 
-ksp = "2.0.0-1.0.21"
+ksp = "2.0.21-1.0.25"
 hilt = "2.51.1"
 hiltNavigation = "1.2.0"
 hiltExtensions = "1.2.0"
@@ -58,12 +59,12 @@ androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test", version.ref
 androidx-compose-materialWindow = { module = "androidx.compose.material3:material3-window-size-class" }
 androidx-core-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-core-splash"}
 androidx-palette = { module = "androidx.palette:palette", version.ref = "androidx-palette" }
-androidx-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui", version.ref="composeUi" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" , version.ref="composeUi"}
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref="composeUi" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" , version.ref="composeUi"}
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref="composeUi" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref="composeUi" }
 androidx-compose-material = { module = "androidx.compose.material:material" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCompose" }
