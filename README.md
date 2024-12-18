@@ -6,12 +6,9 @@
 
 
 
- <video preload="auto"  width="460" controls>
-      <source
-        src='https://github.com/dmitrish/Jetpack-Compose-Android-App/assets/38740872/454e3162-7555-4679-a8b5-718f1661d2a0'
-        type="video/mp4"
-      />
-  </video>
+
+
+
 
 Open-sourcing as I am re-writing (based on a better understanding of Compose) an app I wrote a couple of years ago. 
 <p><a href="https://play.google.com/store/apps/details?id=com.coroutines.historycat">History Calendar app on Google Play Store</a></p>
@@ -21,7 +18,7 @@ All in early stages, work in progress.
 <p></p>
 
 
-<b>This Day In History</b> is a fully functional Android app built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
+<b>This Day In History</b> is a fully functional Android app, with a companion Glance Widget, built entirely with Kotlin 2.0 and Jetpack Compose.   The app allows users to discover what happpened on any particular day with summaries of major events, anniversaries, famous births and notable deaths.
 <p></p>
 <p>
   
@@ -30,13 +27,14 @@ All in early stages, work in progress.
 <table style="width:100%">
   <tr>
     <th>English, Dark Theme</th>
-    <th>Portuguese, Dark Theme</th> 
-    <th>Arabic, Light Theme</th> 
+    <th>Glance Widget</th> 
+    <th>Spanish, Dark Theme</th> 
   </tr>
   <tr>
-    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/develop/app.gif"/></td>
-    <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app3.gif"/></td> 
-  <td><img src="https://github.com/dmitrish/This-Day-In-History/blob/master/app4.gif"/></td> 
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/ase6.gif"/></td>
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/widget1.gif"/></td> 
+    <td><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/spanishDark.gif"/></td>
+  
   </tr>
   
 </table>
@@ -54,6 +52,40 @@ All in early stages, work in progress.
   </tr>
   
 </table>
+
+<p></p>
+<table style="width:100%">
+  <tr>
+    <th width="480">Widget Preview and Selection</th>
+   <th width="480">Widget Preview</th>
+    <th width="480">Arabic Dark</th>
+  </tr>
+  <tr>    
+    <td width="480"><video src="https://github.com/user-attachments/assets/8f81c87d-6add-4a87-b664-68ca4906cdfb"  /></td>
+    <td width="480"> <video src="https://github.com/user-attachments/assets/6999d2ba-9fb6-47ce-a525-6416a6578386"/>   </td>             
+    <td width="480"><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
+  </tr>
+  
+</table>
+
+
+  
+<p></p>
+
+<table style="width:100%">
+  <tr>
+    <th width="480">Widget Preview - Portuguese</th>
+   <th width="480">Widget Pinning from App</th>
+    <th width="480">Arabic Dark</th>
+  </tr>
+  <tr>    
+    <td width="480"><img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/art/widget_preview_portuguese.png"  /></td>
+    <td width="480"> <img src="https://github.com/dmitrish/Jetpack-Compose-Android-History-Calendar-App/blob/master/art/widget_pinning.png"/>   </td>             
+    <td width="480"><video src="https://github.com/user-attachments/assets/2aa5975e-d038-4441-9279-f453ee0b50b1"/></td>
+  </tr>
+  
+</table>
+
 <p></p>
 <p>
    <h2>Technology Stack</h2>
@@ -62,7 +94,9 @@ All in early stages, work in progress.
   <li>Kotlin 2.0</li>
   <li>Coroutines and Flows</li>
   <li>Jetpack Compose</li>
+  <li>Jetpack Compose Glance</li>
   <li>Jetpack Compose Navigation</li>
+  <li>Workmanager</li>
   <li>Hilt</li>
   <li>Retrofit2</li>
   <li>Material3</li>
@@ -122,5 +156,7 @@ The app supports internationalization and in-app language selection. The content
   <li><a href="http://coroutines.com/thisdayinhistory/uitesterrorscreen">Ui Tests: Error Screen</li>
   
 <li>More to follow...</li>
+
+
 
 </ul>

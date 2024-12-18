@@ -1,5 +1,6 @@
 package com.coroutines.thisdayinhistory.glance
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,6 +9,7 @@ import androidx.annotation.StringRes
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -46,6 +48,12 @@ import androidx.glance.text.FontFamily
 import androidx.glance.text.FontWeight
 import com.coroutines.thisdayinhistory.R
 import com.coroutines.thisdayinhistory.ui.utils.darker
+
+
+@SuppressLint("RestrictedApi")
+val LocalContentColor = compositionLocalOf { ColorProvider(Color.Black) }
+@SuppressLint("RestrictedApi")
+val LocalAccentColor = compositionLocalOf { ColorProvider(Color.White) }
 
 @Composable
 fun GlanceContent (

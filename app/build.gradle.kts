@@ -104,6 +104,8 @@ dependencies {
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.kotlinx.datetime)
     implementation(libs.androidx.glance.appwidget)
+    implementation(libs.androidx.glance.appwidget.preview)
+    implementation(libs.androidx.glance.preview)
     implementation ("androidx.glance:glance-material3:1.1.0")
     implementation(libs.androidx.work.runtime.ktx)
     //ksp/hilt
